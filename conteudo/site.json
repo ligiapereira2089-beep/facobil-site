@@ -646,11 +646,13 @@
         "marcos": [
           {
             "ano": "1981.",
-            "texto": "FACOBIL was founded as a family business, driven by a passion for footwear and a commitment to quality, rigour and identity."
+            "texto": "FACOBIL was founded as a family business, driven by a passion for footwear and a commitment to quality, rigour and identity.",
+            "descricao_imagem": "Production at the Facobil factory"
           },
           {
             "ano": "2017.",
-            "texto": "In 2017, FACOBIL moved to its new premises in Felgueiras, an important step in the company's growth."
+            "texto": "In 2017, FACOBIL moved to its new premises in Felgueiras, an important step in the company's growth.",
+            "descricao_imagem": "Facobil's new premises"
           }
         ],
         "compromisso_titulo": "Commitment to quality.",
@@ -753,16 +755,29 @@
         ],
         "galeria_titulo": "Dance models",
         "galeria": [
-          {},
-          {},
-          {},
-          {},
-          {},
-          {}
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          }
         ],
         "apelo_titulo": "Looking for a partner for your dance collection?",
         "apelo_texto": "Talk to us and discover our development and production solutions.",
-        "apelo_botao": "Contact us"
+        "apelo_botao": "Contact us",
+        "intro_descricao_imagem": "Suede sole of a satin dance shoe made by Facobil"
       },
       "qualidade": {
         "titulo_separador": "Quality and Sustainability | Facobil",
@@ -817,12 +832,24 @@
         "topo_titulo": "Project Gallery",
         "topo_subtitulo": "Examples of our production capacity and versatility",
         "galeria": [
-          {},
-          {},
-          {},
-          {},
-          {},
-          {}
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          }
         ],
         "apelo_titulo": "Ready to start your project?",
         "apelo_texto": "Get in touch and find out how we can turn your idea into reality.",
