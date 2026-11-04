@@ -493,7 +493,8 @@ function mostrarPagina(f) {
       if (h.startsWith("#")) return;
       const alvo = new URL(h.split("#")[0], "http://x/" + f).pathname.slice(1);
       if (paginasPrevia[alvo]) { e.preventDefault(); mostrarPagina(alvo); }
-      else if (!h.startsWith("#")) { e.preventDefault(); }
+      else if (/^(https?:|mailto:|tel:)/.test(h)) { e.preventDefault(); window.open(h, "_blank", "noopener"); }
+      else { e.preventDefault(); }
     });
   };
   fr.srcdoc = html;
