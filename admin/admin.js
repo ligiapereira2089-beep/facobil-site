@@ -1,5 +1,5 @@
 // Painel do site Facobil — edita conteudo/rascunho.json e publica em conteudo/site.json através da API do GitHub.
-import { gerarSite, FONTES } from "./gerar.mjs";
+import { gerarSite, FONTES, NAO_TRADUZ } from "./gerar.mjs";
 
 const DONO = "ligiapereira2089-beep";
 const REPO = "facobil-site";
@@ -21,9 +21,12 @@ const blobs = {};         // imagens enviadas nesta sessão: caminho -> URL loca
 const SECCOES = [
   ["geral", "Dados gerais e contactos"], ["aparencia", "Cores e letras"],
   ["paginas.inicio", "Página Início"], ["paginas.sobre", "Página Sobre nós"], ["paginas.brist", "Página BRIST"],
-  ["paginas.qualidade", "Página Qualidade"], ["paginas.projetos", "Página Projetos"], ["paginas.contactos", "Página Contactos"],
+  ["paginas.danca", "Página Dança"], ["paginas.qualidade", "Página Qualidade"], ["paginas.projetos", "Página Projetos"], ["paginas.contactos", "Página Contactos"],
   ["paginas.codigo_conduta", "Código de Conduta"], ["paginas.privacidade", "Política de Privacidade"],
 ];
+// versão inglesa: as mesmas secções, só com os campos de texto
+const SECCOES_EN = SECCOES.filter(([c]) => c !== "aparencia").map(([c, n]) => ["en." + c, "EN · " + n.replace(/^Página /, "")]);
+const TODAS = [...SECCOES, ...SECCOES_EN];
 const ROTULOS = {
   nome_empresa: "Nome da empresa", nome_legal: "Nome legal", nipc: "NIPC", ano_fundacao: "Ano de fundação",
   email: "E-mail", telefone: "Telefone", morada: "Morada (uma linha por linha da morada)", localidade: "Localidade (rodapé)",
@@ -50,6 +53,7 @@ const ROTULOS = {
   sustentabilidade_imagem: "Sustentabilidade: imagem", sustentabilidade_paragrafos: "Sustentabilidade: parágrafos",
   seccoes: "Secções", paragrafos: "Parágrafos (linhas começadas por \"- \" formam uma lista)", titulo: "Título", texto: "Texto", imagem: "Imagem",
   facebook: "Facebook", instagram: "Instagram", linkedin: "LinkedIn",
+  logotipo_fundo_claro: "Logótipo para fundos claros (Google)", caracteristicas: "Características", galeria_titulo: "Galeria: título",
 };
 const rotulo = (k) => ROTULOS[k] || (k.charAt(0).toUpperCase() + k.slice(1).replace(/_/g, " "));
 const eImagem = (k, v) => /imagem|logotipo/.test(k) && !/descricao/.test(k) && typeof v === "string";
@@ -119,6 +123,7 @@ async function arrancar() {
     shaSite = site.sha;
     rascunho = rasc ? rasc.dados : structuredClone(site.dados);
     shaRasc = rasc ? rasc.sha : null;
+    completar(rascunho, site.dados);
     // cópia local mais recente do que o rascunho guardado?
     let local = null; try { local = JSON.parse(localStorage.getItem("facobil-copia") || "null"); } catch {}
     if (local && JSON.stringify(local) !== JSON.stringify(rascunho) && confirm("Há alterações deste computador que não chegaram a ser guardadas. Recuperá-las?")) {
@@ -147,20 +152,60 @@ $("#form-entrar").addEventListener("submit", async (e) => {
   }
 });
 
+// ---------- estrutura ----------
+// acrescenta ao rascunho o que existe no site publicado e lhe falta (ex.: página nova), sem mexer no que já tem
+function completar(dest, orig) {
+  for (const [k, v] of Object.entries(orig)) {
+    if (k.startsWith("_")) continue;
+    if (!(k in dest)) dest[k] = structuredClone(v);
+    else if (v && typeof v === "object" && !Array.isArray(v) && dest[k] && typeof dest[k] === "object") completar(dest[k], v);
+  }
+}
+// deixa a versão inglesa com a mesma forma da portuguesa (só campos de texto; vazio = usa o português)
+function espelhar(pt, en) {
+  if (Array.isArray(pt)) {
+    const a = Array.isArray(en) ? en : [];
+    a.length = pt.length;
+    for (let i = 0; i < pt.length; i++) a[i] = espelhar(pt[i], a[i]);
+    return a;
+  }
+  if (pt && typeof pt === "object") {
+    const o = en && typeof en === "object" && !Array.isArray(en) ? en : {};
+    for (const [k, v] of Object.entries(pt)) {
+      if (k.startsWith("_")) continue;
+      if (NAO_TRADUZ.test(k) && typeof v !== "object") { delete o[k]; continue; }
+      o[k] = espelhar(v, o[k]);
+    }
+    for (const k of Object.keys(o)) if (!(k in pt)) delete o[k];
+    return o;
+  }
+  return typeof en === "string" ? en : "";
+}
+function prepararEn() {
+  rascunho.en = espelhar({ geral: rascunho.geral, paginas: rascunho.paginas }, rascunho.en);
+}
+
 // ---------- editor ----------
 const obter = (caminho) => caminho.split(".").reduce((o, k) => o[k], rascunho);
 
 function mostrarEditor() {
   $("#editor").hidden = false;
   const nav = $("#seccoes"); nav.innerHTML = "";
-  for (const [c, nome] of SECCOES) {
+  if (seccaoAtual.startsWith("en.")) prepararEn();
+  for (const [c, nome] of TODAS) {
+    if (c === "en.geral") { const t = document.createElement("p"); t.className = "nota sep-idioma"; t.textContent = "English (versão inglesa)"; nav.appendChild(t); }
     const b = document.createElement("button"); b.type = "button"; b.textContent = nome; b.dataset.c = c;
     if (c === seccaoAtual) b.setAttribute("aria-current", "true");
     b.onclick = () => { seccaoAtual = c; mostrarEditor(); };
     nav.appendChild(b);
   }
   const main = $("#campos"); main.innerHTML = "";
-  const h = document.createElement("h1"); h.textContent = SECCOES.find((s) => s[0] === seccaoAtual)[1]; main.appendChild(h);
+  const h = document.createElement("h1"); h.textContent = TODAS.find((s) => s[0] === seccaoAtual)[1]; main.appendChild(h);
+  if (seccaoAtual.startsWith("en.")) {
+    const p = document.createElement("p"); p.className = "nota";
+    p.textContent = "Versão inglesa (site/en/). Aqui só se traduzem textos: imagens, cores, contactos e ficheiros vêm da versão portuguesa. Um campo vazio mostra o texto português.";
+    main.appendChild(p);
+  }
   if (seccaoAtual === "aparencia") main.appendChild(notaContraste());
   main.appendChild(desenharObjeto(obter(seccaoAtual), seccaoAtual));
 }
@@ -390,7 +435,9 @@ $("#b-menu").onclick = () => { const m = $("#menu-mais"); m.hidden = !m.hidden; 
 
 // ---------- pré-visualização ----------
 let paginasPrevia = {}, paginaAtual = "index.html";
-const NOMES = { "index.html": "Início", "sobre-nos.html": "Sobre nós", "brist.html": "BRIST", "qualidade.html": "Qualidade", "projetos.html": "Projetos", "contactos.html": "Contactos" };
+const NOMES = { "index.html": "Início", "sobre-nos.html": "Sobre nós", "brist.html": "BRIST", "danca.html": "Dança", "qualidade.html": "Qualidade", "projetos.html": "Projetos", "contactos.html": "Contactos" };
+const idiomaDe = (f) => (f.startsWith("en/") ? "en/" : "");
+const nomeDe = (f) => f.replace(/^en\//, "");
 
 async function carregarImagensNovas() {
   for (const c of rascunho._imagens_novas || []) {
@@ -409,8 +456,12 @@ async function previsualizar() {
   paginasPrevia = gerarSite(conteudo);
   const nav = $("#previa-paginas"); nav.innerHTML = "";
   for (const [f, n] of Object.entries(NOMES)) {
-    const b = document.createElement("button"); b.type = "button"; b.className = "b b-pequeno"; b.textContent = n;
-    b.onclick = () => mostrarPagina(f); nav.appendChild(b);
+    const b = document.createElement("button"); b.type = "button"; b.className = "b b-pequeno"; b.textContent = n; b.dataset.f = f;
+    b.onclick = () => mostrarPagina(idiomaDe(paginaAtual) + f); nav.appendChild(b);
+  }
+  if (paginasPrevia["en/index.html"]) {
+    const b = document.createElement("button"); b.type = "button"; b.className = "b b-pequeno"; b.id = "b-idioma-previa";
+    b.onclick = () => mostrarPagina(idiomaDe(paginaAtual) ? nomeDe(paginaAtual) : "en/" + paginaAtual); nav.appendChild(b);
   }
   $("#previa").hidden = false; $("#editor").hidden = true;
   mostrarPagina(paginaAtual);
@@ -418,25 +469,29 @@ async function previsualizar() {
 }
 
 function mostrarPagina(f) {
+  if (!paginasPrevia[f]) f = idiomaDe(f) + "index.html";
   if (!paginasPrevia[f]) f = "index.html";
   paginaAtual = f;
-  for (const b of $("#previa-paginas").children) b.setAttribute("aria-current", String(b.textContent === NOMES[f]));
+  for (const b of $("#previa-paginas").children) if (b.dataset.f) b.setAttribute("aria-current", String(b.dataset.f === nomeDe(f)));
+  const bi = $("#b-idioma-previa"); if (bi) bi.textContent = idiomaDe(f) ? "Ver em português" : "Ver em inglês";
+  const raiz = new URL("../", location.href).href;
   let html = paginasPrevia[f]
-    .replace("<head>", `<head>\n<base href="${new URL("../", location.href).href}">`)
-    .replace('<link rel="stylesheet" href="css/tema.css">', "")
+    .replace("<head>", `<head>\n<base href="${raiz}${idiomaDe(f)}">`)
+    .replace(/<link rel="stylesheet" href="(\.\.\/)?css\/tema\.css">/, "")
     .replace(/<meta http-equiv="Content-Security-Policy"[^>]*>\n?/, "")
-    .replace('<script src="js/site.js"></script>', "");
+    .replace(/<script src="(\.\.\/)?js\/site\.js"><\/script>/, "");
   // tema do rascunho como blob, imagens novas como blob
   const tema = URL.createObjectURL(new Blob([paginasPrevia["css/tema.css"].replace(/url\("\.\.\//g, `url("${new URL("../", location.href).href}`)], { type: "text/css" }));
-  html = html.replace('<link rel="stylesheet" href="css/estilo.css">', `<link rel="stylesheet" href="css/estilo.css">\n<link rel="stylesheet" href="${tema}">`);
-  for (const [c, u] of Object.entries(blobs)) html = html.split(`"${c}"`).join(`"${u}"`);
+  html = html.replace(/(<link rel="stylesheet" href="(\.\.\/)?css\/estilo\.css">)/, `$1\n<link rel="stylesheet" href="${tema}">`);
+  for (const [c, u] of Object.entries(blobs)) html = html.split(`"${c}"`).join(`"${u}"`).split(`"../${c}"`).join(`"${u}"`);
   const fr = $("#previa-frame");
   fr.onload = () => {
     const d = fr.contentDocument; if (!d) return;
     d.addEventListener("click", (e) => {
       const a = e.target.closest("a"); if (!a) return;
       const h = a.getAttribute("href") || "";
-      const alvo = h.split("#")[0];
+      if (h.startsWith("#")) return;
+      const alvo = new URL(h.split("#")[0], "http://x/" + f).pathname.slice(1);
       if (paginasPrevia[alvo]) { e.preventDefault(); mostrarPagina(alvo); }
       else if (!h.startsWith("#")) { e.preventDefault(); }
     });

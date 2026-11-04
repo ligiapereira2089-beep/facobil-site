@@ -22,10 +22,38 @@ const ICON = {
   download: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v9.6l3.3-3.3 1.4 1.4L12 16.4l-5.7-5.7 1.4-1.4L11 12.6V3ZM4 18h16v2H4v-2Z"/></svg>',
 };
 
-const NAV = [
-  ["index.html", "Início"], ["sobre-nos.html", "Sobre nós"], ["brist.html", "BRIST"],
-  ["qualidade.html", "Qualidade"], ["projetos.html", "Projetos"], ["contactos.html", "Contactos"],
-];
+export const IDIOMAS = ["pt", "en"];
+const TXT = {
+  pt: {
+    nav: { "index.html": "Início", "sobre-nos.html": "Sobre nós", "brist.html": "BRIST", "danca.html": "Dança", "qualidade.html": "Qualidade", "projetos.html": "Projetos", "contactos.html": "Contactos" },
+    inicial: "página inicial", principal: "Principal", saltar: "Saltar para o conteúdo",
+    ligacoes: "Ligações rápidas", solucoes: "Soluções e produção", servicos: "Serviços", contactos: "Contactos",
+    siga: "Siga-nos nas nossas redes sociais", direitos: "Todos os direitos reservados.",
+    conduta: "Código de Conduta e Ética", privacidade: "Política de Privacidade e Cookies",
+    localizacao: "Localização", telefone: "Telefone", email: "E-mail", redes: "Redes sociais",
+    enviar: "Enviar e-mail", ligar: "Ligar", assunto: "Pedido de informações", assunto_catalogo: "Pedido de catálogo BRIST",
+    hangtag: "Hangtag BRIST – Certified Footwear", hangtag_desc: "Descrição detalhada dos modelos BRIST.", hangtag_alt: "Descrição detalhada do modelo BRIST",
+    voltar_brist: "Voltar à BRIST", declaracao: "Declaração de Conformidade", info_comerciais: "Informações comerciais",
+    modelo: "Modelo BRIST", nao_encontrada: "Página não encontrada", nao_existe: "A página que procura não existe ou foi movida.",
+    voltar_inicio: "Voltar ao início", idioma: "Idioma", locale: "pt_PT", html: "pt-PT",
+  },
+  en: {
+    nav: { "index.html": "Home", "sobre-nos.html": "About us", "brist.html": "BRIST", "danca.html": "Dance", "qualidade.html": "Quality", "projetos.html": "Projects", "contactos.html": "Contact" },
+    inicial: "home page", principal: "Main", saltar: "Skip to content",
+    ligacoes: "Quick links", solucoes: "Solutions and production", servicos: "Services", contactos: "Contact",
+    siga: "Follow us on social media", direitos: "All rights reserved.",
+    conduta: "Code of Conduct and Ethics", privacidade: "Privacy and Cookies Policy",
+    localizacao: "Location", telefone: "Phone", email: "E-mail", redes: "Social media",
+    enviar: "Send e-mail", ligar: "Call", assunto: "Information request", assunto_catalogo: "BRIST catalogue request",
+    hangtag: "BRIST Hangtag – Certified Footwear", hangtag_desc: "Detailed description of the BRIST models.", hangtag_alt: "Detailed description of the BRIST model",
+    voltar_brist: "Back to BRIST", declaracao: "Declaration of Conformity", info_comerciais: "Sales information",
+    modelo: "BRIST model", nao_encontrada: "Page not found", nao_existe: "The page you are looking for does not exist or has been moved.",
+    voltar_inicio: "Back to home", idioma: "Language", locale: "en_GB", html: "en",
+  },
+};
+let T = TXT.pt, LANG = "pt";
+const NAV_ORDEM = ["index.html", "sobre-nos.html", "brist.html", "danca.html", "qualidade.html", "projetos.html", "contactos.html"];
+let NAV = [];
 
 // ---------- utilitários ----------
 const esc = (v) => String(v ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -88,15 +116,19 @@ function social(g, extra = "") {
     .map(([k, n, u]) => `<a href="${attr(urlOk(u))}" target="_blank" rel="noopener" aria-label="${n}">${ICON[k]}</a>`).join("");
 }
 
-function cabecalho(g, ativo) {
+function cabecalho(g, ativo, ficheiro) {
   const links = NAV.map(([h, t]) => `<li><a href="${h}"${h === ativo ? ' aria-current="page"' : ""}>${t}</a></li>`).join("");
+  const pag = ficheiro || "index.html";
+  const outro = LANG === "pt" ? { l: "en", href: `en/${pag}`, nome: "English" } : { l: "pt", href: `../${pag}`, nome: "Português" };
+  const atual = `<span aria-current="true">${LANG.toUpperCase()}</span>`, link = `<a href="${outro.href}" hreflang="${outro.l}" lang="${outro.l}" title="${outro.nome}">${outro.l.toUpperCase()}</a>`;
+  const seletor = `<li class="idiomas"><span class="so-leitor">${T.idioma}: </span>${LANG === "pt" ? atual + " " + link : link + " " + atual}</li>`;
   return `<header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="index.html" aria-label="${attr(g.nome_empresa)}, página inicial">
-      <img src="${attr(g.logotipo_cabecalho)}" alt="${attr(g.nome_empresa)}" width="101" height="36">
+    <a class="brand" href="index.html" aria-label="${attr(g.nome_empresa)}, ${T.inicial}">
+      <img src="${attr(g.logotipo_cabecalho)}" alt="${attr(g.nome_empresa)}" width="162" height="44">
     </a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
-    <nav aria-label="Principal"><ul id="menu">${links}</ul></nav>
+    <nav aria-label="${T.principal}"><ul id="menu">${links}${seletor}</ul></nav>
   </div>
 </header>`;
 }
@@ -105,36 +137,36 @@ function rodape(g) {
   return `<footer class="site-footer">
   <div class="wrap footer-grid">
     <div>
-      <img src="${attr(g.logotipo_rodape)}" alt="${attr(g.nome_empresa)}" width="193" height="96" class="footer-logo">
+      <img src="${attr(g.logotipo_rodape)}" alt="${attr(g.nome_empresa)}" width="200" height="54" class="footer-logo">
       <p>${esc(g.texto_rodape)}</p>
     </div>
     <div>
-      <h2>Ligações rápidas</h2>
+      <h2>${T.ligacoes}</h2>
       <ul>
-        <li><a href="sobre-nos.html">Sobre nós</a></li>
-        <li><a href="index.html#solucoes">Soluções e produção</a></li>
+        <li><a href="sobre-nos.html">${T.nav["sobre-nos.html"]}</a></li>
+        <li><a href="index.html#solucoes">${T.solucoes}</a></li>
         <li><a href="brist.html">BRIST</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="projetos.html">${T.nav["projetos.html"]}</a></li>
       </ul>
     </div>
     <div>
-      <h2>Serviços</h2>
+      <h2>${T.servicos}</h2>
       <ul>${(g.servicos_rodape || []).map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
     </div>
     <div>
-      <h2>Contactos</h2>
+      <h2>${T.contactos}</h2>
       <ul class="contact-list">
         <li>${ICON.pin}${esc(g.localidade)}</li>
         <li>${ICON.phone}<a href="${telHref(g.telefone)}">${telTxt(g.telefone)}</a></li>
         <li>${ICON.mail}<a href="mailto:${attr(g.email)}">${esc(g.email)}</a></li>
       </ul>
-      <p class="follow">Siga-nos nas nossas redes sociais</p>
+      <p class="follow">${T.siga}</p>
       <div class="social">${social(g)}</div>
     </div>
   </div>
   <div class="wrap footer-bottom">
-    <span>© ${esc(g.nome_empresa)}. Todos os direitos reservados.</span>
-    <span><a href="codigo-de-conduta.html">Código de Conduta e Ética</a> · <a href="privacidade.html">Política de Privacidade e Cookies</a></span>
+    <span>© ${esc(g.nome_empresa)}. ${T.direitos}</span>
+    <span><a href="codigo-de-conduta.html">${T.conduta}</a> · <a href="privacidade.html">${T.privacidade}</a></span>
   </div>
 </footer>`;
 }
@@ -143,7 +175,7 @@ function jsonld(g) {
   const d = String(g.dominio || "").replace(/\/$/, "");
   const o = {
     "@context": "https://schema.org", "@type": "Organization", name: g.nome_legal, alternateName: g.nome_empresa,
-    url: d, logo: `${d}/${g.logotipo_rodape}`, foundingDate: String(g.ano_fundacao), telephone: g.telefone, email: g.email,
+    url: d, logo: `${d}/${g.logotipo_fundo_claro || g.logotipo_rodape}`, foundingDate: String(g.ano_fundacao), telephone: g.telefone, email: g.email,
     address: { "@type": "PostalAddress", streetAddress: String(g.morada || "").split("\n")[0], addressLocality: g.localidade, addressCountry: "PT" },
     sameAs: [g.facebook, g.instagram, g.linkedin].filter(Boolean),
   };
@@ -153,9 +185,11 @@ function jsonld(g) {
 function documento(c, ficheiro, titulo, descricao, corpo, ativo, opcoes = {}) {
   const g = c.geral;
   const d = String(g.dominio || "").replace(/\/$/, "");
-  const url = `${d}/${ficheiro === "index.html" ? "" : ficheiro}`;
+  const rel = (l) => `${l === "pt" ? "" : l + "/"}${ficheiro === "index.html" ? "" : ficheiro}`;
+  const url = `${d}/${rel(LANG)}`;
+  const alternativos = ficheiro === "404.html" ? "" : IDIOMAS.map((l) => `\n<link rel="alternate" hreflang="${l}" href="${attr(d + "/" + rel(l))}">`).join("") + `\n<link rel="alternate" hreflang="x-default" href="${attr(d + "/" + rel("pt"))}">`;
   return `<!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="${T.html}">
 <head>
 <meta charset="utf-8">${opcoes.noindex ? '\n<meta name="robots" content="noindex">' : ""}
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -163,9 +197,9 @@ function documento(c, ficheiro, titulo, descricao, corpo, ativo, opcoes = {}) {
 <meta name="description" content="${attr(descricao)}">
 <meta property="og:title" content="${attr(titulo)}">
 <meta property="og:description" content="${attr(descricao)}">
-<link rel="canonical" href="${attr(url)}">
+<link rel="canonical" href="${attr(url)}">${alternativos}
 <meta property="og:type" content="website">
-<meta property="og:locale" content="pt_PT">
+<meta property="og:locale" content="${T.locale}">
 <meta property="og:url" content="${attr(url)}">
 <meta property="og:image" content="${attr(d + "/" + g.imagem_partilha)}">
 <meta name="twitter:card" content="summary_large_image">${ficheiro === "index.html" ? jsonld(g) : ""}
@@ -178,8 +212,8 @@ function documento(c, ficheiro, titulo, descricao, corpo, ativo, opcoes = {}) {
 <link rel="stylesheet" href="css/tema.css">
 </head>
 <body>
-<a class="skip" href="#conteudo">Saltar para o conteúdo</a>
-${cabecalho(g, ativo ?? ficheiro)}
+<a class="skip" href="#conteudo">${T.saltar}</a>
+${cabecalho(g, ativo ?? ficheiro, ficheiro)}
 <main id="conteudo">
 ${corpo}
 </main>
@@ -209,7 +243,7 @@ const apelo = (h, p, label, href) => `<section class="cta">
   </div>
 </section>`;
 
-const mailCatalogo = (g) => `mailto:${g.email}?subject=Pedido%20de%20cat%C3%A1logo%20BRIST`;
+const mailCatalogo = (g) => `mailto:${g.email}?subject=${encodeURIComponent(T.assunto_catalogo)}`;
 
 // ---------- páginas ----------
 function inicio(c) {
@@ -270,7 +304,7 @@ function sobre(c) {
 function brist(c) {
   const p = c.paginas.brist, g = c.geral;
   const vant = (p.vantagens || []).map((v) => `<div class="feature"><h3>${esc(v.titulo)}</h3><p>${esc(v.texto)}</p></div>`).join("");
-  const mods = (p.modelos || []).map((m) => `<figure class="model"><img src="${attr(m.imagem)}" alt="Modelo BRIST ${attr(m.nome)}" loading="lazy"><figcaption>${esc(m.nome)}</figcaption></figure>`).join("");
+  const mods = (p.modelos || []).map((m) => `<figure class="model"><img src="${attr(m.imagem)}" alt="${T.modelo} ${attr(m.nome)}" loading="lazy"><figcaption>${esc(m.nome)}</figcaption></figure>`).join("");
   const corpo = topo(p.topo_imagem, p.topo_titulo, p.topo_subtitulo,
     `<p>${esc(p.topo_texto)}</p><div class="btns"><a class="btn" href="${attr(mailCatalogo(g))}">${esc(p.botao_catalogo)}</a></div>`) + `
 <section class="section">
@@ -282,21 +316,21 @@ function brist(c) {
     <h2 class="center">${esc(p.modelos_titulo)}</h2>
     <div class="models">${mods}</div>
     <p class="center doc-links">
-      <a href="brist-hangtag.html">Hangtag BRIST – Certified Footwear</a>
-      ${p.declaracao_pdf ? `<a href="${attr(urlOk(p.declaracao_pdf))}">Declaração de Conformidade</a>` : ""}
+      <a href="brist-hangtag.html">${T.hangtag}</a>
+      ${p.declaracao_pdf ? `<a href="${attr(urlOk(p.declaracao_pdf))}">${T.declaracao}</a>` : ""}
     </p>
   </div>
 </section>
-${p.instagram_brist ? `<section class="section"><div class="wrap center"><h2>Informações comerciais</h2><p><a class="inline-social" href="${attr(urlOk(p.instagram_brist))}" target="_blank" rel="noopener">${ICON.instagram}Instagram BRIST</a></p></div></section>` : ""}
+${p.instagram_brist ? `<section class="section"><div class="wrap center"><h2>${T.info_comerciais}</h2><p><a class="inline-social" href="${attr(urlOk(p.instagram_brist))}" target="_blank" rel="noopener">${ICON.instagram}Instagram BRIST</a></p></div></section>` : ""}
 ` + apelo(p.apelo_titulo, p.apelo_texto, p.botao_catalogo, mailCatalogo(g));
   const hang = `<section class="section"><div class="wrap center">
-  <h1>Hangtag BRIST – Certified Footwear</h1>
-  <img class="rounded hangtag" src="${attr(p.hangtag_imagem)}" alt="Descrição detalhada do modelo BRIST" loading="lazy">
-  <p><a class="btn" href="brist.html">Voltar à BRIST</a></p>
+  <h1>${T.hangtag}</h1>
+  <img class="rounded hangtag" src="${attr(p.hangtag_imagem)}" alt="${T.hangtag_alt}" loading="lazy">
+  <p><a class="btn" href="brist.html">${T.voltar_brist}</a></p>
 </div></section>`;
   return {
     "brist.html": documento(c, "brist.html", p.titulo_separador, p.descricao_google, corpo),
-    "brist-hangtag.html": documento(c, "brist-hangtag.html", "Hangtag BRIST | Facobil", "Descrição detalhada dos modelos BRIST.", hang, "brist.html"),
+    "brist-hangtag.html": documento(c, "brist-hangtag.html", `${T.hangtag} | Facobil`, T.hangtag_desc, hang, "brist.html"),
   };
 }
 
@@ -338,18 +372,18 @@ function contactos(c) {
     <div>
       ${bloco(p.intro_texto)}
       <dl class="contact-dl">
-        <dt>${ICON.pin}Localização</dt><dd>${String(g.morada || "").split("\n").map(esc).join("<br>")}</dd>
-        <dt>${ICON.phone}Telefone</dt><dd><a href="${telHref(g.telefone)}">${telTxt(g.telefone)}</a></dd>
-        <dt>${ICON.mail}E-mail</dt><dd><a href="mailto:${attr(g.email)}">${esc(g.email)}</a></dd>
-        <dt>Redes sociais</dt><dd class="social dark">${social(g)}</dd>
+        <dt>${ICON.pin}${T.localizacao}</dt><dd>${String(g.morada || "").split("\n").map(esc).join("<br>")}</dd>
+        <dt>${ICON.phone}${T.telefone}</dt><dd><a href="${telHref(g.telefone)}">${telTxt(g.telefone)}</a></dd>
+        <dt>${ICON.mail}${T.email}</dt><dd><a href="mailto:${attr(g.email)}">${esc(g.email)}</a></dd>
+        <dt>${T.redes}</dt><dd class="social dark">${social(g)}</dd>
       </dl>
     </div>
     <div class="panel contact-card">
       <h2>${esc(p.caixa_titulo)}</h2>
       <p>${esc(p.caixa_texto)}</p>
       <div class="btns">
-        <a class="btn" href="mailto:${attr(g.email)}?subject=Pedido%20de%20informa%C3%A7%C3%B5es">${ICON.mail}Enviar e-mail</a>
-        <a class="btn btn-outline" href="${telHref(g.telefone)}">${ICON.phone}Ligar</a>
+        <a class="btn" href="mailto:${attr(g.email)}?subject=${encodeURIComponent(T.assunto)}">${ICON.mail}${T.enviar}</a>
+        <a class="btn btn-outline" href="${telHref(g.telefone)}">${ICON.phone}${T.ligar}</a>
       </div>
     </div>
   </div>
@@ -363,12 +397,45 @@ function legal(c, chave, ficheiro) {
   return documento(c, ficheiro, p.titulo_separador, p.descricao_google, `<section class="section"><div class="wrap narrow legal"><h1>${esc(p.titulo)}</h1>\n${s}</div></section>`, "");
 }
 
-const e404 = (c) => documento(c, "404.html", "Página não encontrada | Facobil", "Página não encontrada.",
-  `<section class="section"><div class="wrap narrow center"><h1>Página não encontrada</h1><p>A página que procura não existe ou foi movida.</p><a class="btn" href="index.html">Voltar ao início</a></div></section>`, "", { noindex: true });
+const e404 = (c) => documento(c, "404.html", `${T.nao_encontrada} | Facobil`, T.nao_encontrada,
+  `<section class="section"><div class="wrap narrow center"><h1>${T.nao_encontrada}</h1><p>${T.nao_existe}</p><a class="btn" href="index.html">${T.voltar_inicio}</a></div></section>`, "", { noindex: true });
 
-// ---------- tudo ----------
-export function gerarSite(c) {
-  const paginas = {
+function danca(c) {
+  const p = c.paginas.danca;
+  const car = (p.caracteristicas || []).map((v) => `<div class="feature"><h3>${esc(v.titulo)}</h3><p>${esc(v.texto)}</p></div>`).join("");
+  const gal = (p.galeria || []).map((x) => `<figure><img src="${attr(x.imagem)}" alt="${attr(x.descricao_imagem)}" loading="lazy"></figure>`).join("");
+  const corpo = topo(p.topo_imagem, p.topo_titulo, p.topo_subtitulo) + `
+<section class="section">
+  <div class="wrap narrow"><h2>${esc(p.intro_titulo)}</h2>${paragrafos(p.intro_paragrafos)}</div>
+  ${car ? `<div class="wrap features">${car}</div>` : ""}
+</section>
+${gal ? `<section class="section alt"><div class="wrap">${p.galeria_titulo ? `<h2 class="center">${esc(p.galeria_titulo)}</h2>` : ""}<div class="gallery">${gal}</div></div></section>` : ""}
+` + apelo(p.apelo_titulo, p.apelo_texto, p.apelo_botao, "contactos.html");
+  return documento(c, "danca.html", p.titulo_separador, p.descricao_google, corpo);
+}
+
+// ---------- idiomas ----------
+// A versão inglesa guarda só os textos; imagens, PDFs e contactos vêm sempre da versão portuguesa.
+export const NAO_TRADUZ = /imagem|logotipo|pdf|^cor_|^letra_|tamanho|email|telefone|dominio|facebook|instagram|linkedin|nipc|ano_fundacao|numero$/;
+export function juntar(base, trad) {
+  if (Array.isArray(base)) return base.map((x, i) => juntar(x, Array.isArray(trad) ? trad[i] : undefined));
+  if (base && typeof base === "object") {
+    const o = {};
+    for (const [k, v] of Object.entries(base)) o[k] = NAO_TRADUZ.test(k) && typeof v !== "object" ? v : juntar(v, trad ? trad[k] : undefined);
+    return o;
+  }
+  return trad === undefined || trad === null || trad === "" ? base : trad;
+}
+
+function prefixar(html, P) {
+  if (!P) return html;
+  return html.replace(/(src|href)="(img|css|js|docs|fonts)\//g, `$1="${P}$2/`).replace(/href="favicon\.png"/g, `href="${P}favicon.png"`);
+}
+
+function paginasDe(c) {
+  const ex = (k) => c.paginas && c.paginas[k];
+  NAV = NAV_ORDEM.filter((f) => f !== "danca.html" || ex("danca")).map((f) => [f, T.nav[f]]);
+  const out = {
     "index.html": inicio(c),
     "sobre-nos.html": sobre(c),
     ...brist(c),
@@ -377,17 +444,33 @@ export function gerarSite(c) {
     "contactos.html": contactos(c),
     "codigo-de-conduta.html": legal(c, "codigo_conduta", "codigo-de-conduta.html"),
     "privacidade.html": legal(c, "privacidade", "privacidade.html"),
-    "404.html": e404(c),
   };
-  const d = String(c.geral.dominio || "").replace(/\/$/, "");
+  if (ex("danca")) out["danca.html"] = danca(c);
+  return out;
+}
+
+// ---------- tudo ----------
+export function gerarSite(conteudo) {
+  const d = String(conteudo.geral.dominio || "").replace(/\/$/, "");
   const hoje = new Date().toISOString().slice(0, 10);
-  const urls = Object.keys(paginas).filter((f) => f !== "404.html")
-    .map((f) => `  <url><loc>${esc(d)}/${f === "index.html" ? "" : f}</loc><lastmod>${hoje}</lastmod></url>`).join("\n");
-  for (const k of Object.keys(paginas)) paginas[k] = paginas[k].replace(/[ \t]+$/gm, "").replace(/\n{3,}/g, "\n\n");
+  const res = {}; const urls = [];
+  for (const l of IDIOMAS) {
+    LANG = l; T = TXT[l];
+    if (l !== "pt" && !conteudo[l]) continue;
+    const c = l === "pt" ? conteudo : { ...juntar({ geral: conteudo.geral, paginas: conteudo.paginas }, conteudo[l]), aparencia: conteudo.aparencia };
+    const pags = paginasDe(c);
+    if (l === "pt") pags["404.html"] = e404(c);
+    const pasta = l === "pt" ? "" : l + "/";
+    for (const [f, html] of Object.entries(pags)) {
+      res[pasta + f] = prefixar(html, l === "pt" ? "" : "../").replace(/[ \t]+$/gm, "").replace(/\n{3,}/g, "\n\n");
+      if (f !== "404.html") urls.push(`  <url><loc>${esc(d)}/${pasta}${f === "index.html" ? "" : f}</loc><lastmod>${hoje}</lastmod></url>`);
+    }
+  }
+  LANG = "pt"; T = TXT.pt;
   return {
-    ...paginas,
-    "css/tema.css": gerarTema(c.aparencia || {}, c.paginas?.inicio?.faixa_imagem),
-    "sitemap.xml": `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
+    ...res,
+    "css/tema.css": gerarTema(conteudo.aparencia || {}, conteudo.paginas?.inicio?.faixa_imagem),
+    "sitemap.xml": `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`,
     "robots.txt": `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${d}/sitemap.xml\n`,
   };
 }

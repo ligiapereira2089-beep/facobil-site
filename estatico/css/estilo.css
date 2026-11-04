@@ -15,14 +15,19 @@ p{margin:0 0 1em}
 .center{text-align:center}
 .hidden{display:none}
 .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:99;background:#fff;padding:8px}
+.so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* Cabeçalho */
 .site-header{background:var(--escuro);position:sticky;top:0;z-index:20}
 .header-inner{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:16px}
-.brand img{height:36px;width:auto}
+.brand img{height:44px;width:auto;display:block}
 .site-header ul{list-style:none;margin:0;padding:0;display:flex;gap:4px;flex-wrap:wrap}
 .site-header nav a{color:#fff;text-decoration:none;font-family:var(--titulos);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 12px;border-radius:var(--raio)}
 .site-header nav a:hover,.site-header nav a[aria-current=page]{color:#fff;box-shadow:inset 0 -3px 0 var(--verde)}
+.site-header .idiomas{display:flex;align-items:center;gap:2px;margin-left:8px;padding-left:12px;border-left:1px solid #ffffff40;color:#fff;font:700 .78rem var(--titulos);letter-spacing:.08em}
+.site-header .idiomas span{padding:10px 6px;opacity:.75}
+.site-header .idiomas a{padding:10px 8px}
+@media (max-width:860px){.site-header .idiomas{border-left:0;margin:8px 0 0;padding-left:0}}
 .nav-toggle{display:none;background:none;border:1px solid #fff6;color:#fff;padding:8px 14px;border-radius:var(--raio);font:600 .85rem var(--titulos)}
 @media (max-width:860px){
   .nav-toggle{display:block}
@@ -145,7 +150,7 @@ p{margin:0 0 1em}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
 @media (max-width:860px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.footer-grid{grid-template-columns:1fr}}
-.footer-logo{width:150px;margin-bottom:16px}
+.footer-logo{width:200px;height:auto;margin-bottom:16px}
 .contact-list li{display:flex;gap:10px;align-items:center}
 .contact-list svg{width:16px;height:16px;fill:var(--verde);flex:none}
 .follow{margin:20px 0 10px}

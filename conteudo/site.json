@@ -11,12 +11,17 @@
     "dominio": "https://ligiapereira2089-beep.github.io/facobil-site",
     "logotipo_cabecalho": "img/logo.png",
     "logotipo_rodape": "img/logo-rodape.png",
+    "logotipo_fundo_claro": "img/logo-cinza.png",
     "imagem_partilha": "img/partilha.jpg",
     "facebook": "https://www.facebook.com/facobill",
     "instagram": "https://instagram.com/facobil",
     "linkedin": "https://www.linkedin.com/company/facobil-bragan%C3%A7a-freita-e-bragan%C3%A7a-lda/",
     "texto_rodape": "Produção de calçado português desde 1981. Excelência, qualidade e compromisso em cada projeto.",
-    "servicos_rodape": ["Desenvolvimento de produto", "Modelação e prototipagem", "Controlo de qualidade"]
+    "servicos_rodape": [
+      "Desenvolvimento de produto",
+      "Modelação e prototipagem",
+      "Controlo de qualidade"
+    ]
   },
   "aparencia": {
     "cor_verde": "#5d993d",
@@ -40,10 +45,22 @@
       "botao_1": "Conhecer a Facobil",
       "botao_2": "Contactar",
       "numeros": [
-        {"numero": "AUTO", "legenda": "Anos de experiência"},
-        {"numero": "92", "legenda": "Colaboradores"},
-        {"numero": "+10 000", "legenda": "Projetos realizados"},
-        {"numero": "10", "legenda": "Mercados internacionais"}
+        {
+          "numero": "AUTO",
+          "legenda": "Anos de experiência"
+        },
+        {
+          "numero": "92",
+          "legenda": "Colaboradores"
+        },
+        {
+          "numero": "+10 000",
+          "legenda": "Projetos realizados"
+        },
+        {
+          "numero": "10",
+          "legenda": "Mercados internacionais"
+        }
       ],
       "faixa_titulo": "A nossa essência",
       "faixa_imagem": "img/papel-quadriculado.jpg",
@@ -57,14 +74,35 @@
       "caixa_texto": "Oferecemos soluções completas e integradas para o desenvolvimento e produção de calçado, com controlo rigoroso em cada etapa do processo.",
       "caixa_botao": "Ver todas as etapas",
       "cartoes": [
-        {"titulo": "Soluções e Produção", "texto": "Do desenvolvimento à montagem final, controlamos todas as etapas do processo produtivo, com precisão ao milímetro.", "ficheiro_pdf": "docs/solucoes-e-producao.pdf"},
-        {"titulo": "BRIST – Certified Footwear", "texto": "Calçado certificado para profissionais, unindo conforto, segurança e durabilidade, pensado para os ambientes mais exigentes.", "ficheiro_pdf": "docs/brist.pdf"},
-        {"titulo": "Qualidade e Sustentabilidade", "texto": "Compromisso inabalável com materiais responsáveis, redução de desperdícios e processos de produção sustentáveis.", "ficheiro_pdf": "docs/qualidade-e-sustentabilidade.pdf"}
+        {
+          "titulo": "Soluções e Produção",
+          "texto": "Do desenvolvimento à montagem final, controlamos todas as etapas do processo produtivo, com precisão ao milímetro.",
+          "ficheiro_pdf": "docs/solucoes-e-producao.pdf"
+        },
+        {
+          "titulo": "BRIST – Certified Footwear",
+          "texto": "Calçado certificado para profissionais, unindo conforto, segurança e durabilidade, pensado para os ambientes mais exigentes.",
+          "ficheiro_pdf": "docs/brist.pdf"
+        },
+        {
+          "titulo": "Qualidade e Sustentabilidade",
+          "texto": "Compromisso inabalável com materiais responsáveis, redução de desperdícios e processos de produção sustentáveis.",
+          "ficheiro_pdf": "docs/qualidade-e-sustentabilidade.pdf"
+        }
       ],
       "galeria": [
-        {"imagem": "img/servico-1.jpg", "legenda": "Design de Sites"},
-        {"imagem": "img/servico-2.jpg", "legenda": "Gestão de Redes Sociais"},
-        {"imagem": "img/servico-3.jpg", "legenda": "Pacote de Marketing Digital"}
+        {
+          "imagem": "img/servico-1.jpg",
+          "legenda": "Design de Sites"
+        },
+        {
+          "imagem": "img/servico-2.jpg",
+          "legenda": "Gestão de Redes Sociais"
+        },
+        {
+          "imagem": "img/servico-3.jpg",
+          "legenda": "Pacote de Marketing Digital"
+        }
       ],
       "apelo_titulo": "Pronto para iniciar o seu projeto?",
       "apelo_texto": "Entre em contacto connosco e descubra como transformar a sua ideia em realidade.",
@@ -79,12 +117,27 @@
       "intro_titulo": "Evolução e crescimento",
       "intro_texto": "Desde 1981, a FACOBIL tem evoluído constantemente, combinando tradição artesanal com inovação tecnológica.",
       "marcos": [
-        {"ano": "1981.", "texto": "A FACOBIL nasceu como empresa familiar, movida pela paixão pelo calçado e por um compromisso com a qualidade, o rigor e a identidade.", "imagem": "img/historia.jpg", "descricao_imagem": "Produção na fábrica da Facobil"},
-        {"ano": "2017.", "texto": "Em 2017, a FACOBIL mudou-se para as suas novas instalações em Felgueiras, um passo importante no crescimento da empresa.", "imagem": "img/historia-2017.jpg", "descricao_imagem": "Novas instalações da Facobil"}
+        {
+          "ano": "1981.",
+          "texto": "A FACOBIL nasceu como empresa familiar, movida pela paixão pelo calçado e por um compromisso com a qualidade, o rigor e a identidade.",
+          "imagem": "img/historia.jpg",
+          "descricao_imagem": "Produção na fábrica da Facobil"
+        },
+        {
+          "ano": "2017.",
+          "texto": "Em 2017, a FACOBIL mudou-se para as suas novas instalações em Felgueiras, um passo importante no crescimento da empresa.",
+          "imagem": "img/historia-2017.jpg",
+          "descricao_imagem": "Novas instalações da Facobil"
+        }
       ],
       "compromisso_titulo": "Compromisso com a qualidade.",
       "compromisso_intro": "Atuamos no segmento médio-alto, garantindo:",
-      "compromisso_lista": ["Elevada qualidade", "Seleção rigorosa de materiais", "Cumprimento dos prazos de entrega", "Responsabilidade económica, social e ambiental"],
+      "compromisso_lista": [
+        "Elevada qualidade",
+        "Seleção rigorosa de materiais",
+        "Cumprimento dos prazos de entrega",
+        "Responsabilidade económica, social e ambiental"
+      ],
       "compromisso_imagem": "img/compromisso.jpg"
     },
     "brist": {
@@ -101,23 +154,103 @@
         "Com décadas de experiência na produção de calçado, a BRIST nasceu para servir os diferentes setores profissionais."
       ],
       "vantagens": [
-        {"titulo": "Segurança certificada", "texto": "Todos os modelos cumprem as normas europeias de segurança e são testados rigorosamente."},
-        {"titulo": "Conforto superior", "texto": "Palmilhas ergonómicas e materiais respiráveis para máximo conforto durante todo o dia."},
-        {"titulo": "Durabilidade comprovada", "texto": "Materiais de alta qualidade e construção robusta para longa vida útil."}
+        {
+          "titulo": "Segurança certificada",
+          "texto": "Todos os modelos cumprem as normas europeias de segurança e são testados rigorosamente."
+        },
+        {
+          "titulo": "Conforto superior",
+          "texto": "Palmilhas ergonómicas e materiais respiráveis para máximo conforto durante todo o dia."
+        },
+        {
+          "titulo": "Durabilidade comprovada",
+          "texto": "Materiais de alta qualidade e construção robusta para longa vida útil."
+        }
       ],
       "modelos_titulo": "Os nossos modelos",
       "modelos": [
-        {"nome": "Grey", "imagem": "img/brist-grey.png"},
-        {"nome": "White", "imagem": "img/brist-white.jpg"},
-        {"nome": "Brown", "imagem": "img/brist-brown.jpg"},
-        {"nome": "Black", "imagem": "img/brist-black-1.jpg"},
-        {"nome": "Black", "imagem": "img/brist-black-2.jpg"}
+        {
+          "nome": "Grey",
+          "imagem": "img/brist-grey.png"
+        },
+        {
+          "nome": "White",
+          "imagem": "img/brist-white.jpg"
+        },
+        {
+          "nome": "Brown",
+          "imagem": "img/brist-brown.jpg"
+        },
+        {
+          "nome": "Black",
+          "imagem": "img/brist-black-1.jpg"
+        },
+        {
+          "nome": "Black",
+          "imagem": "img/brist-black-2.jpg"
+        }
       ],
       "hangtag_imagem": "img/brist-hangtag.jpg",
       "declaracao_pdf": "docs/declaracao-de-conformidade-brist.pdf",
       "instagram_brist": "https://www.instagram.com/brist_certifiedfootwear/",
       "apelo_titulo": "Interessado nos nossos produtos BRIST?",
       "apelo_texto": "Solicite o nosso catálogo completo ou entre em contacto para mais informações comerciais."
+    },
+    "danca": {
+      "titulo_separador": "Sapatos de Dança | Facobil",
+      "descricao_google": "A Facobil desenvolve e produz sapatos de dança em Felgueiras, Portugal.",
+      "topo_imagem": "img/danca-hero.jpg",
+      "topo_titulo": "Sapatos de Dança",
+      "topo_subtitulo": "Calçado técnico para dança, desenvolvido e produzido em Felgueiras.",
+      "intro_titulo": "Feitos para o movimento",
+      "intro_paragrafos": [
+        "Na dança, cada detalhe conta: o equilíbrio do salto, a flexibilidade da sola e o conforto durante horas de movimento.",
+        "A FACOBIL desenvolve e produz sapatos de dança com o mesmo rigor que aplica a toda a sua produção, do desenvolvimento do modelo à inspeção final de cada par."
+      ],
+      "caracteristicas": [
+        {
+          "titulo": "Equilíbrio do salto",
+          "texto": "Saltos pensados para dar estabilidade e segurança em cada passo."
+        },
+        {
+          "titulo": "Flexibilidade",
+          "texto": "Construção que acompanha o movimento natural do pé."
+        },
+        {
+          "titulo": "Conforto",
+          "texto": "Materiais e acabamentos escolhidos para longas horas de uso."
+        }
+      ],
+      "galeria_titulo": "Modelos de dança",
+      "galeria": [
+        {
+          "imagem": "img/danca-1.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
+        },
+        {
+          "imagem": "img/danca-2.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
+        },
+        {
+          "imagem": "img/danca-3.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
+        },
+        {
+          "imagem": "img/danca-4.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
+        },
+        {
+          "imagem": "img/danca-5.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
+        },
+        {
+          "imagem": "img/danca-6.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
+        }
+      ],
+      "apelo_titulo": "Procura um parceiro para a sua coleção de dança?",
+      "apelo_texto": "Fale connosco e conheça as nossas soluções de desenvolvimento e produção.",
+      "apelo_botao": "Contactar"
     },
     "qualidade": {
       "titulo_separador": "Qualidade e Sustentabilidade | Facobil",
@@ -129,15 +262,39 @@
       "controlo_texto": "Cada par de sapatos passa por múltiplas inspeções para garantir que cumpre os mais altos padrões.",
       "controlo_etiqueta": "O nosso processo de controlo",
       "etapas": [
-        {"titulo": "Inspeção de materiais", "texto": "Verificação rigorosa de todos os materiais antes da produção."},
-        {"titulo": "Controlo durante a produção", "texto": "Monitorização contínua em cada etapa do processo produtivo."},
-        {"titulo": "Testes de qualidade", "texto": "Testes de resistência, conforto e durabilidade em laboratório."},
-        {"titulo": "Inspeção final", "texto": "Verificação detalhada de cada par antes do envio."}
+        {
+          "titulo": "Inspeção de materiais",
+          "texto": "Verificação rigorosa de todos os materiais antes da produção."
+        },
+        {
+          "titulo": "Controlo durante a produção",
+          "texto": "Monitorização contínua em cada etapa do processo produtivo."
+        },
+        {
+          "titulo": "Testes de qualidade",
+          "texto": "Testes de resistência, conforto e durabilidade em laboratório."
+        },
+        {
+          "titulo": "Inspeção final",
+          "texto": "Verificação detalhada de cada par antes do envio."
+        }
       ],
       "valores": [
-        {"titulo": "Design de produto à medida", "texto": "Elevada flexibilidade e acompanhamento de tendências.", "imagem": "img/icone-design.png"},
-        {"titulo": "Melhores materiais", "texto": "Qualidade e durabilidade do produto.", "imagem": "img/icone-materiais.png"},
-        {"titulo": "Serviço de excelência", "texto": "Equipas qualificadas, empenhadas e atentas às exigências.", "imagem": "img/icone-servico.png"}
+        {
+          "titulo": "Design de produto à medida",
+          "texto": "Elevada flexibilidade e acompanhamento de tendências.",
+          "imagem": "img/icone-design.png"
+        },
+        {
+          "titulo": "Melhores materiais",
+          "texto": "Qualidade e durabilidade do produto.",
+          "imagem": "img/icone-materiais.png"
+        },
+        {
+          "titulo": "Serviço de excelência",
+          "texto": "Equipas qualificadas, empenhadas e atentas às exigências.",
+          "imagem": "img/icone-servico.png"
+        }
       ],
       "sustentabilidade_titulo": "O futuro é sustentável",
       "sustentabilidade_imagem": "img/sustentabilidade.jpg",
@@ -154,12 +311,30 @@
       "topo_titulo": "Galeria de Projetos",
       "topo_subtitulo": "Exemplos da nossa capacidade produtiva e versatilidade",
       "galeria": [
-        {"imagem": "img/projeto-1.jpg", "descricao_imagem": "Projeto de calçado produzido pela Facobil"},
-        {"imagem": "img/projeto-2.jpg", "descricao_imagem": "Projeto de calçado produzido pela Facobil"},
-        {"imagem": "img/projeto-3.jpg", "descricao_imagem": "Projeto de calçado produzido pela Facobil"},
-        {"imagem": "img/projeto-4.jpg", "descricao_imagem": "Projeto de calçado produzido pela Facobil"},
-        {"imagem": "img/projeto-5.png", "descricao_imagem": "Projeto de calçado produzido pela Facobil"},
-        {"imagem": "img/projeto-6.jpg", "descricao_imagem": "Projeto de calçado produzido pela Facobil"}
+        {
+          "imagem": "img/projeto-1.jpg",
+          "descricao_imagem": "Projeto de calçado produzido pela Facobil"
+        },
+        {
+          "imagem": "img/projeto-2.jpg",
+          "descricao_imagem": "Projeto de calçado produzido pela Facobil"
+        },
+        {
+          "imagem": "img/projeto-3.jpg",
+          "descricao_imagem": "Projeto de calçado produzido pela Facobil"
+        },
+        {
+          "imagem": "img/projeto-4.jpg",
+          "descricao_imagem": "Projeto de calçado produzido pela Facobil"
+        },
+        {
+          "imagem": "img/projeto-5.png",
+          "descricao_imagem": "Projeto de calçado produzido pela Facobil"
+        },
+        {
+          "imagem": "img/projeto-6.jpg",
+          "descricao_imagem": "Projeto de calçado produzido pela Facobil"
+        }
       ],
       "apelo_titulo": "Pronto para iniciar o seu projeto?",
       "apelo_texto": "Entre em contacto connosco e descubra como transformar a sua ideia em realidade.",
@@ -180,27 +355,134 @@
       "descricao_google": "Código de Conduta e Ética da Facobil.",
       "titulo": "Código de Conduta e Ética",
       "seccoes": [
-        {"titulo": "", "paragrafos": ["A ética e a sustentabilidade da FACOBIL assentam em três pilares: económico, social e ambiental. Cabe à gerência garantir o cumprimento deste código.", "O cumprimento deste código não é opcional: é um compromisso partilhado por todos. Estamos seguros de que a ética é um compromisso de todos, que nos levará mais longe."]},
-        {"titulo": "Introdução", "paragrafos": ["Este código define os padrões mínimos de conduta ética e responsável, com base nos direitos humanos e laborais."]},
-        {"titulo": "1 – Trabalho Forçado", "paragrafos": ["É proibido qualquer forma de trabalho forçado ou involuntário, incluindo a exigência de cauções aos trabalhadores ou a retenção dos seus documentos de identificação."]},
-        {"titulo": "2 – Trabalho Infantil", "paragrafos": ["É proibido o trabalho infantil. A idade mínima de admissão é de 16 anos, com a escolaridade obrigatória concluída, salvo as exceções previstas na lei."]},
-        {"titulo": "3 – Princípio da Legalidade", "paragrafos": ["Os trabalhadores atuam de acordo com a Constituição, a lei e as instruções legítimas das suas chefias."]},
-        {"titulo": "4 – Princípio da Justiça e Imparcialidade", "paragrafos": ["Os trabalhadores atuam com justiça e imparcialidade, sem decisões arbitrárias, favorecimentos ou prejuízos injustificados."]},
-        {"titulo": "5 – Princípio da Igualdade", "paragrafos": ["Todos os colaboradores são tratados com dignidade. É proibida qualquer discriminação no emprego, na remuneração, na formação ou na contratação."]},
-        {"titulo": "6 – Princípio da Colaboração e Boa-fé", "paragrafos": ["Os colaboradores cooperam entre si, comunicam de forma respeitosa e clara, acolhem novas ideias e promovem a abertura a todos os níveis."]},
-        {"titulo": "7 – Princípio da Lealdade", "paragrafos": ["As tarefas e instruções atribuídas são cumpridas com espírito de cooperação."]},
-        {"titulo": "8 – Princípio da Integridade", "paragrafos": ["Os trabalhadores atuam com honestidade, servindo o interesse comum e evitando conflitos de interesses."]},
-        {"titulo": "9 – Competência e Responsabilidade", "paragrafos": ["Os colaboradores trabalham com competência, sentido crítico, profissionalismo e empenho, e procuram desenvolver continuamente as suas capacidades."]},
-        {"titulo": "10 – Sigilo Profissional", "paragrafos": ["Os trabalhadores mantêm discrição e guardam sigilo sobre a informação privilegiada a que têm acesso."]},
-        {"titulo": "11 – Saúde e Segurança no Trabalho", "paragrafos": ["A empresa assegura um local de trabalho seguro e saudável, com instalações sanitárias higiénicas e acesso a água potável, e promove boas práticas de segurança."]},
-        {"titulo": "12 – Liberdade de Associação", "paragrafos": ["Os trabalhadores têm direito a associar-se, a organizar-se e a negociar coletivamente, sem qualquer retaliação."]},
-        {"titulo": "13 – Horas de Trabalho", "paragrafos": ["Os horários de trabalho cumprem a legislação aplicável e as regras do setor."]},
-        {"titulo": "14 – Remuneração", "paragrafos": ["Os trabalhadores recebem, no mínimo, a retribuição mínima mensal garantida e o trabalho suplementar nos termos da lei. Só são feitos os descontos legais e o pagamento é mensal e pontual."]},
-        {"titulo": "15 – Ambiente", "paragrafos": ["A produção respeita o ambiente, e a empresa toma medidas para reduzir e compensar o seu impacto."]},
-        {"titulo": "16 – Relações Internas", "paragrafos": ["Cada colaborador compromete-se a:", "- cumprir as instruções das chefias;\n- contribuir para a produtividade;\n- manter boas relações com os colegas;\n- resolver os problemas de forma construtiva;\n- cuidar dos espaços comuns;\n- usar os recursos da empresa de forma responsável."]},
-        {"titulo": "17 – Prevenção do Assédio Moral e/ou Sexual", "paragrafos": ["Considera-se assédio qualquer comportamento indesejado, de natureza moral ou sexual, que afete a dignidade da pessoa ou crie um ambiente intimidatório, hostil ou humilhante. Todos se comprometem a rejeitar estas condutas, a ouvir com respeito quem as denuncie e a promover um ambiente de trabalho saudável."]},
-        {"titulo": "18 – Privacidade e Proteção de Dados Pessoais", "paragrafos": ["A empresa cumpre as regras de privacidade e proteção de dados pessoais, em conformidade com o RGPD e a Lei n.º 58/2019."]},
-        {"titulo": "19 – Outras Práticas Socialmente Responsáveis", "paragrafos": ["A FACOBIL subscreve os princípios do Pacto Global das Nações Unidas em matéria de direitos humanos e laborais, cumpre o Código do Trabalho e procura ser um exemplo de boas práticas nestas áreas."]}
+        {
+          "titulo": "",
+          "paragrafos": [
+            "A ética e a sustentabilidade da FACOBIL assentam em três pilares: económico, social e ambiental. Cabe à gerência garantir o cumprimento deste código.",
+            "O cumprimento deste código não é opcional: é um compromisso partilhado por todos. Estamos seguros de que a ética é um compromisso de todos, que nos levará mais longe."
+          ]
+        },
+        {
+          "titulo": "Introdução",
+          "paragrafos": [
+            "Este código define os padrões mínimos de conduta ética e responsável, com base nos direitos humanos e laborais."
+          ]
+        },
+        {
+          "titulo": "1 – Trabalho Forçado",
+          "paragrafos": [
+            "É proibido qualquer forma de trabalho forçado ou involuntário, incluindo a exigência de cauções aos trabalhadores ou a retenção dos seus documentos de identificação."
+          ]
+        },
+        {
+          "titulo": "2 – Trabalho Infantil",
+          "paragrafos": [
+            "É proibido o trabalho infantil. A idade mínima de admissão é de 16 anos, com a escolaridade obrigatória concluída, salvo as exceções previstas na lei."
+          ]
+        },
+        {
+          "titulo": "3 – Princípio da Legalidade",
+          "paragrafos": [
+            "Os trabalhadores atuam de acordo com a Constituição, a lei e as instruções legítimas das suas chefias."
+          ]
+        },
+        {
+          "titulo": "4 – Princípio da Justiça e Imparcialidade",
+          "paragrafos": [
+            "Os trabalhadores atuam com justiça e imparcialidade, sem decisões arbitrárias, favorecimentos ou prejuízos injustificados."
+          ]
+        },
+        {
+          "titulo": "5 – Princípio da Igualdade",
+          "paragrafos": [
+            "Todos os colaboradores são tratados com dignidade. É proibida qualquer discriminação no emprego, na remuneração, na formação ou na contratação."
+          ]
+        },
+        {
+          "titulo": "6 – Princípio da Colaboração e Boa-fé",
+          "paragrafos": [
+            "Os colaboradores cooperam entre si, comunicam de forma respeitosa e clara, acolhem novas ideias e promovem a abertura a todos os níveis."
+          ]
+        },
+        {
+          "titulo": "7 – Princípio da Lealdade",
+          "paragrafos": [
+            "As tarefas e instruções atribuídas são cumpridas com espírito de cooperação."
+          ]
+        },
+        {
+          "titulo": "8 – Princípio da Integridade",
+          "paragrafos": [
+            "Os trabalhadores atuam com honestidade, servindo o interesse comum e evitando conflitos de interesses."
+          ]
+        },
+        {
+          "titulo": "9 – Competência e Responsabilidade",
+          "paragrafos": [
+            "Os colaboradores trabalham com competência, sentido crítico, profissionalismo e empenho, e procuram desenvolver continuamente as suas capacidades."
+          ]
+        },
+        {
+          "titulo": "10 – Sigilo Profissional",
+          "paragrafos": [
+            "Os trabalhadores mantêm discrição e guardam sigilo sobre a informação privilegiada a que têm acesso."
+          ]
+        },
+        {
+          "titulo": "11 – Saúde e Segurança no Trabalho",
+          "paragrafos": [
+            "A empresa assegura um local de trabalho seguro e saudável, com instalações sanitárias higiénicas e acesso a água potável, e promove boas práticas de segurança."
+          ]
+        },
+        {
+          "titulo": "12 – Liberdade de Associação",
+          "paragrafos": [
+            "Os trabalhadores têm direito a associar-se, a organizar-se e a negociar coletivamente, sem qualquer retaliação."
+          ]
+        },
+        {
+          "titulo": "13 – Horas de Trabalho",
+          "paragrafos": [
+            "Os horários de trabalho cumprem a legislação aplicável e as regras do setor."
+          ]
+        },
+        {
+          "titulo": "14 – Remuneração",
+          "paragrafos": [
+            "Os trabalhadores recebem, no mínimo, a retribuição mínima mensal garantida e o trabalho suplementar nos termos da lei. Só são feitos os descontos legais e o pagamento é mensal e pontual."
+          ]
+        },
+        {
+          "titulo": "15 – Ambiente",
+          "paragrafos": [
+            "A produção respeita o ambiente, e a empresa toma medidas para reduzir e compensar o seu impacto."
+          ]
+        },
+        {
+          "titulo": "16 – Relações Internas",
+          "paragrafos": [
+            "Cada colaborador compromete-se a:",
+            "- cumprir as instruções das chefias;\n- contribuir para a produtividade;\n- manter boas relações com os colegas;\n- resolver os problemas de forma construtiva;\n- cuidar dos espaços comuns;\n- usar os recursos da empresa de forma responsável."
+          ]
+        },
+        {
+          "titulo": "17 – Prevenção do Assédio Moral e/ou Sexual",
+          "paragrafos": [
+            "Considera-se assédio qualquer comportamento indesejado, de natureza moral ou sexual, que afete a dignidade da pessoa ou crie um ambiente intimidatório, hostil ou humilhante. Todos se comprometem a rejeitar estas condutas, a ouvir com respeito quem as denuncie e a promover um ambiente de trabalho saudável."
+          ]
+        },
+        {
+          "titulo": "18 – Privacidade e Proteção de Dados Pessoais",
+          "paragrafos": [
+            "A empresa cumpre as regras de privacidade e proteção de dados pessoais, em conformidade com o RGPD e a Lei n.º 58/2019."
+          ]
+        },
+        {
+          "titulo": "19 – Outras Práticas Socialmente Responsáveis",
+          "paragrafos": [
+            "A FACOBIL subscreve os princípios do Pacto Global das Nações Unidas em matéria de direitos humanos e laborais, cumpre o Código do Trabalho e procura ser um exemplo de boas práticas nestas áreas."
+          ]
+        }
       ]
     },
     "privacidade": {
@@ -208,15 +490,524 @@
       "descricao_google": "Política de Privacidade e Cookies da Facobil.",
       "titulo": "Política de Privacidade e Cookies",
       "seccoes": [
-        {"titulo": "Política de Privacidade", "paragrafos": ["A FACOBIL compromete-se a ser transparente sobre a forma como recolhe e utiliza os dados pessoais. Ao enviar-nos os seus dados, aceita esta política."]},
-        {"titulo": "Responsável pelo tratamento de dados", "paragrafos": ["FACOBIL – Bragança Freitas e Bragança, Lda., NIPC 501316388, com sede na Rua Dom Manuel Faria e Sousa, n.º 518, Apartado 53, Pombeiro de Ribavizela, 4610-648 Felgueiras, Portugal."]},
-        {"titulo": "Dados Pessoais", "paragrafos": ["Dados pessoais são qualquer informação relativa a uma pessoa singular identificada ou identificável, como o nome, dados de localização, o endereço IP ou o endereço de e-mail."]},
-        {"titulo": "Categorias de Dados Pessoais e Finalidades", "paragrafos": ["Recolhemos o nome, o endereço de correio eletrónico e a morada, para as seguintes finalidades:", "- responder a pedidos de contacto feitos por e-mail ou telefone;\n- tratar mensagens de e-mail;\n- prestar serviços que exijam registo;\n- enviar newsletters, ofertas e convites para eventos, quando autorizado."]},
-        {"titulo": "Tempo e modo de conservação dos dados pessoais", "paragrafos": ["Os dados enviados nos pedidos de contacto são conservados apenas durante o tratamento do pedido e depois eliminados.", "Protegemos a informação com medidas de segurança adequadas, como o acesso restrito. Nenhuma transmissão pela Internet é totalmente segura, pelo que recomendamos que não envie dados confidenciais por e-mail.", "Pode, a qualquer momento, aceder aos seus dados, atualizá-los, corrigi-los ou pedir a sua eliminação, através dos contactos indicados abaixo."]},
-        {"titulo": "Utilização de Cookies", "paragrafos": ["Este site pode usar cookies para registar informação da sessão, recolher estatísticas anónimas de visitas e guardar as suas preferências. Os cookies não identificam pessoalmente o visitante.", "Pode desativar os cookies ou pedir para ser avisado antes da sua utilização nas definições do seu navegador. Alguns serviços podem deixar de funcionar corretamente."]},
-        {"titulo": "O seu consentimento", "paragrafos": ["Pode retirar o seu consentimento a qualquer momento. Tem também o direito de apresentar reclamação à Comissão Nacional de Proteção de Dados (CNPD), em www.cnpd.pt."]},
-        {"titulo": "Contactos", "paragrafos": ["Para qualquer questão sobre esta política, contacte-nos através de info@facobil.com."]}
+        {
+          "titulo": "Política de Privacidade",
+          "paragrafos": [
+            "A FACOBIL compromete-se a ser transparente sobre a forma como recolhe e utiliza os dados pessoais. Ao enviar-nos os seus dados, aceita esta política."
+          ]
+        },
+        {
+          "titulo": "Responsável pelo tratamento de dados",
+          "paragrafos": [
+            "FACOBIL – Bragança Freitas e Bragança, Lda., NIPC 501316388, com sede na Rua Dom Manuel Faria e Sousa, n.º 518, Apartado 53, Pombeiro de Ribavizela, 4610-648 Felgueiras, Portugal."
+          ]
+        },
+        {
+          "titulo": "Dados Pessoais",
+          "paragrafos": [
+            "Dados pessoais são qualquer informação relativa a uma pessoa singular identificada ou identificável, como o nome, dados de localização, o endereço IP ou o endereço de e-mail."
+          ]
+        },
+        {
+          "titulo": "Categorias de Dados Pessoais e Finalidades",
+          "paragrafos": [
+            "Recolhemos o nome, o endereço de correio eletrónico e a morada, para as seguintes finalidades:",
+            "- responder a pedidos de contacto feitos por e-mail ou telefone;\n- tratar mensagens de e-mail;\n- prestar serviços que exijam registo;\n- enviar newsletters, ofertas e convites para eventos, quando autorizado."
+          ]
+        },
+        {
+          "titulo": "Tempo e modo de conservação dos dados pessoais",
+          "paragrafos": [
+            "Os dados enviados nos pedidos de contacto são conservados apenas durante o tratamento do pedido e depois eliminados.",
+            "Protegemos a informação com medidas de segurança adequadas, como o acesso restrito. Nenhuma transmissão pela Internet é totalmente segura, pelo que recomendamos que não envie dados confidenciais por e-mail.",
+            "Pode, a qualquer momento, aceder aos seus dados, atualizá-los, corrigi-los ou pedir a sua eliminação, através dos contactos indicados abaixo."
+          ]
+        },
+        {
+          "titulo": "Utilização de Cookies",
+          "paragrafos": [
+            "Este site pode usar cookies para registar informação da sessão, recolher estatísticas anónimas de visitas e guardar as suas preferências. Os cookies não identificam pessoalmente o visitante.",
+            "Pode desativar os cookies ou pedir para ser avisado antes da sua utilização nas definições do seu navegador. Alguns serviços podem deixar de funcionar corretamente."
+          ]
+        },
+        {
+          "titulo": "O seu consentimento",
+          "paragrafos": [
+            "Pode retirar o seu consentimento a qualquer momento. Tem também o direito de apresentar reclamação à Comissão Nacional de Proteção de Dados (CNPD), em www.cnpd.pt."
+          ]
+        },
+        {
+          "titulo": "Contactos",
+          "paragrafos": [
+            "Para qualquer questão sobre esta política, contacte-nos através de info@facobil.com."
+          ]
+        }
       ]
+    }
+  },
+  "en": {
+    "geral": {
+      "nome_empresa": "FACOBIL",
+      "nome_legal": "FACOBIL – Bragança Freitas e Bragança, Lda.",
+      "morada": "Rua Dom Manuel Faria e Sousa, n.º 518\nApartado 53, Pombeiro de Ribavizela\n4610-648 Felgueiras, Portugal",
+      "localidade": "Felgueiras, Portugal",
+      "texto_rodape": "Portuguese footwear production since 1981. Excellence, quality and commitment in every project.",
+      "servicos_rodape": [
+        "Product development",
+        "Pattern making and prototyping",
+        "Quality control"
+      ]
+    },
+    "paginas": {
+      "inicio": {
+        "titulo_separador": "Facobil | Portuguese footwear manufacturer since 1981",
+        "descricao_google": "Family-owned company in Felgueiras, Portugal, developing and manufacturing footwear since 1981.",
+        "topo_titulo": "FACOBIL",
+        "topo_subtitulo": "We are a family-owned company established in 1981, built on decades of know-how.",
+        "topo_texto": "From development to final production, we guarantee precision and quality in every pair of shoes, meeting the highest international standards.",
+        "botao_1": "Discover Facobil",
+        "botao_2": "Contact us",
+        "numeros": [
+          {
+            "legenda": "Years of experience"
+          },
+          {
+            "legenda": "Employees"
+          },
+          {
+            "legenda": "Projects completed"
+          },
+          {
+            "legenda": "International markets"
+          }
+        ],
+        "faixa_titulo": "Our essence",
+        "essencia_destaque": "FACOBIL is the ideal partner for brands seeking excellence, flexibility and commitment in every project.",
+        "essencia_paragrafos": [
+          "Located in Felgueiras, at the heart of the Portuguese footwear industry, FACOBIL has combined traditional craftsmanship with advanced technology for more than four decades.",
+          "From development to final production, we guarantee precision and quality in every pair of shoes."
+        ],
+        "caixa_etiqueta": "Expertise",
+        "caixa_titulo": "Production capacity",
+        "caixa_texto": "We offer complete, integrated solutions for footwear development and production, with strict control at every stage of the process.",
+        "caixa_botao": "See all stages",
+        "cartoes": [
+          {
+            "titulo": "Solutions and Production",
+            "texto": "From development to final assembly, we control every stage of the production process, with millimetre precision."
+          },
+          {
+            "titulo": "BRIST – Certified Footwear",
+            "texto": "Certified footwear for professionals, combining comfort, safety and durability, designed for the most demanding environments."
+          },
+          {
+            "titulo": "Quality and Sustainability",
+            "texto": "An unwavering commitment to responsible materials, waste reduction and sustainable production processes."
+          }
+        ],
+        "galeria": [
+          {
+            "legenda": "Website design"
+          },
+          {
+            "legenda": "Social media management"
+          },
+          {
+            "legenda": "Digital marketing package"
+          }
+        ],
+        "apelo_titulo": "Ready to start your project?",
+        "apelo_texto": "Get in touch and find out how we can turn your idea into reality.",
+        "apelo_botao": "Start a project"
+      },
+      "sobre": {
+        "titulo_separador": "About us | Facobil",
+        "descricao_google": "The story of Facobil: more than four decades manufacturing Portuguese footwear.",
+        "topo_titulo": "Our story",
+        "topo_subtitulo": "More than four decades of excellence in Portuguese footwear manufacturing",
+        "intro_titulo": "Evolution and growth",
+        "intro_texto": "Since 1981, FACOBIL has evolved constantly, combining traditional craftsmanship with technological innovation.",
+        "marcos": [
+          {
+            "ano": "1981.",
+            "texto": "FACOBIL was founded as a family business, driven by a passion for footwear and a commitment to quality, rigour and identity.",
+            "descricao_imagem": "Production at the Facobil factory"
+          },
+          {
+            "ano": "2017.",
+            "texto": "In 2017, FACOBIL moved to its new premises in Felgueiras, an important step in the company's growth.",
+            "descricao_imagem": "Facobil's new premises"
+          }
+        ],
+        "compromisso_titulo": "Commitment to quality.",
+        "compromisso_intro": "We work in the mid-to-high market segment, guaranteeing:",
+        "compromisso_lista": [
+          "High quality",
+          "Rigorous selection of materials",
+          "On-time delivery",
+          "Economic, social and environmental responsibility"
+        ]
+      },
+      "brist": {
+        "titulo_separador": "BRIST Certified Footwear | Facobil",
+        "descricao_google": "BRIST: EN ISO 20347:2012 certified professional footwear, manufactured by Facobil.",
+        "topo_titulo": "B R I S T",
+        "topo_subtitulo": "Certified Footwear · EN ISO 20347:2012",
+        "topo_texto": "Professionally certified footwear.",
+        "botao_catalogo": "Request catalogue",
+        "intro_titulo": "Certified footwear for professionals",
+        "intro_paragrafos": [
+          "BRIST is a certified professional footwear brand that combines comfort, safety and durability. Every model is tested according to European standards.",
+          "Backed by decades of footwear manufacturing experience, BRIST was created to serve a wide range of professional sectors."
+        ],
+        "vantagens": [
+          {
+            "titulo": "Certified safety",
+            "texto": "All models comply with European safety standards and are rigorously tested."
+          },
+          {
+            "titulo": "Superior comfort",
+            "texto": "Ergonomic insoles and breathable materials for maximum comfort all day long."
+          },
+          {
+            "titulo": "Proven durability",
+            "texto": "High-quality materials and robust construction for a long service life."
+          }
+        ],
+        "modelos_titulo": "Our models",
+        "apelo_titulo": "Interested in our BRIST products?",
+        "apelo_texto": "Request our full catalogue or contact us for more sales information."
+      },
+      "danca": {
+        "titulo_separador": "Dance Shoes | Facobil",
+        "descricao_google": "Facobil develops and manufactures dance shoes in Felgueiras, Portugal.",
+        "topo_titulo": "Dance Shoes",
+        "topo_subtitulo": "Technical dance footwear, developed and manufactured in Felgueiras.",
+        "intro_titulo": "Made for movement",
+        "intro_paragrafos": [
+          "In dance, every detail matters: the balance of the heel, the flexibility of the sole and comfort through hours of movement.",
+          "FACOBIL develops and manufactures dance shoes with the same rigour it applies to all its production, from developing the model to the final inspection of every pair."
+        ],
+        "caracteristicas": [
+          {
+            "titulo": "Heel balance",
+            "texto": "Heels designed to provide stability and confidence in every step."
+          },
+          {
+            "titulo": "Flexibility",
+            "texto": "Construction that follows the natural movement of the foot."
+          },
+          {
+            "titulo": "Comfort",
+            "texto": "Materials and finishes chosen for long hours of wear."
+          }
+        ],
+        "galeria_titulo": "Dance models",
+        "galeria": [
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Dance shoe manufactured by Facobil"
+          }
+        ],
+        "apelo_titulo": "Looking for a partner for your dance collection?",
+        "apelo_texto": "Talk to us and discover our development and production solutions.",
+        "apelo_botao": "Contact us"
+      },
+      "qualidade": {
+        "titulo_separador": "Quality and Sustainability | Facobil",
+        "descricao_google": "Rigorous quality control and a commitment to sustainability in footwear manufacturing.",
+        "topo_titulo": "Quality and Sustainability",
+        "topo_subtitulo": "Committed to excellence and environmental responsibility",
+        "controlo_titulo": "Rigorous quality control",
+        "controlo_texto": "Every pair of shoes goes through multiple inspections to ensure it meets the highest standards.",
+        "controlo_etiqueta": "Our control process",
+        "etapas": [
+          {
+            "titulo": "Material inspection",
+            "texto": "Thorough checking of all materials before production."
+          },
+          {
+            "titulo": "In-process control",
+            "texto": "Continuous monitoring at every stage of the production process."
+          },
+          {
+            "titulo": "Quality testing",
+            "texto": "Laboratory testing of resistance, comfort and durability."
+          },
+          {
+            "titulo": "Final inspection",
+            "texto": "Detailed inspection of every pair before shipping."
+          }
+        ],
+        "valores": [
+          {
+            "titulo": "Made-to-measure product design",
+            "texto": "High flexibility and close attention to trends."
+          },
+          {
+            "titulo": "The best materials",
+            "texto": "Product quality and durability."
+          },
+          {
+            "titulo": "Excellent service",
+            "texto": "Qualified, committed teams, attentive to every requirement."
+          }
+        ],
+        "sustentabilidade_titulo": "The future is sustainable",
+        "sustentabilidade_paragrafos": [
+          "We believe the footwear industry has a responsibility to contribute to a more sustainable future. That is why we invest in technologies and processes that reduce our environmental impact.",
+          "We work closely with our suppliers to ensure that materials are produced responsibly, respecting the environment and local communities.",
+          "For us, sustainability is not just corporate responsibility: it is part of our identity and our values."
+        ]
+      },
+      "projetos": {
+        "titulo_separador": "Projects | Facobil",
+        "descricao_google": "Gallery of footwear projects manufactured by Facobil.",
+        "topo_titulo": "Project Gallery",
+        "topo_subtitulo": "Examples of our production capacity and versatility",
+        "galeria": [
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          },
+          {
+            "descricao_imagem": "Footwear project manufactured by Facobil"
+          }
+        ],
+        "apelo_titulo": "Ready to start your project?",
+        "apelo_texto": "Get in touch and find out how we can turn your idea into reality.",
+        "apelo_botao": "Start a project"
+      },
+      "contactos": {
+        "titulo_separador": "Contact | Facobil",
+        "descricao_google": "Contact Facobil in Felgueiras, Portugal: address, phone and e-mail.",
+        "topo_titulo": "Talk to us",
+        "topo_subtitulo": "We are available to discuss your project and present our solutions.",
+        "intro_texto": "Get in touch through our direct contacts.",
+        "caixa_titulo": "Send us a message",
+        "caixa_texto": "Write to us to request a quote, the BRIST catalogue or more information about our services. We will reply as soon as possible."
+      },
+      "codigo_conduta": {
+        "titulo_separador": "Code of Conduct and Ethics | Facobil",
+        "descricao_google": "Facobil's Code of Conduct and Ethics.",
+        "titulo": "Code of Conduct and Ethics",
+        "seccoes": [
+          {
+            "titulo": "",
+            "paragrafos": [
+              "This is an English translation for information purposes. In case of any discrepancy, the Portuguese version prevails.",
+              "FACOBIL's ethics and sustainability rest on three pillars: economic, social and environmental. The management is responsible for ensuring compliance with this code.",
+              "Complying with this code is not optional: it is a commitment shared by everyone. We are confident that ethics is everyone's commitment, and that it will take us further."
+            ]
+          },
+          {
+            "titulo": "Introduction",
+            "paragrafos": [
+              "This code sets out the minimum standards of ethical and responsible conduct, based on human and labour rights."
+            ]
+          },
+          {
+            "titulo": "1 – Forced Labour",
+            "paragrafos": [
+              "Any form of forced or involuntary labour is prohibited, including requiring deposits from workers or withholding their identity documents."
+            ]
+          },
+          {
+            "titulo": "2 – Child Labour",
+            "paragrafos": [
+              "Child labour is prohibited. The minimum age of employment is 16, with compulsory schooling completed, except for the exceptions provided by law."
+            ]
+          },
+          {
+            "titulo": "3 – Principle of Legality",
+            "paragrafos": [
+              "Workers act in accordance with the Constitution, the law and the legitimate instructions of their supervisors."
+            ]
+          },
+          {
+            "titulo": "4 – Principle of Fairness and Impartiality",
+            "paragrafos": [
+              "Workers act fairly and impartially, without arbitrary decisions, favouritism or unjustified harm."
+            ]
+          },
+          {
+            "titulo": "5 – Principle of Equality",
+            "paragrafos": [
+              "All employees are treated with dignity. Any discrimination in employment, pay, training or hiring is prohibited."
+            ]
+          },
+          {
+            "titulo": "6 – Principle of Collaboration and Good Faith",
+            "paragrafos": [
+              "Employees cooperate with one another, communicate respectfully and clearly, welcome new ideas and promote openness at every level."
+            ]
+          },
+          {
+            "titulo": "7 – Principle of Loyalty",
+            "paragrafos": [
+              "Assigned tasks and instructions are carried out in a spirit of cooperation."
+            ]
+          },
+          {
+            "titulo": "8 – Principle of Integrity",
+            "paragrafos": [
+              "Workers act honestly, serving the common interest and avoiding conflicts of interest."
+            ]
+          },
+          {
+            "titulo": "9 – Competence and Responsibility",
+            "paragrafos": [
+              "Employees work with competence, critical sense, professionalism and dedication, and seek to continuously develop their skills."
+            ]
+          },
+          {
+            "titulo": "10 – Professional Confidentiality",
+            "paragrafos": [
+              "Workers act with discretion and keep confidential the privileged information they have access to."
+            ]
+          },
+          {
+            "titulo": "11 – Health and Safety at Work",
+            "paragrafos": [
+              "The company provides a safe and healthy workplace, with hygienic sanitary facilities and access to drinking water, and promotes good safety practices."
+            ]
+          },
+          {
+            "titulo": "12 – Freedom of Association",
+            "paragrafos": [
+              "Workers have the right to join associations, to organise and to bargain collectively, without any retaliation."
+            ]
+          },
+          {
+            "titulo": "13 – Working Hours",
+            "paragrafos": [
+              "Working hours comply with the applicable legislation and sector rules."
+            ]
+          },
+          {
+            "titulo": "14 – Pay",
+            "paragrafos": [
+              "Workers receive at least the guaranteed national minimum wage and overtime pay as provided by law. Only legal deductions are made, and payment is monthly and on time."
+            ]
+          },
+          {
+            "titulo": "15 – Environment",
+            "paragrafos": [
+              "Production respects the environment, and the company takes measures to reduce and offset its impact."
+            ]
+          },
+          {
+            "titulo": "16 – Internal Relations",
+            "paragrafos": [
+              "Each employee undertakes to:",
+              "- follow the instructions of their supervisors;\n- contribute to productivity;\n- maintain good relations with colleagues;\n- solve problems constructively;\n- take care of shared spaces;\n- use the company's resources responsibly."
+            ]
+          },
+          {
+            "titulo": "17 – Prevention of Moral and/or Sexual Harassment",
+            "paragrafos": [
+              "Harassment is any unwanted behaviour, of a moral or sexual nature, that affects a person's dignity or creates an intimidating, hostile or humiliating environment. Everyone undertakes to reject such conduct, to listen respectfully to anyone who reports it and to promote a healthy working environment."
+            ]
+          },
+          {
+            "titulo": "18 – Privacy and Personal Data Protection",
+            "paragrafos": [
+              "The company complies with privacy and personal data protection rules, in accordance with the GDPR and Portuguese Law no. 58/2019."
+            ]
+          },
+          {
+            "titulo": "19 – Other Socially Responsible Practices",
+            "paragrafos": [
+              "FACOBIL endorses the principles of the United Nations Global Compact on human and labour rights, complies with the Portuguese Labour Code and seeks to set an example of good practice in these areas."
+            ]
+          }
+        ]
+      },
+      "privacidade": {
+        "titulo_separador": "Privacy and Cookies Policy | Facobil",
+        "descricao_google": "Facobil's Privacy and Cookies Policy.",
+        "titulo": "Privacy and Cookies Policy",
+        "seccoes": [
+          {
+            "titulo": "Privacy Policy",
+            "paragrafos": [
+              "This is an English translation for information purposes. In case of any discrepancy, the Portuguese version prevails.",
+              "FACOBIL is committed to being transparent about how it collects and uses personal data. By sending us your data, you accept this policy."
+            ]
+          },
+          {
+            "titulo": "Data controller",
+            "paragrafos": [
+              "FACOBIL – Bragança Freitas e Bragança, Lda., company no. 501316388, with registered office at Rua Dom Manuel Faria e Sousa, n.º 518, Apartado 53, Pombeiro de Ribavizela, 4610-648 Felgueiras, Portugal."
+            ]
+          },
+          {
+            "titulo": "Personal Data",
+            "paragrafos": [
+              "Personal data is any information relating to an identified or identifiable natural person, such as a name, location data, an IP address or an e-mail address."
+            ]
+          },
+          {
+            "titulo": "Categories of Personal Data and Purposes",
+            "paragrafos": [
+              "We collect name, e-mail address and postal address for the following purposes:",
+              "- replying to contact requests made by e-mail or phone;\n- handling e-mail messages;\n- providing services that require registration;\n- sending newsletters, offers and event invitations, when authorised."
+            ]
+          },
+          {
+            "titulo": "Retention period and storage of personal data",
+            "paragrafos": [
+              "Data sent in contact requests is kept only while the request is being handled and is deleted afterwards.",
+              "We protect information with appropriate security measures, such as restricted access. No transmission over the Internet is completely secure, so we recommend that you do not send confidential data by e-mail.",
+              "You may, at any time, access, update or correct your data, or request its deletion, using the contacts below."
+            ]
+          },
+          {
+            "titulo": "Use of Cookies",
+            "paragrafos": [
+              "This website may use cookies to record session information, collect anonymous visit statistics and save your preferences. Cookies do not personally identify visitors.",
+              "You can disable cookies, or ask to be warned before they are used, in your browser settings. Some services may then not work properly."
+            ]
+          },
+          {
+            "titulo": "Your consent",
+            "paragrafos": [
+              "You may withdraw your consent at any time. You also have the right to lodge a complaint with the Portuguese Data Protection Authority (CNPD), at www.cnpd.pt."
+            ]
+          },
+          {
+            "titulo": "Contact",
+            "paragrafos": [
+              "For any questions about this policy, contact us at info@facobil.com."
+            ]
+          }
+        ]
+      }
     }
   }
 }

@@ -75,3 +75,4 @@ legend{font-weight:700;padding:0 6px}
   .seccoes{border-right:0;border-bottom:1px solid var(--linha);display:flex;overflow-x:auto;gap:4px}
   .seccoes button{white-space:nowrap}
 }
+.sep-idioma{margin:14px 12px 4px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
