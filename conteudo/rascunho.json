@@ -129,8 +129,9 @@
         {
           "ano": "2017.",
           "texto": "Em 2017, a FACOBIL mudou-se para as suas novas instalações em Felgueiras, um passo importante no crescimento da empresa.",
-          "imagem": "img/historia-2017.jpg",
-          "descricao_imagem": "Novas instalações da Facobil"
+          "imagem": "img/historia-2017-1793809576253.jpg",
+          "descricao_imagem": "Novas instalações da Facobil",
+          "imagem_posicao": "33% 57%"
         }
       ],
       "compromisso_titulo": "Compromisso com a qualidade.",
@@ -1044,6 +1045,7 @@
     "img/servico-1-1793808948532.jpg",
     "img/imagem-1793808978098.jpg",
     "img/sobre-hero-1793809077996.jpg",
-    "img/historia-1793809447557.jpg"
+    "img/historia-1793809447557.jpg",
+    "img/historia-2017-1793809576253.jpg"
   ]
 }
