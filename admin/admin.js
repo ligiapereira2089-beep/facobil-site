@@ -219,7 +219,7 @@ function notaContraste() {
 function desenharObjeto(obj, caminho) {
   const div = document.createElement("div"); div.className = "grupo";
   for (const [k, v] of Object.entries(obj)) {
-    if (k.startsWith("_")) continue;
+    if (k.startsWith("_") || /_posicao$/.test(k)) continue;
     div.appendChild(desenharCampo(obj, k, v, `${caminho}.${k}`));
   }
   return div;
@@ -328,7 +328,27 @@ function desenharImagem(pai, k, v, caixa, lab, id) {
     } catch (e) { aviso("Não foi possível enviar a imagem: " + e.message, "erro"); estado(""); }
   };
   const dica = document.createElement("span"); dica.className = "nota"; dica.textContent = "A imagem é reduzida automaticamente antes de ser enviada.";
-  caixa.append(img, info, f, dica);
+  if (/logotipo|icone|partilha/.test(k)) { caixa.append(img, info, f, dica); return caixa; }
+  // enquadramento: clicar na foto escolhe o ponto que fica sempre visível quando o site a corta
+  const kp = k + "_posicao";
+  const moldura = document.createElement("div"); moldura.className = "enquadrar";
+  const alvo = document.createElement("span"); alvo.className = "alvo"; alvo.setAttribute("aria-hidden", "true");
+  moldura.append(img, alvo);
+  const ler = () => { const m = /^(\d+)% (\d+)%$/.exec(pai[kp] || ""); return m ? [+m[1], +m[2]] : [50, 50]; };
+  const pintar = () => { const [x, y] = ler(); alvo.style.left = x + "%"; alvo.style.top = y + "%"; pos.textContent = `Ponto em foco: ${x}% da esquerda, ${y}% do topo${pai[kp] ? "" : " (centro)"}`; };
+  const definir = (x, y) => { pai[kp] = `${Math.round(x)}% ${Math.round(y)}%`; marcarAlterado(); pintar(); };
+  img.addEventListener("click", (e) => { const r = img.getBoundingClientRect(); definir(((e.clientX - r.left) / r.width) * 100, ((e.clientY - r.top) / r.height) * 100); });
+  const pos = document.createElement("span"); pos.className = "nota";
+  const ctl = document.createElement("div"); ctl.className = "controlos"; ctl.setAttribute("role", "group"); ctl.setAttribute("aria-label", "Enquadramento da foto");
+  const passo = (dx, dy, t, s) => { const b = document.createElement("button"); b.type = "button"; b.className = "b b-pequeno"; b.textContent = t; b.title = s; b.setAttribute("aria-label", s);
+    b.onclick = () => { const [x, y] = ler(); definir(Math.min(100, Math.max(0, x + dx)), Math.min(100, Math.max(0, y + dy))); }; return b; };
+  const centro = document.createElement("button"); centro.type = "button"; centro.className = "b b-pequeno"; centro.textContent = "Centrar";
+  centro.onclick = () => { delete pai[kp]; marcarAlterado(); pintar(); };
+  ctl.append(passo(0, -10, "↑", "Mostrar mais a parte de cima"), passo(0, 10, "↓", "Mostrar mais a parte de baixo"), passo(-10, 0, "←", "Mostrar mais a esquerda"), passo(10, 0, "→", "Mostrar mais a direita"), centro);
+  const dica2 = document.createElement("span"); dica2.className = "nota";
+  dica2.textContent = "Enquadramento: clique na foto no ponto que deve ficar sempre visível (por exemplo, o sapato). Quando o site corta a foto, mantém esse ponto à vista. Confirme em Pré-visualizar, em computador e telemóvel.";
+  pintar();
+  caixa.append(moldura, info, f, dica, pos, ctl, dica2);
   return caixa;
 }
 

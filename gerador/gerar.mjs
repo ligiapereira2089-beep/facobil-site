@@ -419,7 +419,7 @@ ${gal ? `<section class="section alt"><div class="wrap">${p.galeria_titulo ? `<h
 
 // ---------- idiomas ----------
 // A versão inglesa guarda só os textos; imagens, PDFs e contactos vêm sempre da versão portuguesa.
-export const NAO_TRADUZ = /(?<!descricao_)imagem|logotipo|pdf|^cor_|^letra_|tamanho|email|telefone|dominio|facebook|instagram|linkedin|nipc|ano_fundacao|numero$/;
+export const NAO_TRADUZ = /(?<!descricao_)imagem|_posicao$|logotipo|pdf|^cor_|^letra_|tamanho|email|telefone|dominio|facebook|instagram|linkedin|nipc|ano_fundacao|numero$/;
 export function juntar(base, trad) {
   if (Array.isArray(base)) return base.map((x, i) => juntar(x, Array.isArray(trad) ? trad[i] : undefined));
   if (base && typeof base === "object") {
@@ -453,7 +453,32 @@ function paginasDe(c) {
 }
 
 // ---------- tudo ----------
+// ---------- enquadramento das fotos ----------
+// cada imagem pode ter ao lado "<chave>_posicao": "x% y%" (o ponto que fica sempre visível quando a foto é cortada)
+function posicoes(o, m = new Map()) {
+  if (Array.isArray(o)) o.forEach((x) => posicoes(x, m));
+  else if (o && typeof o === "object") {
+    for (const [k, v] of Object.entries(o)) {
+      if (/_posicao$/.test(k)) {
+        const src = o[k.replace(/_posicao$/, "")], mm = /^(\d{1,3})% (\d{1,3})%$/.exec(String(v));
+        if (typeof src === "string" && src && mm) m.set(src, [Math.min(100, +mm[1]), Math.min(100, +mm[2])]);
+      } else posicoes(v, m);
+    }
+  }
+  return m;
+}
+function aplicarPosicoes(html, m) {
+  if (!m.size) return html;
+  return html.replace(/<img\b[^>]*>/g, (tag) => {
+    const s = /\ssrc="([^"]*)"/.exec(tag); const p = s && m.get(s[1]);
+    if (!p) return tag;
+    const cls = `pos-${p[0]}-${p[1]}`;
+    return /\sclass="/.test(tag) ? tag.replace(/\sclass="([^"]*)"/, ` class="$1 ${cls}"`) : tag.replace("<img", `<img class="${cls}"`);
+  });
+}
+
 export function gerarSite(conteudo) {
+  const pos = posicoes({ geral: conteudo.geral, paginas: conteudo.paginas });
   const d = String(conteudo.geral.dominio || "").replace(/\/$/, "");
   const hoje = new Date().toISOString().slice(0, 10);
   const res = {}; const urls = [];
@@ -465,14 +490,15 @@ export function gerarSite(conteudo) {
     if (l === "pt") pags["404.html"] = e404(c);
     const pasta = l === "pt" ? "" : l + "/";
     for (const [f, html] of Object.entries(pags)) {
-      res[pasta + f] = prefixar(html, l === "pt" ? "" : "../").replace(/[ \t]+$/gm, "").replace(/\n{3,}/g, "\n\n");
+      res[pasta + f] = prefixar(aplicarPosicoes(html, pos), l === "pt" ? "" : "../").replace(/[ \t]+$/gm, "").replace(/\n{3,}/g, "\n\n");
       if (f !== "404.html") urls.push(`  <url><loc>${esc(d)}/${pasta}${f === "index.html" ? "" : f}</loc><lastmod>${hoje}</lastmod></url>`);
     }
   }
   LANG = "pt"; T = TXT.pt;
   return {
     ...res,
-    "css/tema.css": gerarTema(conteudo.aparencia || {}, conteudo.paginas?.inicio?.faixa_imagem),
+    "css/tema.css": gerarTema(conteudo.aparencia || {}, conteudo.paginas?.inicio?.faixa_imagem)
+      + [...new Set([...pos.values()].map(([x, y]) => `.pos-${x}-${y}{object-position:${x}% ${y}%}`))].join("\n") + (pos.size ? "\n" : ""),
     "sitemap.xml": `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`,
     "robots.txt": `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${d}/sitemap.xml\n`,
   };
