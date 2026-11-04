@@ -517,6 +517,7 @@ function mostrarPagina(f) {
       const alvo = new URL(h.split("#")[0], "http://x/" + f).pathname.slice(1);
       if (paginasPrevia[alvo]) { e.preventDefault(); mostrarPagina(alvo); }
       else if (/^(https?:|mailto:|tel:)/.test(h)) { e.preventDefault(); window.open(h, "_blank", "noopener"); }
+      else if (/^(\.\.\/)?(docs|img)\//.test(h)) { e.preventDefault(); window.open(new URL(alvo, raiz).href, "_blank", "noopener"); }
       else { e.preventDefault(); }
     });
   };

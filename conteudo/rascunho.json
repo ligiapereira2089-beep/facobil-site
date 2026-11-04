@@ -237,33 +237,6 @@
           ]
         }
       ],
-      "galeria_titulo": "Modelos de dança",
-      "galeria": [
-        {
-          "imagem": "img/danca-1.jpg",
-          "descricao_imagem": "Sapato de dança produzido pela Facobil"
-        },
-        {
-          "imagem": "img/danca-2.jpg",
-          "descricao_imagem": "Sapato de dança produzido pela Facobil"
-        },
-        {
-          "imagem": "img/danca-3.jpg",
-          "descricao_imagem": "Sapato de dança produzido pela Facobil"
-        },
-        {
-          "imagem": "img/danca-4.jpg",
-          "descricao_imagem": "Sapato de dança produzido pela Facobil"
-        },
-        {
-          "imagem": "img/danca-5.jpg",
-          "descricao_imagem": "Sapato de dança produzido pela Facobil"
-        },
-        {
-          "imagem": "img/danca-6.jpg",
-          "descricao_imagem": "Sapato de dança produzido pela Facobil"
-        }
-      ],
       "apelo_titulo": "Procura um parceiro para a sua coleção de dança?",
       "apelo_texto": "Fale connosco e conheça as nossas soluções de desenvolvimento e produção.",
       "apelo_botao": "Contactar"
@@ -805,27 +778,6 @@
             "paragrafos": [
               "Our shoes are assembled using the cemented construction method, ensuring the high performance of the footwear produced at our facilities."
             ]
-          }
-        ],
-        "galeria_titulo": "Dance models",
-        "galeria": [
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
           }
         ],
         "apelo_titulo": "Looking for a partner for your dance collection?",
