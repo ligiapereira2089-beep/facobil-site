@@ -125,7 +125,7 @@ function cabecalho(g, ativo, ficheiro) {
   return `<header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="${attr(g.nome_empresa)}, ${T.inicial}">
-      <img src="${attr(g.logotipo_cabecalho)}" alt="${attr(g.nome_empresa)}" width="132" height="36">
+      <img src="${attr(g.logotipo_cabecalho)}" alt="${attr(g.nome_empresa)}" width="110" height="30">
     </a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
     <nav aria-label="${T.principal}"><ul id="menu">${links}${seletor}</ul></nav>
