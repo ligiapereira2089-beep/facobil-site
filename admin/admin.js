@@ -53,7 +53,7 @@ const ROTULOS = {
   sustentabilidade_imagem: "Sustentabilidade: imagem", sustentabilidade_paragrafos: "Sustentabilidade: parágrafos",
   seccoes: "Secções", paragrafos: "Parágrafos (linhas começadas por \"- \" formam uma lista)", titulo: "Título", texto: "Texto", imagem: "Imagem",
   facebook: "Facebook", instagram: "Instagram", linkedin: "LinkedIn",
-  logotipo_fundo_claro: "Logótipo para fundos claros (Google)", caracteristicas: "Características", galeria_titulo: "Galeria: título",
+  logotipo_fundo_claro: "Logótipo para fundos claros (Google)", caracteristicas: "Características", caracteristicas_titulo: "Características: título", intro_imagem: "Introdução: imagem", intro_descricao_imagem: "Introdução: descrição da imagem (para quem não vê)", galeria_titulo: "Galeria: título",
 };
 const rotulo = (k) => ROTULOS[k] || (k.charAt(0).toUpperCase() + k.slice(1).replace(/_/g, " "));
 const eImagem = (k, v) => /imagem|logotipo/.test(k) && !/descricao/.test(k) && typeof v === "string";

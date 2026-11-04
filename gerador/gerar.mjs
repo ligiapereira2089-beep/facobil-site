@@ -402,12 +402,15 @@ const e404 = (c) => documento(c, "404.html", `${T.nao_encontrada} | Facobil`, T.
 
 function danca(c) {
   const p = c.paginas.danca;
-  const car = (p.caracteristicas || []).map((v) => `<div class="feature"><h3>${esc(v.titulo)}</h3><p>${esc(v.texto)}</p></div>`).join("");
+  const lista = p.caracteristicas || [];
+  const car = lista.map((v) => `<div class="feature"><h3>${esc(v.titulo)}</h3>${v.paragrafos ? paragrafos(v.paragrafos) : `<p>${esc(v.texto)}</p>`}</div>`).join("");
   const gal = (p.galeria || []).map((x) => `<figure><img src="${attr(x.imagem)}" alt="${attr(x.descricao_imagem)}" loading="lazy"></figure>`).join("");
   const corpo = topo(p.topo_imagem, p.topo_titulo, p.topo_subtitulo) + `
 <section class="section">
-  <div class="wrap narrow"><h2>${esc(p.intro_titulo)}</h2>${paragrafos(p.intro_paragrafos)}</div>
-  ${car ? `<div class="wrap features">${car}</div>` : ""}
+  ${p.intro_imagem
+    ? `<div class="wrap two-col"><div><h2>${esc(p.intro_titulo)}</h2>${paragrafos(p.intro_paragrafos)}</div><img class="foto-produto" src="${attr(p.intro_imagem)}" alt="${attr(p.intro_descricao_imagem)}" width="574" height="648"></div>`
+    : `<div class="wrap narrow"><h2>${esc(p.intro_titulo)}</h2>${paragrafos(p.intro_paragrafos)}</div>`}
+  ${car ? `${p.caracteristicas_titulo ? `<div class="wrap narrow"><h2 class="center">${esc(p.caracteristicas_titulo)}</h2></div>` : ""}<div class="wrap features${lista.length % 2 === 0 ? " duas" : ""}">${car}</div>` : ""}
 </section>
 ${gal ? `<section class="section alt"><div class="wrap">${p.galeria_titulo ? `<h2 class="center">${esc(p.galeria_titulo)}</h2>` : ""}<div class="gallery">${gal}</div></div></section>` : ""}
 ` + apelo(p.apelo_titulo, p.apelo_texto, p.apelo_botao, "contactos.html");
@@ -416,7 +419,7 @@ ${gal ? `<section class="section alt"><div class="wrap">${p.galeria_titulo ? `<h
 
 // ---------- idiomas ----------
 // A versão inglesa guarda só os textos; imagens, PDFs e contactos vêm sempre da versão portuguesa.
-export const NAO_TRADUZ = /imagem|logotipo|pdf|^cor_|^letra_|tamanho|email|telefone|dominio|facebook|instagram|linkedin|nipc|ano_fundacao|numero$/;
+export const NAO_TRADUZ = /(?<!descricao_)imagem|logotipo|pdf|^cor_|^letra_|tamanho|email|telefone|dominio|facebook|instagram|linkedin|nipc|ano_fundacao|numero$/;
 export function juntar(base, trad) {
   if (Array.isArray(base)) return base.map((x, i) => juntar(x, Array.isArray(trad) ? trad[i] : undefined));
   if (base && typeof base === "object") {
