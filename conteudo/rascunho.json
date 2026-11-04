@@ -24,12 +24,12 @@
     ]
   },
   "aparencia": {
-    "cor_verde": "#5d993d",
-    "cor_verde_escuro": "#44782c",
-    "cor_cinza": "#424242",
+    "cor_verde": "#a3c78f",
+    "cor_verde_escuro": "#638b50",
+    "cor_cinza": "#646262",
     "cor_preto": "#111111",
     "cor_texto": "#222222",
-    "cor_fundo_alternado": "#efefef",
+    "cor_fundo_alternado": "#fafafa",
     "letra_titulos": "Montserrat",
     "letra_texto": "Open Sans",
     "tamanho_texto": 17
@@ -38,7 +38,7 @@
     "inicio": {
       "titulo_separador": "Facobil | Produção de calçado português desde 1981",
       "descricao_google": "Empresa familiar de Felgueiras que desenvolve e produz calçado desde 1981.",
-      "topo_imagem": "img/inicio-hero.jpg",
+      "topo_imagem": "img/inicio-hero-1793808525964.jpg",
       "topo_titulo": "FACOBIL",
       "topo_subtitulo": "Somos uma empresa familiar estabelecida em 1981, assente sobre décadas de conhecimento.",
       "topo_texto": "Do desenvolvimento à produção final, garantimos precisão e qualidade em cada par de sapatos, cumprindo os mais elevados padrões internacionais.",
@@ -92,26 +92,28 @@
       ],
       "galeria": [
         {
-          "imagem": "img/servico-1.jpg",
-          "legenda": "Design de Sites"
+          "imagem": "img/servico-1-1793808948532.jpg",
+          "legenda": "Desenvolvimento",
+          "imagem_posicao": "31% 64%"
         },
         {
-          "imagem": "img/servico-2.jpg",
-          "legenda": "Gestão de Redes Sociais"
+          "imagem": "img/servico-2-1793808926912.jpg",
+          "legenda": "Produção"
         },
         {
-          "imagem": "img/servico-3.jpg",
-          "legenda": "Pacote de Marketing Digital"
+          "imagem": "img/imagem-1793808978098.jpg",
+          "legenda": ""
         }
       ],
       "apelo_titulo": "Pronto para iniciar o seu projeto?",
       "apelo_texto": "Entre em contacto connosco e descubra como transformar a sua ideia em realidade.",
-      "apelo_botao": "Iniciar projeto"
+      "apelo_botao": "Iniciar projeto",
+      "faixa_imagem_posicao": "67% 41%"
     },
     "sobre": {
       "titulo_separador": "Sobre nós | Facobil",
       "descricao_google": "A história da Facobil: mais de quatro décadas a produzir calçado português.",
-      "topo_imagem": "img/sobre-hero.jpg",
+      "topo_imagem": "img/sobre-hero-1793809077996.jpg",
       "topo_titulo": "A nossa história",
       "topo_subtitulo": "Mais de quatro décadas de excelência na produção de calçado português",
       "intro_titulo": "Evolução e crescimento",
@@ -120,8 +122,9 @@
         {
           "ano": "1981.",
           "texto": "A FACOBIL nasceu como empresa familiar, movida pela paixão pelo calçado e por um compromisso com a qualidade, o rigor e a identidade.",
-          "imagem": "img/historia.jpg",
-          "descricao_imagem": "Produção na fábrica da Facobil"
+          "imagem": "img/historia-1793809447557.jpg",
+          "descricao_imagem": "Produção na fábrica da Facobil",
+          "imagem_posicao": "48% 52%"
         },
         {
           "ano": "2017.",
@@ -138,7 +141,8 @@
         "Cumprimento dos prazos de entrega",
         "Responsabilidade económica, social e ambiental"
       ],
-      "compromisso_imagem": "img/compromisso.jpg"
+      "compromisso_imagem": "img/compromisso.jpg",
+      "topo_imagem_posicao": "49% 51%"
     },
     "brist": {
       "titulo_separador": "BRIST Certified Footwear | Facobil",
@@ -1033,5 +1037,13 @@
       }
     }
   },
-  "_imagens_novas": []
+  "_imagens_novas": [
+    "img/inicio-hero-1793808525964.jpg",
+    "img/servico-1-1793808700915.jpg",
+    "img/servico-2-1793808926912.jpg",
+    "img/servico-1-1793808948532.jpg",
+    "img/imagem-1793808978098.jpg",
+    "img/sobre-hero-1793809077996.jpg",
+    "img/historia-1793809447557.jpg"
+  ]
 }
