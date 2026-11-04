@@ -7,6 +7,7 @@
     "email": "info@facobil.com",
     "telefone": "+351 255 923 436",
     "morada": "Rua Dom Manuel Faria e Sousa, n.º 518\nApartado 53, Pombeiro de Ribavizela\n4610-648 Felgueiras, Portugal",
+    "mapa_destino": "FACOBIL, Rua Dom Manuel Faria e Sousa 518, 4610-648 Felgueiras, Portugal",
     "localidade": "Felgueiras, Portugal",
     "dominio": "https://ligiapereira2089-beep.github.io/facobil-site",
     "logotipo_cabecalho": "img/logo.png",
@@ -102,6 +103,52 @@
         {
           "imagem": "img/servico-3.jpg",
           "legenda": "Pacote de Marketing Digital"
+        }
+      ],
+      "video_titulo": "A Facobil por dentro",
+      "video_texto": "",
+      "video_ficheiro": "",
+      "video_legendas": "",
+      "video_imagem": "",
+      "testemunhos_titulo": "O que dizem os nossos clientes",
+      "testemunhos": [
+        {
+          "texto": "",
+          "nome": "",
+          "empresa": ""
+        }
+      ],
+      "faq_titulo": "Perguntas frequentes",
+      "faq": [
+        {
+          "categoria": "Geral",
+          "pergunta": "Desde quando existe a Facobil?",
+          "resposta": "A FACOBIL foi fundada em 1981 como empresa familiar. Em 2017 mudou-se para as novas instalações, em Felgueiras."
+        },
+        {
+          "categoria": "Geral",
+          "pergunta": "O que é a BRIST?",
+          "resposta": "É a linha de calçado profissional certificado segundo a norma EN ISO 20347:2012, produzida pela Facobil."
+        },
+        {
+          "categoria": "Desenvolvimento",
+          "pergunta": "Que serviços oferecem?",
+          "resposta": "Desenvolvimento de produto, modelação e prototipagem, produção e controlo de qualidade."
+        },
+        {
+          "categoria": "Desenvolvimento",
+          "pergunta": "Que métodos de construção trabalham?",
+          "resposta": "Cemented, Califórnia, Strobel, Blake, stitch and turn, mocassim e saqueto. Pode ver como é feito cada um na página Construções."
+        },
+        {
+          "categoria": "Produção",
+          "pergunta": "Produzem calçado de dança?",
+          "resposta": "Sim. Desenvolvemos e produzimos calçado de dança de alto desempenho, do iniciante ao profissional."
+        },
+        {
+          "categoria": "Produção",
+          "pergunta": "Como peço um orçamento?",
+          "resposta": "Fale connosco por e-mail ou telefone (veja a página Contactos) e descreva o modelo e as quantidades que pretende."
         }
       ],
       "apelo_titulo": "Pronto para iniciar o seu projeto?",
@@ -574,6 +621,12 @@
           ]
         },
         {
+          "titulo": "Mapa do Google",
+          "paragrafos": [
+            "A página Contactos pode mostrar um mapa do Google Maps. O mapa só é carregado se o visitante clicar em \"Mostrar o mapa\". A partir desse momento, a Google Ireland Limited pode recolher dados (como o endereço IP) e usar cookies, de acordo com a sua própria política de privacidade (policies.google.com/privacy). O botão \"Obter direções\" abre o Google Maps num separador novo."
+          ]
+        },
+        {
           "titulo": "O seu consentimento",
           "paragrafos": [
             "Pode retirar o seu consentimento a qualquer momento. Tem também o direito de apresentar reclamação à Comissão Nacional de Proteção de Dados (CNPD), em www.cnpd.pt."
@@ -657,6 +710,49 @@
           },
           {
             "legenda": "Digital marketing package"
+          }
+        ],
+        "video_titulo": "Inside Facobil",
+        "video_texto": "",
+        "testemunhos_titulo": "What our clients say",
+        "testemunhos": [
+          {
+            "texto": "",
+            "nome": "",
+            "empresa": ""
+          }
+        ],
+        "faq_titulo": "Frequently asked questions",
+        "faq": [
+          {
+            "categoria": "General",
+            "pergunta": "How long has Facobil been around?",
+            "resposta": "FACOBIL was founded in 1981 as a family business. In 2017 it moved to its new premises in Felgueiras."
+          },
+          {
+            "categoria": "General",
+            "pergunta": "What is BRIST?",
+            "resposta": "It is the line of professional footwear certified to EN ISO 20347:2012, manufactured by Facobil."
+          },
+          {
+            "categoria": "Development",
+            "pergunta": "What services do you offer?",
+            "resposta": "Product development, pattern making and prototyping, production and quality control."
+          },
+          {
+            "categoria": "Development",
+            "pergunta": "Which construction methods do you work with?",
+            "resposta": "Cemented, California, Strobel, Blake, stitch and turn, moccasin and sacchetto. You can see how each one is made on the Constructions page."
+          },
+          {
+            "categoria": "Production",
+            "pergunta": "Do you make dance shoes?",
+            "resposta": "Yes. We develop and manufacture high-performance dance footwear, from beginner to professional."
+          },
+          {
+            "categoria": "Production",
+            "pergunta": "How do I request a quote?",
+            "resposta": "Contact us by e-mail or phone (see the Contact page) and describe the model and quantities you need."
           }
         ],
         "apelo_titulo": "Ready to start your project?",
@@ -1094,6 +1190,12 @@
             "paragrafos": [
               "This website may use cookies to record session information, collect anonymous visit statistics and save your preferences. Cookies do not personally identify visitors.",
               "You can disable cookies, or ask to be warned before they are used, in your browser settings. Some services may then not work properly."
+            ]
+          },
+          {
+            "titulo": "Google map",
+            "paragrafos": [
+              "The Contact page can show a Google Maps map. The map only loads if the visitor clicks \"Show the map\". From that moment, Google Ireland Limited may collect data (such as the IP address) and use cookies, in accordance with its own privacy policy (policies.google.com/privacy). The \"Get directions\" button opens Google Maps in a new tab."
             ]
           },
           {

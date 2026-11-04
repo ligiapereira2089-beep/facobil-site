@@ -36,3 +36,27 @@ if (!calmo && 'IntersectionObserver' in window) {
   }), { threshold: 0.6 });
   document.querySelectorAll('.stat strong').forEach((el) => cio.observe(el));
 }
+
+// Testemunhos: botões anterior/seguinte (sem passagem automática — WCAG 2.2.2)
+document.querySelectorAll('.carrossel').forEach((c) => {
+  const f = c.querySelector('.faixa-testemunhos');
+  c.querySelectorAll('.b-car').forEach((b) => b.addEventListener('click', () => {
+    const item = f.querySelector('li'); const passo = item ? item.getBoundingClientRect().width + 24 : f.clientWidth;
+    f.scrollBy({ left: Number(b.dataset.dir) * passo, behavior: calmo ? 'auto' : 'smooth' });
+  }));
+});
+// Perguntas frequentes: filtrar por tema
+document.querySelectorAll('.faq-filtro').forEach((g) => {
+  const itens = g.parentElement.querySelectorAll('.faq-item');
+  g.addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    itens.forEach((i) => { i.hidden = !!b.dataset.cat && i.dataset.cat !== b.dataset.cat; });
+  });
+});
+// Mapa: só carrega o Google Maps depois de o visitante pedir
+document.querySelectorAll('[data-ver-mapa]').forEach((b) => b.addEventListener('click', () => {
+  const m = b.closest('.mapa'); const f = document.createElement('iframe');
+  f.src = m.dataset.mapa; f.title = m.dataset.titulo; f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade';
+  m.replaceChildren(f); f.focus();
+}));

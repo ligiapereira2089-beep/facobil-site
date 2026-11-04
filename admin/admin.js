@@ -53,11 +53,20 @@ const ROTULOS = {
   sustentabilidade_imagem: "Sustentabilidade: imagem", sustentabilidade_paragrafos: "Sustentabilidade: parágrafos",
   seccoes: "Secções", paragrafos: "Parágrafos (linhas começadas por \"- \" formam uma lista)", titulo: "Título", texto: "Texto", imagem: "Imagem",
   facebook: "Facebook", instagram: "Instagram", linkedin: "LinkedIn",
-  logotipo_fundo_claro: "Logótipo para fundos claros (Google)", caracteristicas: "Características", metodos: "Métodos de construção", caracteristicas_titulo: "Características: título", intro_imagem: "Introdução: imagem", intro_descricao_imagem: "Introdução: descrição da imagem (para quem não vê)", galeria_titulo: "Galeria: título",
+  logotipo_fundo_claro: "Logótipo para fundos claros (Google)", caracteristicas: "Características", mapa_destino: "Morada para o Google Maps (direções e mapa)", faq_titulo: "Perguntas frequentes: título", faq: "Perguntas frequentes",
+  categoria: "Categoria (agrupa as perguntas)", pergunta: "Pergunta", resposta: "Resposta", testemunhos_titulo: "Testemunhos: título",
+  testemunhos: "Testemunhos (só com autorização do cliente)", empresa: "Empresa", video_titulo: "Vídeo: título", video_texto: "Vídeo: texto",
+  video_ficheiro: "Vídeo (MP4, até 50 MB)", video_legendas: "Legendas do vídeo (ficheiro .vtt, recomendado)", video_imagem: "Vídeo: imagem de capa", metodos: "Métodos de construção", caracteristicas_titulo: "Características: título", intro_imagem: "Introdução: imagem", intro_descricao_imagem: "Introdução: descrição da imagem (para quem não vê)", galeria_titulo: "Galeria: título",
 };
 const rotulo = (k) => ROTULOS[k] || (k.charAt(0).toUpperCase() + k.slice(1).replace(/_/g, " "));
 const eImagem = (k, v) => /imagem|logotipo/.test(k) && !/descricao/.test(k) && typeof v === "string";
-const ePdf = (k) => /pdf/.test(k);
+const TIPOS_FICHEIRO = [
+  [/pdf/, { accept: "application/pdf", ext: "pdf", max: 20, nome: "PDF" }],
+  [/video_ficheiro/, { accept: "video/mp4", ext: "mp4", max: 50, nome: "vídeo (MP4)" }],
+  [/video_legendas/, { accept: ".vtt,text/vtt", ext: "vtt", max: 1, nome: "legendas (VTT)" }],
+];
+const tipoFicheiro = (k) => (TIPOS_FICHEIRO.find(([r]) => r.test(k)) || [])[1];
+const ePdf = (k) => !!tipoFicheiro(k);
 const eTextoLongo = (k, v) => /texto|paragrafo|morada|descricao_google|destaque/.test(k) || String(v).length > 80 || String(v).includes("\n");
 
 // ---------- GitHub ----------
@@ -369,17 +378,19 @@ async function reduzir(ficheiro, max, manterPng) {
 
 function desenharPdf(pai, k, v, caixa, id) {
   const info = document.createElement("span"); info.className = "nota"; info.textContent = v || "(sem ficheiro)";
-  const f = document.createElement("input"); f.type = "file"; f.id = id; f.accept = "application/pdf";
+  const t = tipoFicheiro(k);
+  const f = document.createElement("input"); f.type = "file"; f.id = id; f.accept = t.accept;
   f.onchange = async () => {
     const ficheiro = f.files[0]; if (!ficheiro) return;
-    if (ficheiro.size > 20 * 1024 * 1024) return aviso("O PDF tem mais de 20 MB. Reduza-o antes de o enviar.", "erro");
+    if (ficheiro.size > t.max * 1024 * 1024) return aviso(`O ficheiro tem mais de ${t.max} MB. Reduza-o antes de o enviar.`, "erro");
     try {
-      estado("A enviar o PDF…");
-      const caminho = v && /^docs\/[\w\-.]+\.pdf$/.test(v) ? v : `docs/${ficheiro.name.toLowerCase().replace(/[^a-z0-9.]+/g, "-")}`;
-      await escrever(caminho, await blobParaB64(ficheiro), await shaAtual(caminho), `Painel: PDF ${caminho}`);
+      estado(`A enviar o ${t.nome}…`);
+      const nome = ficheiro.name.toLowerCase().replace(/\.[a-z0-9]+$/, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "ficheiro";
+      const caminho = v && new RegExp(`^docs/[\\w\\-.]+\\.${t.ext}$`).test(v) ? v : `docs/${nome}.${t.ext}`;
+      await escrever(caminho, await blobParaB64(ficheiro), await shaAtual(caminho), `Painel: ficheiro ${caminho}`);
       pai[k] = caminho; marcarAlterado(); info.textContent = `${caminho} (${Math.round(ficheiro.size / 1024)} KB)`;
-      aviso("PDF enviado. Fica disponível no site depois de publicar.");
-    } catch (e) { aviso("Não foi possível enviar o PDF: " + e.message, "erro"); }
+      aviso("Ficheiro enviado. Fica disponível no site depois de publicar.");
+    } catch (e) { aviso("Não foi possível enviar o ficheiro: " + e.message, "erro"); }
     estado("Alterações por guardar");
   };
   caixa.append(info, f);

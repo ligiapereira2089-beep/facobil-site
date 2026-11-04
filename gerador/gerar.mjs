@@ -30,8 +30,8 @@ const TXT = {
     ligacoes: "Ligações rápidas", solucoes: "Soluções e produção", servicos: "Serviços", contactos: "Contactos",
     siga: "Siga-nos nas nossas redes sociais", direitos: "Todos os direitos reservados.",
     conduta: "Código de Conduta e Ética", privacidade: "Política de Privacidade e Cookies",
-    localizacao: "Localização", telefone: "Telefone", email: "E-mail", redes: "Redes sociais",
-    enviar: "Enviar e-mail", ligar: "Ligar", assunto: "Pedido de informações", assunto_catalogo: "Pedido de catálogo BRIST", pedir_pdf: "Pedir por e-mail",
+    localizacao: "Localização", como_chegar: "Como chegar", direcoes: "Obter direções no Google Maps", ver_mapa: "Mostrar o mapa", aviso_mapa: "O mapa é fornecido pelo Google. Só é carregado se clicar no botão; nesse momento o Google pode recolher dados e usar cookies.", titulo_mapa: "Mapa com a localização da FACOBIL", telefone: "Telefone", email: "E-mail", redes: "Redes sociais",
+    enviar: "Enviar e-mail", ligar: "Ligar", assunto: "Pedido de informações", assunto_catalogo: "Pedido de catálogo BRIST", faq_todas: "Todas", faq_filtro: "Filtrar perguntas por tema", anterior: "Anterior", seguinte: "Seguinte", testemunhos: "Testemunhos", pedir_pdf: "Pedir por e-mail",
     hangtag: "Hangtag BRIST – Certified Footwear", hangtag_desc: "Descrição detalhada dos modelos BRIST.", hangtag_alt: "Descrição detalhada do modelo BRIST",
     voltar_brist: "Voltar à BRIST", declaracao: "Declaração de Conformidade", info_comerciais: "Informações comerciais",
     modelo: "Modelo BRIST", nao_encontrada: "Página não encontrada", nao_existe: "A página que procura não existe ou foi movida.",
@@ -43,8 +43,8 @@ const TXT = {
     ligacoes: "Quick links", solucoes: "Solutions and production", servicos: "Services", contactos: "Contact",
     siga: "Follow us on social media", direitos: "All rights reserved.",
     conduta: "Code of Conduct and Ethics", privacidade: "Privacy and Cookies Policy",
-    localizacao: "Location", telefone: "Phone", email: "E-mail", redes: "Social media",
-    enviar: "Send e-mail", ligar: "Call", assunto: "Information request", assunto_catalogo: "BRIST catalogue request", pedir_pdf: "Request by e-mail",
+    localizacao: "Location", como_chegar: "How to get here", direcoes: "Get directions on Google Maps", ver_mapa: "Show the map", aviso_mapa: "The map is provided by Google. It only loads if you click the button; Google may then collect data and use cookies.", titulo_mapa: "Map showing the location of FACOBIL", telefone: "Phone", email: "E-mail", redes: "Social media",
+    enviar: "Send e-mail", ligar: "Call", assunto: "Information request", assunto_catalogo: "BRIST catalogue request", faq_todas: "All", faq_filtro: "Filter questions by topic", anterior: "Previous", seguinte: "Next", testemunhos: "Testimonials", pedir_pdf: "Request by e-mail",
     hangtag: "BRIST Hangtag – Certified Footwear", hangtag_desc: "Detailed description of the BRIST models.", hangtag_alt: "Detailed description of the BRIST model",
     voltar_brist: "Back to BRIST", declaracao: "Declaration of Conformity", info_comerciais: "Sales information",
     modelo: "BRIST model", nao_encontrada: "Page not found", nao_existe: "The page you are looking for does not exist or has been moved.",
@@ -206,7 +206,7 @@ function documento(c, ficheiro, titulo, descricao, corpo, ativo, opcoes = {}) {
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="theme-color" content="${attr(hexOk(c.aparencia.cor_cinza, "#424242"))}">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'self'; frame-src https://www.google.com; form-action 'none'; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="stylesheet" href="css/estilo.css">
 <link rel="stylesheet" href="css/tema.css">
@@ -278,6 +278,7 @@ function inicio(c) {
 </section>
 ${cartoes ? `<section class="section alt" id="solucoes"><div class="wrap"><div class="cards">${cartoes}</div></div></section>` : ""}
 ${gal ? `<section class="section"><div class="wrap"><div class="thumbs">${gal}</div></div></section>` : ""}
+${seccaoVideo(p)}${seccaoTestemunhos(p)}${seccaoFaq(p)}
 ` + apelo(p.apelo_titulo, p.apelo_texto, p.apelo_botao, "contactos.html");
   return documento(c, "index.html", p.titulo_separador, p.descricao_google, corpo);
 }
@@ -390,7 +391,14 @@ function contactos(c) {
       </div>
     </div>
   </div>
-</section>`;
+</section>
+${g.mapa_destino ? `<section class="section alt" id="como-chegar"><div class="wrap">
+  <h2 class="center">${T.como_chegar}</h2>
+  <div class="mapa" data-mapa="https://www.google.com/maps?q=${attr(encodeURIComponent(g.mapa_destino))}&amp;output=embed" data-titulo="${attr(T.titulo_mapa)}">
+    <div class="mapa-aviso"><p>${T.aviso_mapa}</p><button type="button" class="btn btn-outline" data-ver-mapa>${ICON.pin}${T.ver_mapa}</button></div>
+  </div>
+  <p class="center"><a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=${attr(encodeURIComponent(g.mapa_destino))}" target="_blank" rel="noopener">${ICON.pin}${T.direcoes}</a></p>
+</div></section>` : ""}`;
   return documento(c, "contactos.html", p.titulo_separador, p.descricao_google, corpo);
 }
 
@@ -402,6 +410,30 @@ function legal(c, chave, ficheiro) {
 
 const e404 = (c) => documento(c, "404.html", `${T.nao_encontrada} | Facobil`, T.nao_encontrada,
   `<section class="section"><div class="wrap narrow center"><h1>${T.nao_encontrada}</h1><p>${T.nao_existe}</p><a class="btn" href="index.html">${T.voltar_inicio}</a></div></section>`, "", { noindex: true });
+
+// ---------- vídeo, testemunhos e perguntas frequentes (só aparecem se tiverem conteúdo) ----------
+function seccaoVideo(p) {
+  if (!temFicheiro(p.video_ficheiro)) return "";
+  const leg = temFicheiro(p.video_legendas) ? `<track kind="captions" src="${attr(p.video_legendas)}" srclang="${LANG}" label="${LANG.toUpperCase()}" default>` : "";
+  return `<section class="section"><div class="wrap narrow center">${p.video_titulo ? `<h2>${esc(p.video_titulo)}</h2>` : ""}${bloco(p.video_texto)}</div>
+<div class="wrap"><video class="video" controls preload="none" playsinline${p.video_imagem ? ` poster="${attr(p.video_imagem)}"` : ""}><source src="${attr(p.video_ficheiro)}" type="video/mp4">${leg}</video></div></section>\n`;
+}
+function seccaoTestemunhos(p) {
+  const t = (p.testemunhos || []).filter((x) => x && String(x.texto || "").trim());
+  if (!t.length) return "";
+  const itens = t.map((x) => `<li class="testemunho"><blockquote><p>${esc(x.texto)}</p></blockquote><p class="autor"><strong>${esc(x.nome)}</strong>${x.empresa ? `<span>${esc(x.empresa)}</span>` : ""}</p></li>`).join("");
+  return `<section class="section alt" aria-label="${T.testemunhos}"><div class="wrap">${p.testemunhos_titulo ? `<h2 class="center">${esc(p.testemunhos_titulo)}</h2>` : ""}
+<div class="carrossel"><ul class="faixa-testemunhos" tabindex="0">${itens}</ul>
+${t.length > 1 ? `<div class="carrossel-botoes"><button type="button" class="b-car" data-dir="-1" aria-label="${T.anterior}">‹</button><button type="button" class="b-car" data-dir="1" aria-label="${T.seguinte}">›</button></div>` : ""}</div></div></section>\n`;
+}
+function seccaoFaq(p) {
+  const f = (p.faq || []).filter((x) => x && String(x.pergunta || "").trim());
+  if (!f.length) return "";
+  const cats = [...new Set(f.map((x) => String(x.categoria || "").trim()).filter(Boolean))];
+  const filtro = cats.length > 1 ? `<div class="faq-filtro" role="group" aria-label="${T.faq_filtro}"><button type="button" aria-pressed="true" data-cat="">${T.faq_todas}</button>${cats.map((c) => `<button type="button" aria-pressed="false" data-cat="${attr(c)}">${esc(c)}</button>`).join("")}</div>` : "";
+  const itens = f.map((x) => `<details class="faq-item" data-cat="${attr(String(x.categoria || "").trim())}"><summary>${esc(x.pergunta)}</summary>${bloco(x.resposta)}</details>`).join("");
+  return `<section class="section" id="perguntas"><div class="wrap narrow">${p.faq_titulo ? `<h2 class="center">${esc(p.faq_titulo)}</h2>` : ""}${filtro}<div class="faq">${itens}</div></div></section>\n`;
+}
 
 function construcoes(c) {
   const p = c.paginas.construcoes;
@@ -435,7 +467,7 @@ ${gal ? `<section class="section alt"><div class="wrap">${p.galeria_titulo ? `<h
 
 // ---------- idiomas ----------
 // A versão inglesa guarda só os textos; imagens, PDFs e contactos vêm sempre da versão portuguesa.
-export const NAO_TRADUZ = /(?<!descricao_)imagem|_posicao$|logotipo|pdf|^cor_|^letra_|tamanho|email|telefone|dominio|facebook|instagram|linkedin|nipc|ano_fundacao|numero$/;
+export const NAO_TRADUZ = /(?<!descricao_)imagem|mapa_destino|_posicao$|video_ficheiro|video_legendas|logotipo|pdf|^cor_|^letra_|tamanho|email|telefone|dominio|facebook|instagram|linkedin|nipc|ano_fundacao|numero$/;
 export function juntar(base, trad) {
   if (Array.isArray(base)) return base.map((x, i) => juntar(x, Array.isArray(trad) ? trad[i] : undefined));
   if (base && typeof base === "object") {
