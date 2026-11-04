@@ -113,7 +113,7 @@
     "sobre": {
       "titulo_separador": "Sobre nós | Facobil",
       "descricao_google": "A história da Facobil: mais de quatro décadas a produzir calçado português.",
-      "topo_imagem": "img/sobre-hero-1793809077996.jpg",
+      "topo_imagem": "img/sobre-hero-1793809669880.jpg",
       "topo_titulo": "A nossa história",
       "topo_subtitulo": "Mais de quatro décadas de excelência na produção de calçado português",
       "intro_titulo": "Evolução e crescimento",
@@ -1048,6 +1048,7 @@
     "img/historia-1793809447557.jpg",
     "img/historia-2017-1793809576253.jpg",
     "img/compromisso-1793809638433.jpg",
-    "img/historia-2017-1793809662508.jpg"
+    "img/historia-2017-1793809662508.jpg",
+    "img/sobre-hero-1793809669880.jpg"
   ]
 }
