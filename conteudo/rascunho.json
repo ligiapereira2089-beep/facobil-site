@@ -7,7 +7,6 @@
     "email": "info@facobil.com",
     "telefone": "+351 255 923 436",
     "morada": "Rua Dom Manuel Faria e Sousa, n.º 518\nApartado 53, Pombeiro de Ribavizela\n4610-648 Felgueiras, Portugal",
-    "mapa_destino": "FACOBIL, Rua Dom Manuel Faria e Sousa 518, 4610-648 Felgueiras, Portugal",
     "localidade": "Felgueiras, Portugal",
     "dominio": "https://ligiapereira2089-beep.github.io/facobil-site",
     "logotipo_cabecalho": "img/logo.png",
@@ -94,61 +93,15 @@
       "galeria": [
         {
           "imagem": "img/servico-1.jpg",
-          "legenda": "Desenvolvimento de produto"
+          "legenda": "Design de Sites"
         },
         {
           "imagem": "img/servico-2.jpg",
-          "legenda": "Modelação e prototipagem"
+          "legenda": "Gestão de Redes Sociais"
         },
         {
           "imagem": "img/servico-3.jpg",
-          "legenda": "Controlo de qualidade"
-        }
-      ],
-      "video_titulo": "A Facobil por dentro",
-      "video_texto": "",
-      "video_ficheiro": "",
-      "video_legendas": "",
-      "video_imagem": "",
-      "testemunhos_titulo": "O que dizem os nossos clientes",
-      "testemunhos": [
-        {
-          "texto": "",
-          "nome": "",
-          "empresa": ""
-        }
-      ],
-      "faq_titulo": "Perguntas frequentes",
-      "faq": [
-        {
-          "categoria": "Geral",
-          "pergunta": "Desde quando existe a Facobil?",
-          "resposta": "A FACOBIL foi fundada em 1981 como empresa familiar. Em 2017 mudou-se para as novas instalações, em Felgueiras."
-        },
-        {
-          "categoria": "Geral",
-          "pergunta": "O que é a BRIST?",
-          "resposta": "É a linha de calçado profissional certificado segundo a norma EN ISO 20347:2012, produzida pela Facobil."
-        },
-        {
-          "categoria": "Desenvolvimento",
-          "pergunta": "Que serviços oferecem?",
-          "resposta": "Desenvolvimento de produto, modelação e prototipagem, produção e controlo de qualidade."
-        },
-        {
-          "categoria": "Desenvolvimento",
-          "pergunta": "Que métodos de construção trabalham?",
-          "resposta": "Cemented, Califórnia, Strobel, Blake, stitch and turn, mocassim e saqueto. Pode ver como é feito cada um na página Construções."
-        },
-        {
-          "categoria": "Produção",
-          "pergunta": "Produzem calçado de dança?",
-          "resposta": "Sim. Desenvolvemos e produzimos calçado de dança de alto desempenho, do iniciante ao profissional."
-        },
-        {
-          "categoria": "Produção",
-          "pergunta": "Como peço um orçamento?",
-          "resposta": "Fale connosco por e-mail ou telefone (veja a página Contactos) e descreva o modelo e as quantidades que pretende."
+          "legenda": "Pacote de Marketing Digital"
         }
       ],
       "apelo_titulo": "Pronto para iniciar o seu projeto?",
@@ -284,62 +237,35 @@
           ]
         }
       ],
-      "apelo_titulo": "Procura um parceiro para a sua coleção de dança?",
-      "apelo_texto": "Fale connosco e conheça as nossas soluções de desenvolvimento e produção.",
-      "apelo_botao": "Contactar"
-    },
-    "construcoes": {
-      "titulo_separador": "Construções | Facobil",
-      "descricao_google": "Métodos de construção de calçado na Facobil: cemented, Califórnia, Strobel, Blake, stitch and turn, mocassim e saqueto.",
-      "topo_imagem": "img/construcoes-hero.jpg",
-      "topo_titulo": "Construções",
-      "topo_subtitulo": "Os métodos de construção que usamos no fabrico de calçado.",
-      "metodos": [
+      "galeria_titulo": "Modelos de dança",
+      "galeria": [
         {
-          "titulo": "Construção Cemented",
-          "texto": "É o método industrial mais comum. O corte é montado na forma e a sola é colada com colas industriais de alta resistência, que criam uma ligação muito forte. Não tem costuras à vista.",
-          "imagem": "img/construcao-cemented.png",
-          "descricao_imagem": "Esquema da construção cemented: corte e forro, palmilha, enchimento e sola"
+          "imagem": "img/danca-1.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
         },
         {
-          "titulo": "Construção Califórnia",
-          "texto": "Muito usada em calçado casual. O corte é cosido à palmilha antes de ser enformado, por isso não precisa de margem de montagem. Leva normalmente uma virola a toda a volta, que é colada e dá ao sapato um acabamento resistente.",
-          "imagem": "img/construcao-california.png",
-          "descricao_imagem": "Esquema da construção Califórnia: corte, virola e palmilha"
+          "imagem": "img/danca-2.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
         },
         {
-          "titulo": "Construção Strobel",
-          "texto": "Muito usada em calçado desportivo. O corte é cosido a uma palmilha têxtil numa máquina Strobel, sem margem de montagem, e só depois a sola é colada ou injetada. A costura vê-se se se retirar a palmilha de acabamento.",
-          "imagem": "img/construcao-strobel.png",
-          "descricao_imagem": "Esquema da construção Strobel: corte, costura Strobel, palmilha têxtil, entressola e sola"
+          "imagem": "img/danca-3.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
         },
         {
-          "titulo": "Construção Blake",
-          "texto": "A palmilha, o corte e a sola são unidos numa única costura, feita em máquinas próprias. É um processo simples e rápido, que dá um sapato flexível e de perfil fino.",
-          "imagem": "img/construcao-blake.png",
-          "descricao_imagem": "Esquema da construção Blake: corte e forro, costura Blake, palmilha, enchimento e sola"
+          "imagem": "img/danca-4.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
         },
         {
-          "titulo": "Construção Stitch and Turn",
-          "texto": "O corte e o forro são cosidos do avesso e depois virados, para as costuras ficarem escondidas no interior. A costura começa sempre na frente do sapato. No fim, a sola é colada para garantir a durabilidade.",
-          "imagem": "img/construcao-stitch-and-turn.png",
-          "descricao_imagem": "Esquema da construção Stitch and Turn: corte cosido do avesso, palmilha e sola"
+          "imagem": "img/danca-5.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
         },
         {
-          "titulo": "Construção Mocassim",
-          "texto": "Define-se pela construção envolvente: uma única peça de pele forma a base e a gáspea, e as extremidades são cosidas ao espelho.",
-          "imagem": "img/construcao-mocassim.png",
-          "descricao_imagem": "Esquema da construção mocassim: corte envolvente cosido ao espelho, e sola"
-        },
-        {
-          "titulo": "Construção Saqueto",
-          "texto": "O forro é cosido à palmilha de acabamento, formando um saco. Depois de colocada a forma, o sapato é terminado pelo método cemented: o corte é fixado à palmilha e, por fim, à sola. Por baixo da palmilha de acabamento leva uma espuma macia, que dá mais conforto.",
-          "imagem": "img/construcao-saqueto.png",
-          "descricao_imagem": "Esquema da construção saqueto: corte, forro cosido à palmilha de acabamento, espuma macia e sola"
+          "imagem": "img/danca-6.jpg",
+          "descricao_imagem": "Sapato de dança produzido pela Facobil"
         }
       ],
-      "apelo_titulo": "Não sabe qual o método certo para o seu modelo?",
-      "apelo_texto": "Fale connosco.",
+      "apelo_titulo": "Procura um parceiro para a sua coleção de dança?",
+      "apelo_texto": "Fale connosco e conheça as nossas soluções de desenvolvimento e produção.",
       "apelo_botao": "Contactar"
     },
     "qualidade": {
@@ -395,7 +321,6 @@
       ]
     },
     "projetos": {
-      "mostrar": false,
       "titulo_separador": "Projetos | Facobil",
       "descricao_google": "Galeria de projetos de calçado produzidos pela Facobil.",
       "topo_imagem": "img/projetos-hero.jpg",
@@ -622,12 +547,6 @@
           ]
         },
         {
-          "titulo": "Mapa do Google",
-          "paragrafos": [
-            "A página Contactos pode mostrar um mapa do Google Maps. O mapa só é carregado se o visitante clicar em \"Mostrar o mapa\". A partir desse momento, a Google Ireland Limited pode recolher dados (como o endereço IP) e usar cookies, de acordo com a sua própria política de privacidade (policies.google.com/privacy). O botão \"Obter direções\" abre o Google Maps num separador novo."
-          ]
-        },
-        {
           "titulo": "O seu consentimento",
           "paragrafos": [
             "Pode retirar o seu consentimento a qualquer momento. Tem também o direito de apresentar reclamação à Comissão Nacional de Proteção de Dados (CNPD), em www.cnpd.pt."
@@ -640,8 +559,7 @@
           ]
         }
       ]
-    },
-    "extra": []
+    }
   },
   "en": {
     "geral": {
@@ -705,56 +623,13 @@
         ],
         "galeria": [
           {
-            "legenda": "Product development"
+            "legenda": "Website design"
           },
           {
-            "legenda": "Pattern making and prototyping"
+            "legenda": "Social media management"
           },
           {
-            "legenda": "Quality control"
-          }
-        ],
-        "video_titulo": "Inside Facobil",
-        "video_texto": "",
-        "testemunhos_titulo": "What our clients say",
-        "testemunhos": [
-          {
-            "texto": "",
-            "nome": "",
-            "empresa": ""
-          }
-        ],
-        "faq_titulo": "Frequently asked questions",
-        "faq": [
-          {
-            "categoria": "General",
-            "pergunta": "How long has Facobil been around?",
-            "resposta": "FACOBIL was founded in 1981 as a family business. In 2017 it moved to its new premises in Felgueiras."
-          },
-          {
-            "categoria": "General",
-            "pergunta": "What is BRIST?",
-            "resposta": "It is the line of professional footwear certified to EN ISO 20347:2012, manufactured by Facobil."
-          },
-          {
-            "categoria": "Development",
-            "pergunta": "What services do you offer?",
-            "resposta": "Product development, pattern making and prototyping, production and quality control."
-          },
-          {
-            "categoria": "Development",
-            "pergunta": "Which construction methods do you work with?",
-            "resposta": "Cemented, California, Strobel, Blake, stitch and turn, moccasin and sacchetto. You can see how each one is made on the Constructions page."
-          },
-          {
-            "categoria": "Production",
-            "pergunta": "Do you make dance shoes?",
-            "resposta": "Yes. We develop and manufacture high-performance dance footwear, from beginner to professional."
-          },
-          {
-            "categoria": "Production",
-            "pergunta": "How do I request a quote?",
-            "resposta": "Contact us by e-mail or phone (see the Contact page) and describe the model and quantities you need."
+            "legenda": "Digital marketing package"
           }
         ],
         "apelo_titulo": "Ready to start your project?",
@@ -771,13 +646,11 @@
         "marcos": [
           {
             "ano": "1981.",
-            "texto": "FACOBIL was founded as a family business, driven by a passion for footwear and a commitment to quality, rigour and identity.",
-            "descricao_imagem": "Production at the Facobil factory"
+            "texto": "FACOBIL was founded as a family business, driven by a passion for footwear and a commitment to quality, rigour and identity."
           },
           {
             "ano": "2017.",
-            "texto": "In 2017, FACOBIL moved to its new premises in Felgueiras, an important step in the company's growth.",
-            "descricao_imagem": "Facobil's new premises"
+            "texto": "In 2017, FACOBIL moved to its new premises in Felgueiras, an important step in the company's growth."
           }
         ],
         "compromisso_titulo": "Commitment to quality.",
@@ -878,55 +751,17 @@
             ]
           }
         ],
+        "galeria_titulo": "Dance models",
+        "galeria": [
+          {},
+          {},
+          {},
+          {},
+          {},
+          {}
+        ],
         "apelo_titulo": "Looking for a partner for your dance collection?",
         "apelo_texto": "Talk to us and discover our development and production solutions.",
-        "apelo_botao": "Contact us",
-        "intro_descricao_imagem": "Suede sole of a satin dance shoe made by Facobil"
-      },
-      "construcoes": {
-        "titulo_separador": "Constructions | Facobil",
-        "descricao_google": "Footwear construction methods at Facobil: cemented, California, Strobel, Blake, stitch and turn, moccasin and sacchetto.",
-        "topo_titulo": "Constructions",
-        "topo_subtitulo": "The construction methods we use to make footwear.",
-        "metodos": [
-          {
-            "titulo": "Cemented construction",
-            "texto": "This is the most common industrial method. The upper is lasted and the sole is attached with high-strength industrial adhesives, creating a very strong bond. There are no visible seams.",
-            "descricao_imagem": "Diagram of cemented construction: upper and lining, insole, filling and outsole"
-          },
-          {
-            "titulo": "California construction",
-            "texto": "Widely used in casual footwear. The upper is stitched to the insole before lasting, so no lasting allowance is needed. It usually has a wedge cover all the way round, which is glued on and gives the shoe a durable finish.",
-            "descricao_imagem": "Diagram of California construction: upper, wedge cover and insock"
-          },
-          {
-            "titulo": "Strobel construction",
-            "texto": "Widely used in sports footwear. The upper is stitched to a textile insole on a Strobel machine, with no lasting allowance, and only then is the sole glued or injected. The seam is visible if the sock liner is removed.",
-            "descricao_imagem": "Diagram of Strobel construction: upper, Strobel stitch, Strobel sock, midsole and outsole"
-          },
-          {
-            "titulo": "Blake construction",
-            "texto": "The insole, upper and sole are joined with a single seam, made on dedicated machines. It is a simple, fast process that produces a flexible shoe with a slim profile.",
-            "descricao_imagem": "Diagram of Blake construction: upper and lining, Blake stitch, insole, filling and outsole"
-          },
-          {
-            "titulo": "Stitch and Turn construction",
-            "texto": "The upper and lining are stitched inside out and then turned, so the seams are hidden inside. Stitching always starts at the front of the shoe. Finally, the sole is glued on to ensure durability.",
-            "descricao_imagem": "Diagram of Stitch and Turn construction: upper stitched inside out, insock and outsole"
-          },
-          {
-            "titulo": "Moccasin construction",
-            "texto": "Defined by its wraparound construction: a single piece of leather forms both the base and the vamp, and the edges are stitched to the apron.",
-            "descricao_imagem": "Diagram of moccasin construction: wraparound upper stitched to the apron, and outsole"
-          },
-          {
-            "titulo": "Sacchetto construction",
-            "texto": "The lining is stitched to the sock liner, forming a bag. Once the last is inserted, the shoe is finished using the cemented method: the upper is attached to the insole and finally to the sole. A soft foam under the sock liner adds comfort.",
-            "descricao_imagem": "Diagram of sacchetto construction: upper, lining stitched to the insock, soft insole and outsole"
-          }
-        ],
-        "apelo_titulo": "Not sure which method is right for your model?",
-        "apelo_texto": "Talk to us.",
         "apelo_botao": "Contact us"
       },
       "qualidade": {
@@ -982,24 +817,12 @@
         "topo_titulo": "Project Gallery",
         "topo_subtitulo": "Examples of our production capacity and versatility",
         "galeria": [
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          }
+          {},
+          {},
+          {},
+          {},
+          {},
+          {}
         ],
         "apelo_titulo": "Ready to start your project?",
         "apelo_texto": "Get in touch and find out how we can turn your idea into reality.",
@@ -1195,12 +1018,6 @@
             ]
           },
           {
-            "titulo": "Google map",
-            "paragrafos": [
-              "The Contact page can show a Google Maps map. The map only loads if the visitor clicks \"Show the map\". From that moment, Google Ireland Limited may collect data (such as the IP address) and use cookies, in accordance with its own privacy policy (policies.google.com/privacy). The \"Get directions\" button opens Google Maps in a new tab."
-            ]
-          },
-          {
             "titulo": "Your consent",
             "paragrafos": [
               "You may withdraw your consent at any time. You also have the right to lodge a complaint with the Portuguese Data Protection Authority (CNPD), at www.cnpd.pt."
@@ -1213,8 +1030,7 @@
             ]
           }
         ]
-      },
-      "extra": []
+      }
     }
   },
   "_imagens_novas": []
