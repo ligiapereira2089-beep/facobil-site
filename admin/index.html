@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://api.github.com; img-src 'self' data: blob:; style-src 'self' blob:; font-src 'self'; script-src 'self'; frame-src 'self' blob: about:; base-uri 'self'; form-action 'none'; object-src 'none'">
+<title>Painel do site | Facobil</title>
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div id="app">
+  <section id="entrar" class="ecra" hidden>
+    <div class="caixa-entrar">
+      <h1>Painel do site Facobil</h1>
+      <p>Para editar o site, entre com a sua chave de acesso do GitHub.</p>
+      <form id="form-entrar">
+        <label for="chave">Chave de acesso (token)</label>
+        <input id="chave" type="password" autocomplete="off" spellcheck="false" required>
+        <label class="linha"><input id="lembrar" type="checkbox"> Lembrar neste computador</label>
+        <button type="submit" class="b b-principal">Entrar</button>
+        <p id="erro-entrar" class="erro" role="alert"></p>
+      </form>
+      <details>
+        <summary>Como obter a chave (só uma vez)</summary>
+        <ol>
+          <li>Abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained tokens › Generate new token</a> (com sessão iniciada no GitHub).</li>
+          <li>Nome: <em>Painel Facobil</em>. Validade: 1 ano (ou a que preferir).</li>
+          <li>Em <strong>Repository access</strong> escolha <em>Only select repositories</em> e selecione <strong>facobil-site</strong>.</li>
+          <li>Em <strong>Permissions › Repository permissions</strong>: <strong>Contents: Read and write</strong> e <strong>Actions: Read-only</strong>.</li>
+          <li>Carregue em <em>Generate token</em>, copie a chave e cole-a aqui.</li>
+        </ol>
+        <p>A chave fica guardada só neste navegador. Nunca a envie por e-mail ou mensagem.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="editor" class="ecra" hidden>
+    <header class="barra">
+      <strong class="marca">Painel Facobil</strong>
+      <span id="estado" class="estado" role="status" aria-live="polite"></span>
+      <div class="acoes">
+        <button type="button" id="b-previsualizar" class="b">Pré-visualizar</button>
+        <button type="button" id="b-guardar" class="b">Guardar rascunho</button>
+        <button type="button" id="b-publicar" class="b b-principal">Publicar no site</button>
+        <button type="button" id="b-menu" class="b b-icone" aria-haspopup="true" aria-expanded="false" aria-label="Mais opções">⋯</button>
+        <div id="menu-mais" class="menu-mais" hidden>
+          <button type="button" id="b-descartar">Descartar rascunho</button>
+          <a id="l-site" href="../" target="_blank" rel="noopener">Abrir o site publicado</a>
+          <button type="button" id="b-sair">Sair</button>
+        </div>
+      </div>
+    </header>
+    <div class="corpo">
+      <nav id="seccoes" class="seccoes" aria-label="Partes do site"></nav>
+      <main id="campos" class="campos"></main>
+    </div>
+  </section>
+
+  <section id="previa" class="previa" hidden aria-label="Pré-visualização do rascunho">
+    <header class="barra">
+      <strong>Pré-visualização do rascunho</strong>
+      <div id="previa-paginas" class="previa-paginas"></div>
+      <div class="acoes">
+        <button type="button" id="b-largura" class="b">Ver em telemóvel</button>
+        <button type="button" id="b-fechar-previa" class="b b-principal">Voltar a editar</button>
+      </div>
+    </header>
+    <div class="previa-moldura"><iframe id="previa-frame" title="Pré-visualização" sandbox="allow-same-origin"></iframe></div>
+  </section>
+</div>
+<div id="aviso" class="aviso" role="alert" hidden></div>
+<script type="module" src="admin.js"></script>
+</body>
+</html>

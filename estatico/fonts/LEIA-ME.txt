@@ -1,0 +1,4 @@
+Tipos de letra alojados no próprio site (sem pedidos à Google).
+Montserrat, Open Sans, Lato, Raleway, Playfair Display, Merriweather: SIL Open Font License 1.1 (LICENCA-OFL.txt).
+Roboto: Apache License 2.0 (LICENCA-APACHE-Roboto.txt).
+Ficheiros obtidos dos pacotes @fontsource (subconjunto latin, inclui os acentos do português).

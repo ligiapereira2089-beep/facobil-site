@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ligiapereira2089-beep.github.io/facobil-site/sitemap.xml

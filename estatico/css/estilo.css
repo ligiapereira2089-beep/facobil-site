@@ -1,31 +1,8 @@
-/* Facobil — folha de estilos. As cores e tipos de letra estão todos aqui em cima. */
-@font-face{font-family:"Montserrat";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/montserrat-latin-400-normal.woff2") format("woff2")}
-@font-face{font-family:"Montserrat";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/montserrat-latin-600-normal.woff2") format("woff2")}
-@font-face{font-family:"Montserrat";font-style:normal;font-weight:700;font-display:swap;src:url("../fonts/montserrat-latin-700-normal.woff2") format("woff2")}
-@font-face{font-family:"Montserrat";font-style:normal;font-weight:800;font-display:swap;src:url("../fonts/montserrat-latin-800-normal.woff2") format("woff2")}
-@font-face{font-family:"Open Sans";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/open-sans-latin-400-normal.woff2") format("woff2")}
-@font-face{font-family:"Open Sans";font-style:normal;font-weight:600;font-display:swap;src:url("../fonts/open-sans-latin-600-normal.woff2") format("woff2")}
+/* Facobil — folha de estilos. As cores e os tipos de letra vêm de tema.css, gerado a partir do painel (conteudo/site.json). */
 
-:root{
-  --verde:#5d993d;        /* verde da marca: destaques, números, linhas */
-  --verde-escuro:#44782c; /* verde mais escuro para botões e links (contraste AA com branco: 5,3:1) */
-  --cinza:#424242;        /* cinza da marca: cabeçalho e rodapé */
-  --preto:#111111;
-  --escuro:var(--cinza);
-  --texto:#222222;
-  --suave:#5c5c5c;
-  --claro:#efefef;        /* fundo alternado das secções */
-  --branco:#ffffff;
-  --acento:var(--verde-escuro);
-  --acento-escuro:var(--verde-escuro);
-  --linha:#d6d6d6;
-  --titulos:"Montserrat",system-ui,sans-serif;
-  --corpo:"Open Sans",system-ui,sans-serif;
-  --raio:6px;
-}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--corpo);color:var(--texto);background:var(--branco);line-height:1.65;font-size:17px}
+body{margin:0;font-family:var(--corpo);color:var(--texto);background:var(--branco);line-height:1.65;font-size:var(--tamanho-texto,17px)}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--acento-escuro)}
 h1,h2,h3{font-family:var(--titulos);line-height:1.2;margin:0 0 .6em;color:var(--escuro)}
@@ -91,7 +68,7 @@ p{margin:0 0 1em}
 .stat span{text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}
 @media (max-width:700px){.stats-grid{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}}
 
-.band-paper{background:var(--claro) url('../img/papel-quadriculado.jpg') center/cover;padding:56px 0;text-align:center}
+.band-paper{background:var(--claro) center/cover;padding:56px 0;text-align:center}
 .band-paper h2{text-transform:uppercase;letter-spacing:.14em;margin:0}
 
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
