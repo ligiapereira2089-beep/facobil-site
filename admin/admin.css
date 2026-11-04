@@ -80,3 +80,7 @@ legend{font-weight:700;padding:0 6px}
   .seccoes button{white-space:nowrap}
 }
 .sep-idioma{margin:14px 12px 4px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.novo-separador{font:inherit;font-weight:700;text-align:left;padding:9px 12px;margin:6px 0;border:1px dashed var(--verde);border-radius:var(--raio);background:var(--verde-claro);color:var(--verde);cursor:pointer}
+.separador{margin-bottom:18px;display:grid;gap:8px}
+.separador .linha{font-weight:600}
+.nota.erro{color:var(--erro)}

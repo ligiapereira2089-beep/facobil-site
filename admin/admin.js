@@ -1,5 +1,5 @@
 // Painel do site Facobil — edita conteudo/rascunho.json e publica em conteudo/site.json através da API do GitHub.
-import { gerarSite, FONTES, NAO_TRADUZ } from "./gerar.mjs";
+import { gerarSite, FONTES, NAO_TRADUZ, REMOVIVEIS, slugOk } from "./gerar.mjs";
 
 const DONO = "ligiapereira2089-beep";
 const REPO = "facobil-site";
@@ -24,9 +24,15 @@ const SECCOES = [
   ["paginas.danca", "Página Dança"], ["paginas.construcoes", "Página Construções"], ["paginas.qualidade", "Página Qualidade"], ["paginas.projetos", "Página Projetos"], ["paginas.contactos", "Página Contactos"],
   ["paginas.codigo_conduta", "Código de Conduta"], ["paginas.privacidade", "Política de Privacidade"],
 ];
-// versão inglesa: as mesmas secções, só com os campos de texto
-const SECCOES_EN = SECCOES.filter(([c]) => c !== "aparencia").map(([c, n]) => ["en." + c, "EN · " + n.replace(/^Página /, "")]);
-const TODAS = [...SECCOES, ...SECCOES_EN];
+const REMOVIVEL = new Set(Object.values(REMOVIVEIS).map((k) => "paginas." + k));
+// secções do painel: as fixas, as páginas novas (paginas.extra) e a versão inglesa de tudo
+function todas() {
+  const ext = (rascunho?.paginas?.extra || []).map((p, i) => [`paginas.extra.${i}`, `Separador novo: ${p.titulo_menu || p.slug || i + 1}`]);
+  const pt = [...SECCOES.slice(0, -2), ...ext, ...SECCOES.slice(-2)].map(([c, n]) => [c, n + (escondida(c) ? " (escondido)" : "")]);
+  const en = pt.filter(([c]) => c !== "aparencia").map(([c, n]) => ["en." + c, "EN · " + n.replace(/^Página |^Separador novo: /, "")]);
+  return [...pt, ...en];
+}
+const escondida = (c) => { if (!c.startsWith("paginas.")) return false; const o = obter(c); return !!o && o.mostrar === false; };
 const ROTULOS = {
   nome_empresa: "Nome da empresa", nome_legal: "Nome legal", nipc: "NIPC", ano_fundacao: "Ano de fundação",
   email: "E-mail", telefone: "Telefone", morada: "Morada (uma linha por linha da morada)", localidade: "Localidade (rodapé)",
@@ -53,7 +59,7 @@ const ROTULOS = {
   sustentabilidade_imagem: "Sustentabilidade: imagem", sustentabilidade_paragrafos: "Sustentabilidade: parágrafos",
   seccoes: "Secções", paragrafos: "Parágrafos (linhas começadas por \"- \" formam uma lista)", titulo: "Título", texto: "Texto", imagem: "Imagem",
   facebook: "Facebook", instagram: "Instagram", linkedin: "LinkedIn",
-  logotipo_fundo_claro: "Logótipo para fundos claros (Google)", caracteristicas: "Características", mapa_destino: "Morada para o Google Maps (direções e mapa)", faq_titulo: "Perguntas frequentes: título", faq: "Perguntas frequentes",
+  logotipo_fundo_claro: "Logótipo para fundos claros (Google)", caracteristicas: "Características", slug: "Endereço da página (sem acentos nem espaços)", titulo_menu: "Nome no menu", blocos: "Blocos de conteúdo (título, texto e imagem opcional)", mapa_destino: "Morada para o Google Maps (direções e mapa)", faq_titulo: "Perguntas frequentes: título", faq: "Perguntas frequentes",
   categoria: "Categoria (agrupa as perguntas)", pergunta: "Pergunta", resposta: "Resposta", testemunhos_titulo: "Testemunhos: título",
   testemunhos: "Testemunhos (só com autorização do cliente)", empresa: "Empresa", video_titulo: "Vídeo: título", video_texto: "Vídeo: texto",
   video_ficheiro: "Vídeo (MP4, até 50 MB)", video_legendas: "Legendas do vídeo (ficheiro .vtt, recomendado)", video_imagem: "Vídeo: imagem de capa", metodos: "Métodos de construção", caracteristicas_titulo: "Características: título", intro_imagem: "Introdução: imagem", intro_descricao_imagem: "Introdução: descrição da imagem (para quem não vê)", galeria_titulo: "Galeria: título",
@@ -201,12 +207,18 @@ function mostrarEditor() {
   $("#editor").hidden = false;
   const nav = $("#seccoes"); nav.innerHTML = "";
   if (seccaoAtual.startsWith("en.")) prepararEn();
+  const TODAS = todas();
+  if (!TODAS.some(([c]) => c === seccaoAtual)) seccaoAtual = "geral";
   for (const [c, nome] of TODAS) {
     if (c === "en.geral") { const t = document.createElement("p"); t.className = "nota sep-idioma"; t.textContent = "English (versão inglesa)"; nav.appendChild(t); }
     const b = document.createElement("button"); b.type = "button"; b.textContent = nome; b.dataset.c = c;
     if (c === seccaoAtual) b.setAttribute("aria-current", "true");
     b.onclick = () => { seccaoAtual = c; mostrarEditor(); };
     nav.appendChild(b);
+    if (c === "paginas.privacidade") {
+      const novo = document.createElement("button"); novo.type = "button"; novo.className = "novo-separador"; novo.textContent = "+ Novo separador";
+      novo.onclick = novoSeparador; nav.appendChild(novo);
+    }
   }
   const main = $("#campos"); main.innerHTML = "";
   const h = document.createElement("h1"); h.textContent = TODAS.find((s) => s[0] === seccaoAtual)[1]; main.appendChild(h);
@@ -216,7 +228,55 @@ function mostrarEditor() {
     main.appendChild(p);
   }
   if (seccaoAtual === "aparencia") main.appendChild(notaContraste());
+  if (REMOVIVEL.has(seccaoAtual) || seccaoAtual.startsWith("paginas.extra.")) main.appendChild(controloSeparador(seccaoAtual));
   main.appendChild(desenharObjeto(obter(seccaoAtual), seccaoAtual));
+}
+
+// ---------- separadores: mostrar/esconder, criar, apagar ----------
+function controloSeparador(c) {
+  const o = obter(c);
+  const caixa = document.createElement("fieldset"); caixa.className = "separador";
+  const lg = document.createElement("legend"); lg.textContent = "Separador no menu"; caixa.appendChild(lg);
+  const lab = document.createElement("label"); lab.className = "linha";
+  const cb = document.createElement("input"); cb.type = "checkbox"; cb.checked = o.mostrar !== false;
+  cb.onchange = () => { if (cb.checked) delete o.mostrar; else o.mostrar = false; marcarAlterado(); mostrarEditor(); };
+  lab.append(cb, document.createTextNode(" Mostrar esta página no site e no menu"));
+  const nota = document.createElement("p"); nota.className = "nota";
+  nota.textContent = "Se desligar, a página deixa de existir no site depois de publicar, mas o conteúdo fica guardado aqui para a poder voltar a ligar. As ligações que apontavam para ela passam a levar aos Contactos.";
+  caixa.append(lab, nota);
+  if (c.startsWith("paginas.extra.")) {
+    const i = Number(c.split(".")[2]);
+    const apagar = document.createElement("button"); apagar.type = "button"; apagar.className = "b"; apagar.textContent = "Apagar este separador";
+    apagar.onclick = () => {
+      if (!confirm(`Apagar o separador "${o.titulo_menu || o.slug}" e todo o seu conteúdo? (Só fica definitivo depois de guardar.)`)) return;
+      rascunho.paginas.extra.splice(i, 1);
+      if (Array.isArray(rascunho.en?.paginas?.extra)) rascunho.en.paginas.extra.splice(i, 1);
+      seccaoAtual = "geral"; marcarAlterado(); mostrarEditor();
+    };
+    const end = document.createElement("p"); end.className = "nota";
+    end.textContent = slugOk(o.slug) ? `Endereço: ${o.slug}.html` : "⚠ O endereço só pode ter letras minúsculas sem acentos, números e hífenes (ex.: calcado-seguranca). Enquanto estiver errado, a página não é publicada.";
+    if (!slugOk(o.slug)) end.classList.add("erro");
+    caixa.append(end, apagar);
+  }
+  return caixa;
+}
+const paraSlug = (t) => String(t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+function novoSeparador() {
+  const nome = (prompt("Nome do novo separador (aparece no menu):") || "").trim();
+  if (!nome) return;
+  rascunho.paginas.extra = rascunho.paginas.extra || [];
+  const usados = new Set(rascunho.paginas.extra.map((p) => p.slug));
+  let base = paraSlug(nome) || "pagina", slug = base, n = 2;
+  while (!slugOk(slug) || usados.has(slug)) slug = `${base}-${n++}`;
+  rascunho.paginas.extra.push({
+    slug, titulo_menu: nome, titulo_separador: `${nome} | ${rascunho.geral?.nome_empresa || "Facobil"}`, descricao_google: "",
+    topo_imagem: "img/inicio-hero.jpg", topo_titulo: nome, topo_subtitulo: "", intro_texto: "",
+    blocos: [{ titulo: "", texto: "", imagem: "", descricao_imagem: "" }],
+    apelo_titulo: "", apelo_texto: "", apelo_botao: "Contactar",
+  });
+  seccaoAtual = `paginas.extra.${rascunho.paginas.extra.length - 1}`;
+  marcarAlterado(); mostrarEditor();
+  aviso("Separador criado. Preencha os campos, veja em Pré-visualizar e depois Publique.");
 }
 
 function notaContraste() {
@@ -228,7 +288,7 @@ function notaContraste() {
 function desenharObjeto(obj, caminho) {
   const div = document.createElement("div"); div.className = "grupo";
   for (const [k, v] of Object.entries(obj)) {
-    if (k.startsWith("_") || /_posicao$/.test(k)) continue;
+    if (k.startsWith("_") || /_posicao$/.test(k) || k === "mostrar") continue;
     div.appendChild(desenharCampo(obj, k, v, `${caminho}.${k}`));
   }
   return div;
@@ -490,7 +550,9 @@ async function previsualizar() {
   try { const r = await gh("/contents/docs?ref=" + RAMO); docs = new Set((Array.isArray(r) ? r : []).map((x) => x.path)); } catch (e) { docs = e.status === 404 ? new Set() : null; }
   paginasPrevia = gerarSite(conteudo, docs ? { existe: (f) => !/^docs\//.test(f) || docs.has(f) } : {});
   const nav = $("#previa-paginas"); nav.innerHTML = "";
-  for (const [f, n] of Object.entries(NOMES)) {
+  const nomes = Object.fromEntries(Object.entries(NOMES).filter(([f]) => paginasPrevia[f]));
+  for (const p of rascunho.paginas.extra || []) if (p.mostrar !== false && paginasPrevia[`${p.slug}.html`]) nomes[`${p.slug}.html`] = p.titulo_menu || p.slug;
+  for (const [f, n] of Object.entries(nomes)) {
     const b = document.createElement("button"); b.type = "button"; b.className = "b b-pequeno"; b.textContent = n; b.dataset.f = f;
     b.onclick = () => mostrarPagina(idiomaDe(paginaAtual) + f); nav.appendChild(b);
   }

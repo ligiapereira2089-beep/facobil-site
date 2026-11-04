@@ -239,3 +239,4 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .card{box-shadow:0 2px 10px #0000000d}
 .feature{box-shadow:0 2px 10px #0000000a}
 @media (prefers-reduced-motion:reduce){.hero-inner>*,.hero-bg{animation:none}}
+.metodo.so-texto{grid-template-columns:1fr;max-width:820px}

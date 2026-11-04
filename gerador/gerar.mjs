@@ -150,12 +150,7 @@ function rodape(g) {
     <div>
       <h2>${T.ligacoes}</h2>
       <ul>
-        <li><a href="sobre-nos.html">${T.nav["sobre-nos.html"]}</a></li>
-        <li><a href="index.html#solucoes">${T.solucoes}</a></li>
-        <li><a href="brist.html">BRIST</a></li>
-        ${NAV.some(([h]) => h === "danca.html") ? `<li><a href="danca.html">${T.nav["danca.html"]}</a></li>` : ""}
-        ${NAV.some(([h]) => h === "construcoes.html") ? `<li><a href="construcoes.html">${T.nav["construcoes.html"]}</a></li>` : ""}
-        <li><a href="projetos.html">${T.nav["projetos.html"]}</a></li>
+        ${NAV.filter(([h]) => h !== "index.html" && h !== "contactos.html").map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join("")}
       </ul>
     </div>
     <div>
@@ -476,7 +471,7 @@ ${gal ? `<section class="section alt"><div class="wrap">${p.galeria_titulo ? `<h
 
 // ---------- idiomas ----------
 // A versão inglesa guarda só os textos; imagens, PDFs e contactos vêm sempre da versão portuguesa.
-export const NAO_TRADUZ = /(?<!descricao_)imagem|mapa_destino|_posicao$|video_ficheiro|video_legendas|logotipo|pdf|^cor_|^letra_|tamanho|email|telefone|dominio|facebook|instagram|linkedin|nipc|ano_fundacao|numero$/;
+export const NAO_TRADUZ = /^mostrar$|^slug$|(?<!descricao_)imagem|mapa_destino|_posicao$|video_ficheiro|video_legendas|logotipo|pdf|^cor_|^letra_|tamanho|email|telefone|dominio|facebook|instagram|linkedin|nipc|ano_fundacao|numero$/;
 export function juntar(base, trad) {
   if (Array.isArray(base)) return base.map((x, i) => juntar(x, Array.isArray(trad) ? trad[i] : undefined));
   if (base && typeof base === "object") {
@@ -492,22 +487,49 @@ function prefixar(html, P) {
   return html.replace(/(src|href)="(img|css|js|docs|fonts)\//g, `$1="${P}$2/`).replace(/href="favicon\.png"/g, `href="${P}favicon.png"`);
 }
 
+// separadores que se podem esconder no painel ("mostrar": false) e páginas novas criadas no painel (paginas.extra)
+export const REMOVIVEIS = { "sobre-nos.html": "sobre", "brist.html": "brist", "danca.html": "danca", "construcoes.html": "construcoes", "qualidade.html": "qualidade", "projetos.html": "projetos" };
+const FIXOS = new Set(["index.html", "contactos.html", "codigo-de-conduta.html", "privacidade.html", "404.html", "brist-hangtag.html", ...Object.keys(REMOVIVEIS)]);
+export const slugOk = (s) => /^[a-z0-9]+(-[a-z0-9]+)*$/.test(String(s || "")) && !FIXOS.has(s + ".html") && !["admin", "en", "img", "css", "js", "docs", "fonts"].includes(s);
+const ativa = (c, k) => !!(c.paginas && c.paginas[k]) && c.paginas[k].mostrar !== false;
+const extrasDe = (c) => (c.paginas && Array.isArray(c.paginas.extra) ? c.paginas.extra : []).filter((p, i, a) => p && p.mostrar !== false && slugOk(p.slug) && a.findIndex((q) => q && q.slug === p.slug) === i);
+
 function paginasDe(c) {
-  const ex = (k) => c.paginas && c.paginas[k];
-  NAV = NAV_ORDEM.filter((f) => (f !== "danca.html" || ex("danca")) && (f !== "construcoes.html" || ex("construcoes"))).map((f) => [f, T.nav[f]]);
-  const out = {
-    "index.html": inicio(c),
-    "sobre-nos.html": sobre(c),
-    ...brist(c),
-    "qualidade.html": qualidade(c),
-    "projetos.html": projetos(c),
-    "contactos.html": contactos(c),
-    "codigo-de-conduta.html": legal(c, "codigo_conduta", "codigo-de-conduta.html"),
-    "privacidade.html": legal(c, "privacidade", "privacidade.html"),
-  };
-  if (ex("danca")) out["danca.html"] = danca(c);
-  if (ex("construcoes")) out["construcoes.html"] = construcoes(c);
+  const ext = extrasDe(c);
+  NAV = NAV_ORDEM.filter((f) => !REMOVIVEIS[f] || ativa(c, REMOVIVEIS[f])).map((f) => [f, T.nav[f]]);
+  const iC = NAV.findIndex(([f]) => f === "contactos.html");
+  NAV.splice(iC < 0 ? NAV.length : iC, 0, ...ext.map((p) => [`${p.slug}.html`, esc(p.titulo_menu || p.topo_titulo || p.slug)]));
+  const out = { "index.html": inicio(c) };
+  if (ativa(c, "sobre")) out["sobre-nos.html"] = sobre(c);
+  if (ativa(c, "brist")) Object.assign(out, brist(c));
+  if (ativa(c, "danca")) out["danca.html"] = danca(c);
+  if (ativa(c, "construcoes")) out["construcoes.html"] = construcoes(c);
+  if (ativa(c, "qualidade")) out["qualidade.html"] = qualidade(c);
+  if (ativa(c, "projetos")) out["projetos.html"] = projetos(c);
+  for (const p of ext) out[`${p.slug}.html`] = paginaExtra(c, p);
+  out["contactos.html"] = contactos(c);
+  out["codigo-de-conduta.html"] = legal(c, "codigo_conduta", "codigo-de-conduta.html");
+  out["privacidade.html"] = legal(c, "privacidade", "privacidade.html");
+  // ligações para separadores escondidos passam a apontar para os Contactos
+  const escondidas = Object.keys(REMOVIVEIS).filter((f) => !out[f]);
+  if (escondidas.length) {
+    const re = new RegExp(`href="(${escondidas.map((f) => f.replace(".", "\\.")).join("|")})(#[^"]*)?"`, "g");
+    for (const f of Object.keys(out)) out[f] = out[f].replace(re, 'href="contactos.html"');
+  }
   return out;
+}
+
+function paginaExtra(c, p) {
+  const f = `${p.slug}.html`;
+  const blocos = (p.blocos || []).filter((m) => m && (String(m.titulo || "").trim() || String(m.texto || "").trim() || m.imagem)).map((m, i) => `<article class="metodo${i % 2 ? " reverse" : ""}${m.imagem ? "" : " so-texto"}">
+  <div>${m.titulo ? `<h2>${esc(m.titulo)}</h2>` : ""}${bloco(m.texto)}</div>
+  ${m.imagem ? `<img src="${attr(m.imagem)}" alt="${attr(m.descricao_imagem)}" loading="lazy">` : ""}
+</article>`).join("\n");
+  const corpo = topo(p.topo_imagem || "img/inicio-hero.jpg", p.topo_titulo || p.titulo_menu, p.topo_subtitulo) + `
+${p.intro_texto ? `<section class="section"><div class="wrap narrow center">${bloco(p.intro_texto)}</div></section>` : ""}
+${blocos ? `<section class="section${p.intro_texto ? " alt" : ""}"><div class="wrap metodos">${blocos}</div></section>` : ""}
+` + (p.apelo_titulo ? apelo(p.apelo_titulo, p.apelo_texto, p.apelo_botao, "contactos.html") : "");
+  return documento(c, f, p.titulo_separador || p.titulo_menu, p.descricao_google, corpo);
 }
 
 // ---------- tudo ----------

@@ -395,6 +395,7 @@
       ]
     },
     "projetos": {
+      "mostrar": false,
       "titulo_separador": "Projetos | Facobil",
       "descricao_google": "Galeria de projetos de calçado produzidos pela Facobil.",
       "topo_imagem": "img/projetos-hero.jpg",
@@ -639,7 +640,8 @@
           ]
         }
       ]
-    }
+    },
+    "extra": []
   },
   "en": {
     "geral": {
@@ -1211,7 +1213,8 @@
             ]
           }
         ]
-      }
+      },
+      "extra": []
     }
   }
 }
