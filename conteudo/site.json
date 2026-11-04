@@ -268,6 +268,60 @@
       "apelo_texto": "Fale connosco e conheça as nossas soluções de desenvolvimento e produção.",
       "apelo_botao": "Contactar"
     },
+    "construcoes": {
+      "titulo_separador": "Construções | Facobil",
+      "descricao_google": "Métodos de construção de calçado na Facobil: cemented, Califórnia, Strobel, Blake, stitch and turn, mocassim e saqueto.",
+      "topo_imagem": "img/construcoes-hero.jpg",
+      "topo_titulo": "Construções",
+      "topo_subtitulo": "Os métodos de construção que usamos no fabrico de calçado.",
+      "metodos": [
+        {
+          "titulo": "Construção Cemented",
+          "texto": "É o método industrial mais comum. O corte é montado na forma e a sola é colada com colas industriais de alta resistência, que criam uma ligação muito forte. Não tem costuras à vista.",
+          "imagem": "img/construcao-cemented.png",
+          "descricao_imagem": "Esquema da construção cemented: corte e forro, palmilha, enchimento e sola"
+        },
+        {
+          "titulo": "Construção Califórnia",
+          "texto": "Muito usada em calçado casual. O corte é cosido à palmilha antes de ser enformado, por isso não precisa de margem de montagem. Leva normalmente uma virola a toda a volta, que é colada e dá ao sapato um acabamento resistente.",
+          "imagem": "img/construcao-california.png",
+          "descricao_imagem": "Esquema da construção Califórnia: corte, virola e palmilha"
+        },
+        {
+          "titulo": "Construção Strobel",
+          "texto": "Muito usada em calçado desportivo. O corte é cosido a uma palmilha têxtil numa máquina Strobel, sem margem de montagem, e só depois a sola é colada ou injetada. A costura vê-se se se retirar a palmilha de acabamento.",
+          "imagem": "img/construcao-strobel.png",
+          "descricao_imagem": "Esquema da construção Strobel: corte, costura Strobel, palmilha têxtil, entressola e sola"
+        },
+        {
+          "titulo": "Construção Blake",
+          "texto": "A palmilha, o corte e a sola são unidos numa única costura, feita em máquinas próprias. É um processo simples e rápido, que dá um sapato flexível e de perfil fino.",
+          "imagem": "img/construcao-blake.png",
+          "descricao_imagem": "Esquema da construção Blake: corte e forro, costura Blake, palmilha, enchimento e sola"
+        },
+        {
+          "titulo": "Construção Stitch and Turn",
+          "texto": "O corte e o forro são cosidos do avesso e depois virados, para as costuras ficarem escondidas no interior. A costura começa sempre na frente do sapato. No fim, a sola é colada para garantir a durabilidade.",
+          "imagem": "img/construcao-stitch-and-turn.png",
+          "descricao_imagem": "Esquema da construção Stitch and Turn: corte cosido do avesso, palmilha e sola"
+        },
+        {
+          "titulo": "Construção Mocassim",
+          "texto": "Define-se pela construção envolvente: uma única peça de pele forma a base e a gáspea, e as extremidades são cosidas ao espelho.",
+          "imagem": "img/construcao-mocassim.png",
+          "descricao_imagem": "Esquema da construção mocassim: corte envolvente cosido ao espelho, e sola"
+        },
+        {
+          "titulo": "Construção Saqueto",
+          "texto": "O forro é cosido à palmilha de acabamento, formando um saco. Depois de colocada a forma, o sapato é terminado pelo método cemented: o corte é fixado à palmilha e, por fim, à sola. Por baixo da palmilha de acabamento leva uma espuma macia, que dá mais conforto.",
+          "imagem": "img/construcao-saqueto.png",
+          "descricao_imagem": "Esquema da construção saqueto: corte, forro cosido à palmilha de acabamento, espuma macia e sola"
+        }
+      ],
+      "apelo_titulo": "Não sabe qual o método certo para o seu modelo?",
+      "apelo_texto": "Fale connosco.",
+      "apelo_botao": "Contactar"
+    },
     "qualidade": {
       "titulo_separador": "Qualidade e Sustentabilidade | Facobil",
       "descricao_google": "Controlo de qualidade rigoroso e compromisso com a sustentabilidade na produção de calçado.",
@@ -778,6 +832,52 @@
         "apelo_texto": "Talk to us and discover our development and production solutions.",
         "apelo_botao": "Contact us",
         "intro_descricao_imagem": "Suede sole of a satin dance shoe made by Facobil"
+      },
+      "construcoes": {
+        "titulo_separador": "Constructions | Facobil",
+        "descricao_google": "Footwear construction methods at Facobil: cemented, California, Strobel, Blake, stitch and turn, moccasin and sacchetto.",
+        "topo_titulo": "Constructions",
+        "topo_subtitulo": "The construction methods we use to make footwear.",
+        "metodos": [
+          {
+            "titulo": "Cemented construction",
+            "texto": "This is the most common industrial method. The upper is lasted and the sole is attached with high-strength industrial adhesives, creating a very strong bond. There are no visible seams.",
+            "descricao_imagem": "Diagram of cemented construction: upper and lining, insole, filling and outsole"
+          },
+          {
+            "titulo": "California construction",
+            "texto": "Widely used in casual footwear. The upper is stitched to the insole before lasting, so no lasting allowance is needed. It usually has a wedge cover all the way round, which is glued on and gives the shoe a durable finish.",
+            "descricao_imagem": "Diagram of California construction: upper, wedge cover and insock"
+          },
+          {
+            "titulo": "Strobel construction",
+            "texto": "Widely used in sports footwear. The upper is stitched to a textile insole on a Strobel machine, with no lasting allowance, and only then is the sole glued or injected. The seam is visible if the sock liner is removed.",
+            "descricao_imagem": "Diagram of Strobel construction: upper, Strobel stitch, Strobel sock, midsole and outsole"
+          },
+          {
+            "titulo": "Blake construction",
+            "texto": "The insole, upper and sole are joined with a single seam, made on dedicated machines. It is a simple, fast process that produces a flexible shoe with a slim profile.",
+            "descricao_imagem": "Diagram of Blake construction: upper and lining, Blake stitch, insole, filling and outsole"
+          },
+          {
+            "titulo": "Stitch and Turn construction",
+            "texto": "The upper and lining are stitched inside out and then turned, so the seams are hidden inside. Stitching always starts at the front of the shoe. Finally, the sole is glued on to ensure durability.",
+            "descricao_imagem": "Diagram of Stitch and Turn construction: upper stitched inside out, insock and outsole"
+          },
+          {
+            "titulo": "Moccasin construction",
+            "texto": "Defined by its wraparound construction: a single piece of leather forms both the base and the vamp, and the edges are stitched to the apron.",
+            "descricao_imagem": "Diagram of moccasin construction: wraparound upper stitched to the apron, and outsole"
+          },
+          {
+            "titulo": "Sacchetto construction",
+            "texto": "The lining is stitched to the sock liner, forming a bag. Once the last is inserted, the shoe is finished using the cemented method: the upper is attached to the insole and finally to the sole. A soft foam under the sock liner adds comfort.",
+            "descricao_imagem": "Diagram of sacchetto construction: upper, lining stitched to the insock, soft insole and outsole"
+          }
+        ],
+        "apelo_titulo": "Not sure which method is right for your model?",
+        "apelo_texto": "Talk to us.",
+        "apelo_botao": "Contact us"
       },
       "qualidade": {
         "titulo_separador": "Quality and Sustainability | Facobil",

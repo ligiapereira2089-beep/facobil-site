@@ -25,7 +25,7 @@ const ICON = {
 export const IDIOMAS = ["pt", "en"];
 const TXT = {
   pt: {
-    nav: { "index.html": "Início", "sobre-nos.html": "Sobre nós", "brist.html": "BRIST", "danca.html": "Dança", "qualidade.html": "Qualidade", "projetos.html": "Projetos", "contactos.html": "Contactos" },
+    nav: { "index.html": "Início", "sobre-nos.html": "Sobre nós", "brist.html": "BRIST", "danca.html": "Dança", "construcoes.html": "Construções", "qualidade.html": "Qualidade", "projetos.html": "Projetos", "contactos.html": "Contactos" },
     inicial: "página inicial", principal: "Principal", saltar: "Saltar para o conteúdo",
     ligacoes: "Ligações rápidas", solucoes: "Soluções e produção", servicos: "Serviços", contactos: "Contactos",
     siga: "Siga-nos nas nossas redes sociais", direitos: "Todos os direitos reservados.",
@@ -38,7 +38,7 @@ const TXT = {
     voltar_inicio: "Voltar ao início", idioma: "Idioma", locale: "pt_PT", html: "pt-PT",
   },
   en: {
-    nav: { "index.html": "Home", "sobre-nos.html": "About us", "brist.html": "BRIST", "danca.html": "Dance", "qualidade.html": "Quality", "projetos.html": "Projects", "contactos.html": "Contact" },
+    nav: { "index.html": "Home", "sobre-nos.html": "About us", "brist.html": "BRIST", "danca.html": "Dance", "construcoes.html": "Constructions", "qualidade.html": "Quality", "projetos.html": "Projects", "contactos.html": "Contact" },
     inicial: "home page", principal: "Main", saltar: "Skip to content",
     ligacoes: "Quick links", solucoes: "Solutions and production", servicos: "Services", contactos: "Contact",
     siga: "Follow us on social media", direitos: "All rights reserved.",
@@ -52,7 +52,7 @@ const TXT = {
   },
 };
 let T = TXT.pt, LANG = "pt";
-const NAV_ORDEM = ["index.html", "sobre-nos.html", "brist.html", "danca.html", "qualidade.html", "projetos.html", "contactos.html"];
+const NAV_ORDEM = ["index.html", "sobre-nos.html", "brist.html", "danca.html", "construcoes.html", "qualidade.html", "projetos.html", "contactos.html"];
 let NAV = [];
 
 // ---------- utilitários ----------
@@ -400,6 +400,19 @@ function legal(c, chave, ficheiro) {
 const e404 = (c) => documento(c, "404.html", `${T.nao_encontrada} | Facobil`, T.nao_encontrada,
   `<section class="section"><div class="wrap narrow center"><h1>${T.nao_encontrada}</h1><p>${T.nao_existe}</p><a class="btn" href="index.html">${T.voltar_inicio}</a></div></section>`, "", { noindex: true });
 
+function construcoes(c) {
+  const p = c.paginas.construcoes;
+  const metodos = (p.metodos || []).map((m, i) => `<article class="metodo${i % 2 ? " reverse" : ""}">
+  <div><h2>${esc(m.titulo)}</h2>${bloco(m.texto)}</div>
+  ${m.imagem ? `<img src="${attr(m.imagem)}" alt="${attr(m.descricao_imagem)}" loading="lazy">` : "<div></div>"}
+</article>`).join("\n");
+  const corpo = topo(p.topo_imagem, p.topo_titulo, p.topo_subtitulo) + `
+${p.intro_texto ? `<section class="section"><div class="wrap narrow center">${bloco(p.intro_texto)}</div></section>` : ""}
+<section class="section${p.intro_texto ? " alt" : ""}"><div class="wrap metodos">${metodos}</div></section>
+` + apelo(p.apelo_titulo, p.apelo_texto, p.apelo_botao, "contactos.html");
+  return documento(c, "construcoes.html", p.titulo_separador, p.descricao_google, corpo);
+}
+
 function danca(c) {
   const p = c.paginas.danca;
   const lista = p.caracteristicas || [];
@@ -437,7 +450,7 @@ function prefixar(html, P) {
 
 function paginasDe(c) {
   const ex = (k) => c.paginas && c.paginas[k];
-  NAV = NAV_ORDEM.filter((f) => f !== "danca.html" || ex("danca")).map((f) => [f, T.nav[f]]);
+  NAV = NAV_ORDEM.filter((f) => (f !== "danca.html" || ex("danca")) && (f !== "construcoes.html" || ex("construcoes"))).map((f) => [f, T.nav[f]]);
   const out = {
     "index.html": inicio(c),
     "sobre-nos.html": sobre(c),
@@ -449,6 +462,7 @@ function paginasDe(c) {
     "privacidade.html": legal(c, "privacidade", "privacidade.html"),
   };
   if (ex("danca")) out["danca.html"] = danca(c);
+  if (ex("construcoes")) out["construcoes.html"] = construcoes(c);
   return out;
 }
 

@@ -21,7 +21,7 @@ const blobs = {};         // imagens enviadas nesta sessão: caminho -> URL loca
 const SECCOES = [
   ["geral", "Dados gerais e contactos"], ["aparencia", "Cores e letras"],
   ["paginas.inicio", "Página Início"], ["paginas.sobre", "Página Sobre nós"], ["paginas.brist", "Página BRIST"],
-  ["paginas.danca", "Página Dança"], ["paginas.qualidade", "Página Qualidade"], ["paginas.projetos", "Página Projetos"], ["paginas.contactos", "Página Contactos"],
+  ["paginas.danca", "Página Dança"], ["paginas.construcoes", "Página Construções"], ["paginas.qualidade", "Página Qualidade"], ["paginas.projetos", "Página Projetos"], ["paginas.contactos", "Página Contactos"],
   ["paginas.codigo_conduta", "Código de Conduta"], ["paginas.privacidade", "Política de Privacidade"],
 ];
 // versão inglesa: as mesmas secções, só com os campos de texto
@@ -53,7 +53,7 @@ const ROTULOS = {
   sustentabilidade_imagem: "Sustentabilidade: imagem", sustentabilidade_paragrafos: "Sustentabilidade: parágrafos",
   seccoes: "Secções", paragrafos: "Parágrafos (linhas começadas por \"- \" formam uma lista)", titulo: "Título", texto: "Texto", imagem: "Imagem",
   facebook: "Facebook", instagram: "Instagram", linkedin: "LinkedIn",
-  logotipo_fundo_claro: "Logótipo para fundos claros (Google)", caracteristicas: "Características", caracteristicas_titulo: "Características: título", intro_imagem: "Introdução: imagem", intro_descricao_imagem: "Introdução: descrição da imagem (para quem não vê)", galeria_titulo: "Galeria: título",
+  logotipo_fundo_claro: "Logótipo para fundos claros (Google)", caracteristicas: "Características", metodos: "Métodos de construção", caracteristicas_titulo: "Características: título", intro_imagem: "Introdução: imagem", intro_descricao_imagem: "Introdução: descrição da imagem (para quem não vê)", galeria_titulo: "Galeria: título",
 };
 const rotulo = (k) => ROTULOS[k] || (k.charAt(0).toUpperCase() + k.slice(1).replace(/_/g, " "));
 const eImagem = (k, v) => /imagem|logotipo/.test(k) && !/descricao/.test(k) && typeof v === "string";
@@ -455,7 +455,7 @@ $("#b-menu").onclick = () => { const m = $("#menu-mais"); m.hidden = !m.hidden; 
 
 // ---------- pré-visualização ----------
 let paginasPrevia = {}, paginaAtual = "index.html";
-const NOMES = { "index.html": "Início", "sobre-nos.html": "Sobre nós", "brist.html": "BRIST", "danca.html": "Dança", "qualidade.html": "Qualidade", "projetos.html": "Projetos", "contactos.html": "Contactos" };
+const NOMES = { "index.html": "Início", "sobre-nos.html": "Sobre nós", "brist.html": "BRIST", "danca.html": "Dança", "construcoes.html": "Construções", "qualidade.html": "Qualidade", "projetos.html": "Projetos", "contactos.html": "Contactos" };
 const idiomaDe = (f) => (f.startsWith("en/") ? "en/" : "");
 const nomeDe = (f) => f.replace(/^en\//, "");
 
