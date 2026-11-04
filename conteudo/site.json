@@ -171,26 +171,22 @@
       "modelos": [
         {
           "nome": "Grey",
-          "imagem": "img/brist-grey.png"
+          "imagem": "img/brist-grey-1793804516594.jpg"
         },
         {
           "nome": "White",
-          "imagem": "img/brist-white.jpg"
+          "imagem": "img/brist-white-1793804497391.jpg"
         },
         {
           "nome": "Brown",
-          "imagem": "img/brist-brown.jpg"
+          "imagem": "img/brist-brown-1793804460191.jpg"
         },
         {
           "nome": "Black",
-          "imagem": "img/brist-black-1.jpg"
-        },
-        {
-          "nome": "Black",
-          "imagem": "img/brist-black-2.jpg"
+          "imagem": "img/brist-black-1-1793804415984.jpg"
         }
       ],
-      "hangtag_imagem": "img/brist-hangtag.jpg",
+      "hangtag_imagem": "img/brist-hangtag-1793804214697.jpg",
       "declaracao_pdf": "docs/declaracao-de-conformidade-brist.pdf",
       "instagram_brist": "https://www.instagram.com/brist_certifiedfootwear/",
       "apelo_titulo": "Interessado nos nossos produtos BRIST?",
@@ -650,13 +646,11 @@
         "marcos": [
           {
             "ano": "1981.",
-            "texto": "FACOBIL was founded as a family business, driven by a passion for footwear and a commitment to quality, rigour and identity.",
-            "descricao_imagem": "Production at the Facobil factory"
+            "texto": "FACOBIL was founded as a family business, driven by a passion for footwear and a commitment to quality, rigour and identity."
           },
           {
             "ano": "2017.",
-            "texto": "In 2017, FACOBIL moved to its new premises in Felgueiras, an important step in the company's growth.",
-            "descricao_imagem": "Facobil's new premises"
+            "texto": "In 2017, FACOBIL moved to its new premises in Felgueiras, an important step in the company's growth."
           }
         ],
         "compromisso_titulo": "Commitment to quality.",
@@ -696,7 +690,24 @@
         ],
         "modelos_titulo": "Our models",
         "apelo_titulo": "Interested in our BRIST products?",
-        "apelo_texto": "Request our full catalogue or contact us for more sales information."
+        "apelo_texto": "Request our full catalogue or contact us for more sales information.",
+        "modelos": [
+          {
+            "nome": ""
+          },
+          {
+            "nome": ""
+          },
+          {
+            "nome": ""
+          },
+          {
+            "nome": ""
+          },
+          {
+            "nome": ""
+          }
+        ]
       },
       "danca": {
         "titulo_separador": "Dance Shoes | Facobil",
@@ -709,7 +720,6 @@
           "That is why its development must be extremely demanding, with specific characteristics.",
           "Movement is at the heart of dance, so comfort and flexibility are key in choosing the materials and developing this high-performance footwear."
         ],
-        "intro_descricao_imagem": "Suede sole of a satin dance shoe made by Facobil",
         "caracteristicas_titulo": "How it is made",
         "caracteristicas": [
           {
@@ -743,24 +753,12 @@
         ],
         "galeria_titulo": "Dance models",
         "galeria": [
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Dance shoe manufactured by Facobil"
-          }
+          {},
+          {},
+          {},
+          {},
+          {},
+          {}
         ],
         "apelo_titulo": "Looking for a partner for your dance collection?",
         "apelo_texto": "Talk to us and discover our development and production solutions.",
@@ -819,24 +817,12 @@
         "topo_titulo": "Project Gallery",
         "topo_subtitulo": "Examples of our production capacity and versatility",
         "galeria": [
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          },
-          {
-            "descricao_imagem": "Footwear project manufactured by Facobil"
-          }
+          {},
+          {},
+          {},
+          {},
+          {},
+          {}
         ],
         "apelo_titulo": "Ready to start your project?",
         "apelo_texto": "Get in touch and find out how we can turn your idea into reality.",
@@ -860,8 +846,7 @@
             "titulo": "",
             "paragrafos": [
               "This is an English translation for information purposes. In case of any discrepancy, the Portuguese version prevails.",
-              "FACOBIL's ethics and sustainability rest on three pillars: economic, social and environmental. The management is responsible for ensuring compliance with this code.",
-              "Complying with this code is not optional: it is a commitment shared by everyone. We are confident that ethics is everyone's commitment, and that it will take us further."
+              "FACOBIL's ethics and sustainability rest on three pillars: economic, social and environmental. The management is responsible for ensuring compliance with this code."
             ]
           },
           {
@@ -995,8 +980,7 @@
           {
             "titulo": "Privacy Policy",
             "paragrafos": [
-              "This is an English translation for information purposes. In case of any discrepancy, the Portuguese version prevails.",
-              "FACOBIL is committed to being transparent about how it collects and uses personal data. By sending us your data, you accept this policy."
+              "This is an English translation for information purposes. In case of any discrepancy, the Portuguese version prevails."
             ]
           },
           {
