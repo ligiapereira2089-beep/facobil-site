@@ -473,7 +473,10 @@ async function previsualizar() {
   estado("A preparar a pré-visualização…");
   await carregarImagensNovas();
   const conteudo = structuredClone(rascunho); delete conteudo._imagens_novas;
-  paginasPrevia = gerarSite(conteudo);
+  // que PDFs existem no repositório (para a pré-visualização mostrar o mesmo que o site)
+  let docs = null;
+  try { const r = await gh("/contents/docs?ref=" + RAMO); docs = new Set((Array.isArray(r) ? r : []).map((x) => x.path)); } catch (e) { docs = e.status === 404 ? new Set() : null; }
+  paginasPrevia = gerarSite(conteudo, docs ? { existe: (f) => !/^docs\//.test(f) || docs.has(f) } : {});
   const nav = $("#previa-paginas"); nav.innerHTML = "";
   for (const [f, n] of Object.entries(NOMES)) {
     const b = document.createElement("button"); b.type = "button"; b.className = "b b-pequeno"; b.textContent = n; b.dataset.f = f;

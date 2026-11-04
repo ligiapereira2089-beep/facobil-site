@@ -31,7 +31,7 @@ const TXT = {
     siga: "Siga-nos nas nossas redes sociais", direitos: "Todos os direitos reservados.",
     conduta: "Código de Conduta e Ética", privacidade: "Política de Privacidade e Cookies",
     localizacao: "Localização", telefone: "Telefone", email: "E-mail", redes: "Redes sociais",
-    enviar: "Enviar e-mail", ligar: "Ligar", assunto: "Pedido de informações", assunto_catalogo: "Pedido de catálogo BRIST",
+    enviar: "Enviar e-mail", ligar: "Ligar", assunto: "Pedido de informações", assunto_catalogo: "Pedido de catálogo BRIST", pedir_pdf: "Pedir por e-mail",
     hangtag: "Hangtag BRIST – Certified Footwear", hangtag_desc: "Descrição detalhada dos modelos BRIST.", hangtag_alt: "Descrição detalhada do modelo BRIST",
     voltar_brist: "Voltar à BRIST", declaracao: "Declaração de Conformidade", info_comerciais: "Informações comerciais",
     modelo: "Modelo BRIST", nao_encontrada: "Página não encontrada", nao_existe: "A página que procura não existe ou foi movida.",
@@ -44,7 +44,7 @@ const TXT = {
     siga: "Follow us on social media", direitos: "All rights reserved.",
     conduta: "Code of Conduct and Ethics", privacidade: "Privacy and Cookies Policy",
     localizacao: "Location", telefone: "Phone", email: "E-mail", redes: "Social media",
-    enviar: "Send e-mail", ligar: "Call", assunto: "Information request", assunto_catalogo: "BRIST catalogue request",
+    enviar: "Send e-mail", ligar: "Call", assunto: "Information request", assunto_catalogo: "BRIST catalogue request", pedir_pdf: "Request by e-mail",
     hangtag: "BRIST Hangtag – Certified Footwear", hangtag_desc: "Detailed description of the BRIST models.", hangtag_alt: "Detailed description of the BRIST model",
     voltar_brist: "Back to BRIST", declaracao: "Declaration of Conformity", info_comerciais: "Sales information",
     modelo: "BRIST model", nao_encontrada: "Page not found", nao_existe: "The page you are looking for does not exist or has been moved.",
@@ -243,6 +243,9 @@ const apelo = (h, p, label, href) => `<section class="cta">
   </div>
 </section>`;
 
+// ficheiros que existem de facto (passado pelo construtor); sem a lista, assume-se que existem
+let EXISTE = () => true;
+const temFicheiro = (f) => !!f && EXISTE(f);
 const mailCatalogo = (g) => `mailto:${g.email}?subject=${encodeURIComponent(T.assunto_catalogo)}`;
 
 // ---------- páginas ----------
@@ -251,7 +254,7 @@ function inicio(c) {
   const nums = (p.numeros || []).map((n) => n.numero === "AUTO"
     ? `<div class="stat"><strong data-desde="${attr(c.geral.ano_fundacao)}">${anos}</strong><span>${esc(n.legenda)}</span></div>`
     : `<div class="stat"><strong>${esc(n.numero)}</strong><span>${esc(n.legenda)}</span></div>`).join("");
-  const cartoes = (p.cartoes || []).map((k) => `<article class="card"><h3>${esc(k.titulo)}</h3><p>${esc(k.texto)}</p>${k.ficheiro_pdf ? `<a class="btn btn-outline" href="${attr(urlOk(k.ficheiro_pdf))}" download>${ICON.download}Download</a>` : ""}</article>`).join("");
+  const cartoes = (p.cartoes || []).map((k) => `<article class="card"><h3>${esc(k.titulo)}</h3><p>${esc(k.texto)}</p>${temFicheiro(k.ficheiro_pdf) ? `<a class="btn btn-outline" href="${attr(urlOk(k.ficheiro_pdf))}" download>${ICON.download}Download</a>` : k.ficheiro_pdf ? `<a class="btn btn-outline" href="mailto:${attr(c.geral.email)}?subject=${attr(encodeURIComponent(k.titulo))}">${T.pedir_pdf}</a>` : ""}</article>`).join("");
   const gal = (p.galeria || []).map((x) => `<figure class="thumb"><img src="${attr(x.imagem)}" alt="" loading="lazy"><figcaption>${esc(x.legenda)}</figcaption></figure>`).join("");
   const corpo = topo(p.topo_imagem, p.topo_titulo, p.topo_subtitulo,
     `<p>${esc(p.topo_texto)}</p><div class="btns"><a class="btn" href="sobre-nos.html">${esc(p.botao_1)}</a><a class="btn btn-ghost" href="contactos.html">${esc(p.botao_2)}</a></div>`, "hero-home") + `
@@ -317,7 +320,7 @@ function brist(c) {
     <div class="models">${mods}</div>
     <p class="center doc-links">
       <a href="brist-hangtag.html">${T.hangtag}</a>
-      ${p.declaracao_pdf ? `<a href="${attr(urlOk(p.declaracao_pdf))}">${T.declaracao}</a>` : ""}
+      ${temFicheiro(p.declaracao_pdf) ? `<a href="${attr(urlOk(p.declaracao_pdf))}">${T.declaracao}</a>` : ""}
     </p>
   </div>
 </section>
@@ -491,7 +494,8 @@ function aplicarPosicoes(html, m) {
   });
 }
 
-export function gerarSite(conteudo) {
+export function gerarSite(conteudo, opcoes = {}) {
+  EXISTE = opcoes.existe || (() => true);
   const pos = posicoes({ geral: conteudo.geral, paginas: conteudo.paginas });
   const d = String(conteudo.geral.dominio || "").replace(/\/$/, "");
   const hoje = new Date().toISOString().slice(0, 10);

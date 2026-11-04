@@ -16,7 +16,7 @@ if (existsSync(join(raiz, "docs"))) cpSync(join(raiz, "docs"), join(saida, "docs
 cpSync(join(raiz, "admin"), join(saida, "admin"), { recursive: true });
 cpSync(join(raiz, "gerador", "gerar.mjs"), join(saida, "admin", "gerar.mjs"));
 
-const ficheiros = gerarSite(conteudo);
+const ficheiros = gerarSite(conteudo, { existe: (f) => /^docs\//.test(f) ? existsSync(join(raiz, f)) : true });
 for (const [nome, texto] of Object.entries(ficheiros)) {
   const destino = join(saida, nome);
   mkdirSync(dirname(destino), { recursive: true });
