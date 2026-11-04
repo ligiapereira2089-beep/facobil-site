@@ -146,6 +146,8 @@ function rodape(g) {
         <li><a href="sobre-nos.html">${T.nav["sobre-nos.html"]}</a></li>
         <li><a href="index.html#solucoes">${T.solucoes}</a></li>
         <li><a href="brist.html">BRIST</a></li>
+        ${NAV.some(([h]) => h === "danca.html") ? `<li><a href="danca.html">${T.nav["danca.html"]}</a></li>` : ""}
+        ${NAV.some(([h]) => h === "construcoes.html") ? `<li><a href="construcoes.html">${T.nav["construcoes.html"]}</a></li>` : ""}
         <li><a href="projetos.html">${T.nav["projetos.html"]}</a></li>
       </ul>
     </div>

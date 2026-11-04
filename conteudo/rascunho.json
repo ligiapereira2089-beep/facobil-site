@@ -94,15 +94,15 @@
       "galeria": [
         {
           "imagem": "img/servico-1.jpg",
-          "legenda": "Design de Sites"
+          "legenda": "Desenvolvimento de produto"
         },
         {
           "imagem": "img/servico-2.jpg",
-          "legenda": "Gestão de Redes Sociais"
+          "legenda": "Modelação e prototipagem"
         },
         {
           "imagem": "img/servico-3.jpg",
-          "legenda": "Pacote de Marketing Digital"
+          "legenda": "Controlo de qualidade"
         }
       ],
       "video_titulo": "A Facobil por dentro",
@@ -703,13 +703,13 @@
         ],
         "galeria": [
           {
-            "legenda": "Website design"
+            "legenda": "Product development"
           },
           {
-            "legenda": "Social media management"
+            "legenda": "Pattern making and prototyping"
           },
           {
-            "legenda": "Digital marketing package"
+            "legenda": "Quality control"
           }
         ],
         "video_titulo": "Inside Facobil",

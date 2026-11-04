@@ -219,3 +219,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .mapa-aviso{background:#fffffff2;max-width:460px;margin:16px;padding:24px;border-radius:var(--raio);text-align:center;box-shadow:0 4px 18px #0002}
 .mapa-aviso p{margin:0 0 14px;color:var(--suave);font-size:.92rem}
 @media (max-width:640px){.mapa{aspect-ratio:auto;min-height:340px}}
+/* Acabamento visual */
+.hero::before{background:linear-gradient(100deg,rgba(17,17,17,.86) 0%,rgba(17,17,17,.62) 45%,rgba(17,17,17,.28) 100%)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--verde),var(--verde-escuro))}
+.hero h1{text-shadow:0 2px 24px #0006}
+.hero-inner>*{animation:subir .9s ease both}
+.hero-inner>*:nth-child(2){animation-delay:.12s}.hero-inner>*:nth-child(3){animation-delay:.24s}.hero-inner>*:nth-child(4){animation-delay:.36s}
+.hero-bg{animation:aproximar 18s ease-out both}
+@keyframes subir{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes aproximar{from{transform:scale(1.08)}to{transform:scale(1)}}
+.section h2::after{content:"";display:block;width:56px;height:4px;border-radius:2px;background:var(--verde);margin-top:14px}
+.section h2.center::after,.section .center h2::after{margin-left:auto;margin-right:auto}
+.cta h2::after,.panel h2::after,.contact-card h2::after{display:none}
+.site-header nav a{position:relative}
+.thumb figcaption,.thumb h3,.thumb p{transition:color .2s}
+.thumb:hover figcaption,.thumb:hover h3{color:var(--acento-escuro)}
+.stat strong{text-shadow:0 0 24px #5d993d40}
+.card{box-shadow:0 2px 10px #0000000d}
+.feature{box-shadow:0 2px 10px #0000000a}
+@media (prefers-reduced-motion:reduce){.hero-inner>*,.hero-bg{animation:none}}
