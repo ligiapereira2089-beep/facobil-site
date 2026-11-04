@@ -72,6 +72,12 @@ const paragrafos = (arr) => (arr || []).map(bloco).join("\n");
 const telHref = (t) => "tel:" + String(t).replace(/[^\d+]/g, "");
 const telTxt = (t) => esc(t).replace(/ /g, "&nbsp;");
 const hexOk = (c, def) => (/^#[0-9a-fA-F]{6}$/.test(c || "") ? c : def);
+// contraste WCAG entre duas cores #rrggbb
+function luminancia(h) {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+export const contraste = (a, b) => { const [x, y] = [luminancia(a), luminancia(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
 const urlOk = (u) => (/^(https?:|mailto:|tel:)/.test(u || "") || /^[\w\-./%]+$/.test(u || "") ? u : "#");
 
 // ---------- tema (cores e letras) ----------
@@ -96,7 +102,8 @@ export function gerarTema(a, faixa) {
   --suave:#5c5c5c;
   --claro:${hexOk(a.cor_fundo_alternado, "#efefef")};
   --branco:#ffffff;
-  --acento:var(--verde-escuro);
+  --acento:var(--verde);
+  --sobre-acento:${contraste(hexOk(a.cor_verde, "#5d993d"), "#ffffff") >= 4.5 ? "#ffffff" : "#111111"};
   --acento-escuro:var(--verde-escuro);
   --linha:#d6d6d6;
   --titulos:"${ft}",system-ui,sans-serif;

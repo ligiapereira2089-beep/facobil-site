@@ -32,7 +32,7 @@ const ROTULOS = {
   email: "E-mail", telefone: "Telefone", morada: "Morada (uma linha por linha da morada)", localidade: "Localidade (rodapé)",
   dominio: "Endereço do site (domínio)", logotipo_cabecalho: "Logótipo do cabeçalho (fundo escuro)", logotipo_rodape: "Logótipo do rodapé",
   imagem_partilha: "Imagem ao partilhar nas redes (1200×630)", texto_rodape: "Texto do rodapé", servicos_rodape: "Serviços (rodapé)",
-  cor_verde: "Verde da marca", cor_verde_escuro: "Verde dos botões e ligações", cor_cinza: "Cinza (cabeçalho e rodapé)",
+  cor_verde: "Verde da marca (botões e faixas verdes)", cor_verde_escuro: "Verde escuro (ligações e textos verdes)", cor_cinza: "Cinza (cabeçalho e rodapé)",
   cor_preto: "Preto (faixa dos números)", cor_texto: "Cor do texto", cor_fundo_alternado: "Fundo das secções alternadas",
   letra_titulos: "Letra dos títulos", letra_texto: "Letra do texto", tamanho_texto: "Tamanho do texto (px)",
   titulo_separador: "Título no separador do navegador e no Google", descricao_google: "Descrição para o Google",
@@ -221,7 +221,7 @@ function mostrarEditor() {
 
 function notaContraste() {
   const p = document.createElement("p"); p.className = "nota";
-  p.textContent = "Dica: o texto branco sobre o \"verde dos botões\" deve ter contraste de pelo menos 4,5:1 (norma WCAG) para ser legível. O painel avisa se a cor escolhida não cumprir.";
+  p.textContent = "Dica: o texto sobre o verde da marca fica branco ou preto automaticamente, conforme o que se lê melhor (norma WCAG, contraste mínimo 4,5:1). O verde escuro é usado em texto sobre fundo branco, por isso também precisa de 4,5:1 com o branco.";
   return p;
 }
 
@@ -252,6 +252,7 @@ function desenharCampo(pai, k, v, caminho) {
     const av = document.createElement("span"); av.className = "contraste";
     const atualizar = (val) => { pai[k] = val; marcarAlterado(); avaliar(); };
     const avaliar = () => {
+      if (k === "cor_verde") { const c = contraste(pai[k], "#ffffff"); av.textContent = c >= 4.5 ? `Texto dos botões: branco (${c.toFixed(2)}:1) ✓` : `Texto dos botões: preto (${contraste(pai[k], "#111111").toFixed(2)}:1) ✓`; av.classList.remove("mau"); }
       if (k === "cor_verde_escuro") { const c = contraste(pai[k], "#ffffff"); av.textContent = `Contraste com branco: ${c.toFixed(2)}:1 ${c >= 4.5 ? "✓" : "⚠ abaixo de 4,5:1"}`; av.classList.toggle("mau", c < 4.5); }
     };
     cor.oninput = () => { hex.value = cor.value; atualizar(cor.value); };
