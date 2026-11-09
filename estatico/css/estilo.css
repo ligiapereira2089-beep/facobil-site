@@ -240,3 +240,40 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .feature{box-shadow:0 2px 10px #0000000a}
 @media (prefers-reduced-motion:reduce){.hero-inner>*,.hero-bg{animation:none}}
 .metodo.so-texto{grid-template-columns:1fr;max-width:820px}
+main:focus{outline:none}
+/* Seletor de métodos (Construções) */
+.seletor{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 40px;max-width:900px}
+.seletor button{font:600 .9rem var(--titulos);padding:10px 18px;border-radius:999px;border:1px solid var(--linha);background:#fff;color:var(--escuro);cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.seletor button:hover{border-color:var(--acento);transform:translateY(-2px)}
+.seletor button[aria-selected=true]{background:var(--acento);border-color:var(--acento);color:var(--sobre-acento)}
+.metodos.com-seletor{min-height:420px}
+.metodo.entrar{animation:subir .45s ease both}
+.metodo:focus-visible{outline:3px solid var(--verde);outline-offset:8px;border-radius:var(--raio)}
+/* Ampliar imagens */
+.ampliavel{cursor:zoom-in}
+.lupa{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);max-height:92vh;overflow:visible}
+.lupa::backdrop{background:#000c}
+.lupa figure{margin:0;display:grid;gap:10px;justify-items:center}
+.lupa img{max-width:100%;max-height:82vh;object-fit:contain;background:#fff;border-radius:var(--raio)}
+.lupa figcaption{color:#fff;text-align:center;font-size:.95rem;max-width:70ch}
+.lupa-fechar{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#111;font:700 1.6rem/1 var(--titulos);cursor:pointer;box-shadow:0 2px 10px #0006}
+.lupa[open]{animation:subir .25s ease both}
+/* Linha de progresso nas etapas e na história */
+.com-linha{position:relative}
+.steps.com-linha::before,.steps.com-linha::after{content:"";position:absolute;left:20px;top:21px;bottom:21px;width:2px;background:var(--linha);z-index:0}
+.steps.com-linha::after{background:var(--acento);transform-origin:top;transform:scaleY(var(--p,0));transition:transform .15s linear}
+.steps.com-linha li{position:relative;z-index:1}
+.steps.com-linha .step-n{transition:transform .3s ease,box-shadow .3s ease;background:#fff;color:var(--acento-escuro);border:2px solid var(--linha)}
+.steps.com-linha li.atingido .step-n{background:var(--acento);color:var(--sobre-acento);border-color:var(--acento);transform:scale(1.08);box-shadow:0 0 0 6px #5d993d26}
+.timeline.com-linha::before,.timeline.com-linha::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--linha)}
+.timeline.com-linha::after{background:var(--acento);transform-origin:top;transform:scaleY(var(--p,0));transition:transform .15s linear}
+.timeline.com-linha .milestone{position:relative;z-index:1}
+.timeline.com-linha .milestone h3{transition:color .4s}
+.timeline.com-linha .milestone:not(.atingido) h3{color:#808080}
+@media (max-width:820px){.timeline.com-linha::before,.timeline.com-linha::after{display:none}}
+/* Barra de leitura e voltar ao topo */
+.leitura{position:fixed;left:0;right:0;top:0;height:3px;background:var(--acento);transform-origin:left;transform:scaleX(0);z-index:30;pointer-events:none}
+.ao-topo{position:fixed;right:20px;bottom:20px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--escuro);color:#fff;text-decoration:none;font:700 1.3rem/1 var(--titulos);box-shadow:0 4px 14px #0004;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s,transform .3s,visibility .3s;z-index:25}
+.ao-topo.ver{opacity:1;visibility:visible;transform:none}
+.ao-topo:hover{background:var(--acento);color:var(--sobre-acento)}
+@media (prefers-reduced-motion:reduce){.metodo.entrar,.lupa[open]{animation:none}.steps.com-linha::after,.timeline.com-linha::after{transition:none}}

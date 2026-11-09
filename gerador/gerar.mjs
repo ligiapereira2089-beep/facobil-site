@@ -218,7 +218,7 @@ function documento(c, ficheiro, titulo, descricao, corpo, ativo, opcoes = {}) {
 <body>
 <a class="skip" href="#conteudo">${T.saltar}</a>
 ${cabecalho(g, ativo ?? ficheiro, ficheiro)}
-<main id="conteudo">
+<main id="conteudo" tabindex="-1">
 ${corpo}
 </main>
 ${rodape(g)}
@@ -441,13 +441,13 @@ function seccaoFaq(p) {
 
 function construcoes(c) {
   const p = c.paginas.construcoes;
-  const metodos = (p.metodos || []).map((m, i) => `<article class="metodo${i % 2 ? " reverse" : ""}">
+  const metodos = (p.metodos || []).map((m, i) => `<section class="metodo${i % 2 ? " reverse" : ""}" id="${attr(String(m.titulo || "metodo-" + i).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/^constru[cç][aã]o\s+|\s+construction$/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""))}">
   <div><h2>${esc(m.titulo)}</h2>${bloco(m.texto)}</div>
   ${m.imagem ? `<img src="${attr(m.imagem)}" alt="${attr(m.descricao_imagem)}" loading="lazy">` : "<div></div>"}
-</article>`).join("\n");
+</section>`).join("\n");
   const corpo = topo(p.topo_imagem, p.topo_titulo, p.topo_subtitulo) + `
 ${p.intro_texto ? `<section class="section"><div class="wrap narrow center">${bloco(p.intro_texto)}</div></section>` : ""}
-<section class="section${p.intro_texto ? " alt" : ""}"><div class="wrap metodos">${metodos}</div></section>
+<section class="section${p.intro_texto ? " alt" : ""}"><div class="wrap metodos" data-seletor>${metodos}</div></section>
 ` + apelo(p.apelo_titulo, p.apelo_texto, p.apelo_botao, "contactos.html");
   return documento(c, "construcoes.html", p.titulo_separador, p.descricao_google, corpo);
 }
