@@ -138,3 +138,49 @@ if (linhas.length) {
   const f = () => { const h = document.documentElement.scrollHeight - innerHeight; barra.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`; topo.classList.toggle('ver', scrollY > 700); };
   f(); addEventListener('scroll', f, { passive: true });
 }
+
+// ---------- Efeitos com o rato (só em computadores com rato e sem "reduzir movimento") ----------
+if (!calmo && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.documentElement.classList.add('rato');
+  // 1) Anel que segue o rato e cresce sobre ligações, botões e imagens ampliáveis
+  const anel = document.createElement('div'); anel.className = 'anel'; anel.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(anel);
+  let mx = -100, my = -100, ax = -100, ay = -100;
+  addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; anel.classList.add('ativo'); }, { passive: true });
+  document.addEventListener('pointerleave', () => anel.classList.remove('ativo'));
+  const interativo = 'a, button, [role=button], [role=tab], summary, .ampliavel';
+  document.addEventListener('pointerover', (e) => {
+    const t = e.target.closest(interativo);
+    anel.classList.toggle('sobre', !!t);
+    anel.classList.toggle('lupa-icone', !!(t && t.classList.contains('ampliavel')));
+  });
+  (function seguir() { ax += (mx - ax) * 0.2; ay += (my - ay) * 0.2; anel.style.translate = `${ax}px ${ay}px`; requestAnimationFrame(seguir); })();
+
+  // 2) Botões "magnéticos": aproximam-se ligeiramente do rato
+  document.querySelectorAll('.btn, .ao-topo, .b-car').forEach((b) => {
+    b.addEventListener('pointermove', (e) => { const r = b.getBoundingClientRect(); b.style.translate = `${((e.clientX - r.left) / r.width - 0.5) * 10}px ${((e.clientY - r.top) / r.height - 0.5) * 8}px`; });
+    b.addEventListener('pointerleave', () => { b.style.translate = ''; });
+  });
+
+  // 3) Cartões que inclinam em 3D e ganham brilho onde está o rato
+  document.querySelectorAll('.card, .feature, .testemunho, .thumb, .model').forEach((c) => {
+    c.classList.add('inclina');
+    c.addEventListener('pointermove', (e) => {
+      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      c.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 7}deg) rotateY(${(x - 0.5) * 9}deg) translateY(-4px)`;
+      c.style.setProperty('--bx', x * 100 + '%'); c.style.setProperty('--by', y * 100 + '%');
+    });
+    c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+  });
+
+  // 4) Topo das páginas: foto em paralaxe e foco de luz verde que segue o rato
+  document.querySelectorAll('.hero').forEach((h) => {
+    const bg = h.querySelector('.hero-bg');
+    h.addEventListener('pointermove', (e) => {
+      const r = h.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      h.style.setProperty('--mx', x * 100 + '%'); h.style.setProperty('--my', y * 100 + '%');
+      if (bg) bg.style.translate = `${(0.5 - x) * 24}px ${(0.5 - y) * 16}px`;
+    });
+    h.addEventListener('pointerleave', () => { if (bg) bg.style.translate = ''; });
+  });
+}
